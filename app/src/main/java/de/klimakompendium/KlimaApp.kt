@@ -2,13 +2,16 @@ package de.klimakompendium
 
 import android.app.Application
 
-class KlimaApp : Application() {
+open class KlimaApp : Application() {
     lateinit var container: AppContainer
         private set
 
+    /** Überschreibbar für Tests. */
+    protected open fun createContainer(): AppContainer = AppContainer(this)
+
     override fun onCreate() {
         super.onCreate()
-        container = AppContainer(this)
+        container = createContainer()
         container.seedAsync()
     }
 }

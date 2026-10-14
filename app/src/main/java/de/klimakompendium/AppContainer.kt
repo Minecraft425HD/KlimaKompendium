@@ -8,6 +8,7 @@ import de.klimakompendium.data.repo.PlantRepository
 import de.klimakompendium.data.repo.RefrigerantRepository
 import de.klimakompendium.data.repo.TermRepository
 import de.klimakompendium.data.security.KeystoreKeyProvider
+import de.klimakompendium.data.security.SecretCipher
 import de.klimakompendium.data.seed.SeedParser
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,12 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 /** Einfache manuelle Dependency-Injection (kein Framework nötig für diese App-Größe). */
-class AppContainer(context: Context) {
+class AppContainer(
+    context: Context,
+    /** Austauschbar für Tests (Android Keystore ist unter Robolectric nicht verfügbar). */
+    cipherFactory: () -> SecretCipher = { KeystoreKeyProvider.cipher() },
+) {
+    private val cipher by lazy(cipherFactory)
     private val appContext = context.applicationContext
     val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
@@ -27,7 +33,7 @@ class AppContainer(context: Context) {
     }
     val terms: TermRepository by lazy { TermRepository(database.termDao(), preferences) }
     val plants: PlantRepository by lazy {
-        PlantRepository(database.plantDao(), KeystoreKeyProvider.cipher(), FilePhotoStore(appContext))
+        PlantRepository(database.plantDao(), cipher, FilePhotoStore(appContext))
     }
 
     /** Spielt die mitgelieferte Begriffsdatenbank beim ersten Start bzw. nach App-Updates ein. */
