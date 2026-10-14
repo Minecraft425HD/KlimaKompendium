@@ -8,7 +8,9 @@ import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.hasScrollToNodeAction
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import de.klimakompendium.AppContainer
 import de.klimakompendium.KlimaApp
@@ -138,5 +140,63 @@ class ServiceFlowTest {
         waitForText("172.16.0.1")                    // Adresse aus der Vorlage übernommen
         waitForText("fadmin")                        // Passwort nur als Hinweis, nicht als Feldinhalt
         check(rule.onAllNodes(hasText("fadmin") and hasSetTextAction()).fetchSemanticsNodes().isEmpty()) { "Passwort darf nicht vorbelegt werden" }
+    }
+}
+
+/** Berechnungs-Katalog: Auswahl der Messwerte, Rechner-Bildschirm und Schnellsuche. */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class CalcFlowTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 15_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    /** LazyColumn-Einträge außerhalb des Bildschirms existieren erst nach dem Scrollen. */
+    private fun scrollTo(text: String) {
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText(text, substring = true))
+    }
+
+    private fun openCalcTab() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Druck/Temp").performClick()
+        waitForText("Berechnen")
+        rule.onNodeWithText("Berechnen").performClick()
+        waitForText("Was kann ich berechnen?")
+    }
+
+    @Test fun selectingMeasurementsShowsComputableAndAlmostComputable() {
+        openCalcTab()
+        scrollTo("Saugdruck (ND)")
+        rule.onNodeWithText("Saugdruck (ND)").performClick()
+        scrollTo("Sauggastemperatur")
+        rule.onNodeWithText("Sauggastemperatur").performClick()
+        scrollTo("Damit berechenbar")
+        waitForText("Damit berechenbar")
+        scrollTo("Überhitzung (Saugseite)")
+        waitForText("Überhitzung (Saugseite)")
+        scrollTo("Fast berechenbar")
+        waitForText("Fast berechenbar")
+    }
+
+    @Test fun superheatCalculatorComputesResult() {
+        openCalcTab()
+        scrollTo("Überhitzung (Saugseite)")
+        rule.onNodeWithText("Überhitzung (Saugseite)").performClick()
+        waitForText("Benötigte Messwerte")
+        // R32 bei 0 °C = 8,131 bar abs.; Standard-Einstellung ist Überdruck → 7,12 bar ü ≙ t0 ≈ 0 °C
+        rule.onNode(hasText("Saugdruck (ND)") and hasSetTextAction()).performTextInput("7,12")
+        rule.onNode(hasText("Sauggastemperatur") and hasSetTextAction()).performTextInput("6")
+        waitForText("Überhitzung")
+        waitForText("K")
+        waitForText("Richtwert 5–10 K")
+    }
+
+    @Test fun quickSearchFindsCalculationForHeissgas() {
+        waitForText("KlimaKompendium")
+        rule.onNode(hasSetTextAction()).performTextInput("Heißgas")
+        waitForText("Begriffe & Abkürzungen")   // Ergebnisliste ist geladen
+        scrollTo("Heißgas-Überhitzung")
+        waitForText("Heißgas-Überhitzung")
     }
 }
