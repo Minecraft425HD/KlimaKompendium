@@ -55,6 +55,7 @@ fun PlantsScreen(onOpenPlant: (Long) -> Unit, onNewPlant: () -> Unit) {
                         FilterDropdown("Kältemittel", s.refrigerants, s.filter.refrigerant, { it }, vm::setRefrigerant)
                         FilterDropdown("Hersteller", s.manufacturers, s.filter.manufacturer, { it }, vm::setManufacturer)
                         FilterDropdown("Kunde", s.customers, s.filter.customer, { it }, vm::setCustomer)
+                        FilterDropdown("Controller", s.controllers, s.filter.controller, { it }, vm::setController)
                         if (s.filter.isActive) TextButton(onClick = vm::clearFilters, Modifier.padding(start = 4.dp)) { Text("Zurücksetzen") }
                     }
                 }

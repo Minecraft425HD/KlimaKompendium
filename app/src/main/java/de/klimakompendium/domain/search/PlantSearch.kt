@@ -7,8 +7,9 @@ data class PlantFilter(
     val refrigerant: String? = null,
     val manufacturer: String? = null,
     val customer: String? = null,
+    val controller: String? = null,
 ) {
-    val isActive get() = query.isNotBlank() || refrigerant != null || manufacturer != null || customer != null
+    val isActive get() = query.isNotBlank() || refrigerant != null || manufacturer != null || customer != null || controller != null
 }
 
 /** Suche und Filter für Anlagen (Name, Kunde, Standort, Controller, Kältemittel, Hersteller, Seriennummer). */
@@ -20,11 +21,16 @@ object PlantSearch {
             (f.refrigerant == null || p.refrigerant.equals(f.refrigerant, true)) &&
                 (f.manufacturer == null || p.manufacturer.equals(f.manufacturer, true)) &&
                 (f.customer == null || p.customer.equals(f.customer, true)) &&
+                (f.controller == null || controllerNames(p).any { it.equals(f.controller, true) }) &&
                 matches(p, tokens)
         }
     }
 
     /** @param tokens bereits mit [TextNormalizer.compact] normalisierte Suchbegriffe */
+    /** Controller-Bezeichnungen einer Anlage für den Filter: Übersichtsfeld und Modelle der angelegten Controller. */
+    fun controllerNames(p: Plant): List<String> =
+        (listOf(p.controllerType) + p.controllers.map { it.model }).map { it.trim() }.filter { it.isNotEmpty() }
+
     fun matches(p: Plant, tokens: List<String>): Boolean {
         if (tokens.isEmpty()) return true
         val haystack = listOf(

@@ -20,7 +20,9 @@ object ClipboardHelper {
      */
     fun copy(context: Context, label: String, text: String, sensitive: Boolean) {
         val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText(label, text)
+        // Eindeutiges Label: so erkennen wir später, ob die Zwischenablage noch UNSER Passwort enthält.
+        val ownLabel = if (sensitive) "$label#${System.nanoTime()}" else label
+        val clip = ClipData.newPlainText(ownLabel, text)
         if (sensitive) {
             clip.description.extras = PersistableBundle().apply {
                 putBoolean(
@@ -32,14 +34,17 @@ object ClipboardHelper {
         cm.setPrimaryClip(clip)
         pendingClear?.let(handler::removeCallbacks)
         if (sensitive) {
-            val r = Runnable { clear(cm) }
+            val r = Runnable { clearIfStillOurs(cm, ownLabel) }
             pendingClear = r
             handler.postDelayed(r, CLEAR_AFTER_MS)
         }
     }
 
-    private fun clear(cm: ClipboardManager) {
+    /** Leert nur, wenn dort noch unser Eintrag liegt – hat der Nutzer inzwischen etwas anderes kopiert, bleibt das erhalten. */
+    private fun clearIfStillOurs(cm: ClipboardManager, ownLabel: String) {
         runCatching {
+            if (cm.primaryClipDescription?.label?.toString() != ownLabel) return
+
             if (Build.VERSION.SDK_INT >= 28) cm.clearPrimaryClip() else cm.setPrimaryClip(ClipData.newPlainText("", ""))
         }
     }

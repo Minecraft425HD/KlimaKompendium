@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": 3,
+ "version": 4,
  "terms": [
   {
    "key": "nd",
@@ -944,7 +944,7 @@
    "category": "REFRIGERANT",
    "unit": "",
    "meaning": "HFC-Gemisch (R125/R143a/R134a), Glide ≈ 0,5 K, A1, GWP 3922.",
-   "context": "Kälte NK/TK im Bestand; in der EU Nachfüllverbot für Neuanlagen und Einschränkungen im Service.",
+   "context": "Kälte NK/TK im Bestand. GWP über 2500: in der EU für Neuanlagen und bei der Wartung mit Frischware stark eingeschränkt bzw. verboten (F-Gas-Verordnung) – aktuelle Rechtslage prüfen.",
    "typicalRange": ""
   },
   {

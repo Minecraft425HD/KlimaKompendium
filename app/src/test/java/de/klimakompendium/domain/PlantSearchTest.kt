@@ -6,6 +6,7 @@ import de.klimakompendium.domain.model.Plant
 import de.klimakompendium.domain.search.PlantFilter
 import de.klimakompendium.domain.search.PlantSearch
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class PlantSearchTest {
@@ -35,6 +36,13 @@ class PlantSearchTest {
 
     @Test fun toleratesTypos() {
         assertEquals(listOf(2L), PlantSearch.filter(plants, PlantFilter(query = "Serverram")).map { it.id })
+    }
+
+    @Test fun controllerFilterUsesTypeAndControllerModels() {
+        assertEquals(listOf(1L), PlantSearch.filter(plants, PlantFilter(controller = "Carel pCO5")).map { it.id })
+        assertEquals(listOf(2L), PlantSearch.filter(plants, PlantFilter(controller = "daikin d3")).map { it.id })
+        assertEquals(listOf("Carel pCO5", "Carel pCO5"), PlantSearch.controllerNames(plants[0]))
+        assertTrue(PlantFilter(controller = "x").isActive)
     }
 
     @Test fun filtersCombine() {
