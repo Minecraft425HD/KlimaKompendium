@@ -23,9 +23,17 @@ android {
     }
 
     // Release-Signatur kommt AUSSCHLIESSLICH aus Umgebungsvariablen (GitHub Secrets) – nie aus dem Repo.
-    // Fehlen sie, wird mit dem Debug-Schlüssel signiert (installierbar, aber nicht für den Play Store).
+    // Fehlen sie, wird mit dem im Repo liegenden, ÖFFENTLICHEN Debug-Schlüssel (app/debug.keystore, Passwort
+    // "android") signiert: installierbar und von Version zu Version updatefähig, aber NICHT vertrauenswürdig
+    // und nicht für den Play Store geeignet. Für echte Signatur siehe README (Abschnitt "Release signieren").
     val releaseKeystore = System.getenv("KEYSTORE_FILE")
     signingConfigs {
+        create("sharedDebug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         if (!releaseKeystore.isNullOrBlank() && file(releaseKeystore).exists()) {
             create("release") {
                 storeFile = file(releaseKeystore)
@@ -41,9 +49,10 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("sharedDebug")
         }
         debug {
+            signingConfig = signingConfigs.getByName("sharedDebug")
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }
