@@ -1,0 +1,30 @@
+# Datenquellen
+
+Alle Hersteller- und Gerätedaten in der App stammen aus öffentlich zugänglichen Herstellerunterlagen. Jeder Leitfaden und jede
+Alarmliste nennt seine Quelle in der App. Es wurde nichts aus dem Gedächtnis ergänzt; wo keine belastbare Quelle gefunden wurde,
+ist das Feld bewusst leer.
+
+| Inhalt | Quelle |
+|---|---|
+| Alarmcodes Aermec **NRG 0282-0804** (AL01–AL157 und PEC-Alarmgruppen), Installer-Passwort 0000, BMS-/Modbus-Parameter, PGD1-Tasten, Menüs | Aermec, *NRG 0282-0804 – User manual, Card pCO5 – Panel PGD1*, Dok. 5723310_05 (04/2026), Kapitel 1, 9, 11 |
+| Alarmcodes Aermec **NRP/NXP/CPS**, PGD1-Tasten, Assistance-Menü, Alarm-Reset-Arten | Aermec, *Multipurpose – User manual, Card pCO5 – Panel PGD1* (NRP/NXP/CPS), Dok. 4724311_03 (10/2025), Kapitel 1, 13 |
+| Carel Tastenfunktionen (6 und 15 Tasten), pLAN-Adressierung (PGD0, pCO1/pCO3, pCO2/EVD-200), Standardwerte neu installieren, Standardpasswörter 1234 | Carel, *Standard Chiller Modular HP 1/4 Generic – User manual 1.4*, Code +030221296 (09/2008) |
+| pCOWeb: Werks-IP 172.16.0.1, Konten admin/root/httpadmin/carel/guest, Protokolle, Bootswitch | Carel, *pCOWeb – Scheda di interfaccia Ethernet per pCO\**, +050003238 rel. 1.0 (08.03.2005) |
+| p‑T‑Sättigungsdaten der Kältemittel | CoolProp (`tools/generate_pt_table.py`) |
+| Euroklimat S.p.A. (Produktprofil) | Öffentliche Herstellerlisten (u. a. DirectIndustry, Green Cooling Initiative). Zu den Applikationen/Alarmen der Euroklimat-Anlagen wurde **kein** verlässliches öffentliches Handbuch gefunden. |
+
+## Einschränkungen
+
+- Die deutschen Titel der Alarme sind sinngemäße Übersetzungen der englischen Originaltexte; der Originaltext steht in der App mit dabei.
+  Tippfehler im Handbuch (z. B. doppelte Texte bei AL21/AL22 oder AL74/AL76) sind übernommen und gekennzeichnet.
+- Die Handbücher nennen keine Ursachen und Abhilfen zu den Alarmcodes. Diese Felder sind deshalb bei mitgelieferten Codes leer;
+  nur die Rücksetzart (automatisch / manuell / halbautomatisch / manuell mit Passwort) ist angegeben.
+- Passwörter: Veröffentlicht sind nur Werte, die in den oben genannten Handbüchern stehen. Service- und Herstellerpasswörter von
+  Aermec werden nicht geführt (nur für autorisiertes Personal). Anlagenbauer ändern Standardwerte häufig – maßgeblich ist die Anlage.
+- Der pCOWeb-Handbuchstand ist von 2005; neuere Firmware kann andere Werkseinstellungen haben.
+
+## Eigene Daten ergänzen
+
+- **Alarmcodes** der eigenen Anlagen (z. B. Euroklimat): in der App unter *Service → Störungen → Eigener Code*.
+- **Mitgelieferte Daten erweitern**: `app/src/main/assets/fault_codes.json` (Feld `version` erhöhen) bzw. `service.json` bearbeiten;
+  `ServiceDataTest` prüft Eindeutigkeit und Vollständigkeit. Immer die Quelle angeben.
