@@ -23,7 +23,7 @@ Vor jedem Commit müssen **Build, Tests und Lint grün** sein.
 
 ```
 app/src/main/java/de/klimakompendium/
-  domain/   KEINE Android-Abhängigkeiten. model/, convert/ (Einheiten), search/ (Suche), hvac/ (p-T, Überhitzung)
+  domain/   KEINE Android-Abhängigkeiten. model/, convert/ (Einheiten), search/ (Suche), hvac/ (p-T, Überhitzung), calc/ (Berechnungs-Katalog: Measure, Quantities, QuantitySearch)
   data/     db/ (Room), repo/ (Repositories + Mapper), security/ (SecretCipher), prefs/ (DataStore), seed/ (JSON-Import)
   ui/       Compose: home, terms, helper, plants, settings, nav, components, theme, util
   AppContainer.kt  manuelle Dependency-Injection;  KlimaApp.kt  Application (Seed beim Start)
@@ -44,6 +44,9 @@ sondern über Repositories bzw. ViewModels (`AppContainer` liefert Abhängigkeit
   `CenteredContent`/`FormColumn` in der Breite begrenzen (Tablets/Querformat).
 - Zustände in ViewModels als `StateFlow`; Compose-Zustand für Formulare mit `rememberSaveable` – **außer Passwörter** (siehe unten).
 - Suche und Berechnung gehören in `domain` und müssen per Unit-Test abgedeckt sein.
+- Neue berechenbare Größe: in `domain/calc/Quantities.kt` als `Quantity` ergänzen (Erklärung, Formel, Pflicht-/optionale `Measure`s, `compute`) und in `QuantitiesTest`
+  gegen einen **von Hand nachgerechneten** Wert prüfen. Die UI (Katalog, Auswahl „Ich habe gemessen“, Schnellsuche) übernimmt sie automatisch.
+  Ergebnisse nie ohne Plausibilitätsprüfung ausgeben (Division durch 0, Wertebereich) – stattdessen `CalcOutcome.Error` mit verständlicher Meldung.
 
 ## Sicherheitsregeln (nicht verhandelbar)
 
