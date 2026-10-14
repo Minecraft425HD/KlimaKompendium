@@ -81,7 +81,8 @@ class AppFlowTest {
 
         waitForText("Hauptregler")
         // Passwort ist standardmäßig verborgen
-        waitForText("••••••••")
+        // EXAKT warten: das maskierte Eingabefeld des Formulars (10 Punkte) enthält die 8 Punkte sonst als Teilstring.
+        rule.waitUntil(30_000) { rule.onAllNodes(hasText("••••••••"), useUnmergedTree = true).fetchSemanticsNodes().isNotEmpty() }
         // Existenz statt „sichtbar“: Das Sichtbarkeits-Timing nach dem Scrollen ist auf langsamen CI-Runnern nicht deterministisch.
         rule.onNodeWithText("••••••••", useUnmergedTree = true).assertExists()
         check(rule.onAllNodesWithText("Geheim#123").fetchSemanticsNodes().isEmpty()) { "Passwort im Klartext sichtbar!" }
@@ -92,6 +93,11 @@ class AppFlowTest {
         check(rule.onAllNodesWithText("Geheim#123").fetchSemanticsNodes().isEmpty()) { "Passwort vor Bestätigung sichtbar!" }
         rule.onNodeWithText("Anzeigen").performClick()
         waitForText("Geheim#123")
+
+        // App geht in den Hintergrund → das Passwort muss sofort wieder verborgen sein
+        rule.activityRule.scenario.moveToState(androidx.lifecycle.Lifecycle.State.CREATED)
+        rule.activityRule.scenario.moveToState(androidx.lifecycle.Lifecycle.State.RESUMED)
+        rule.waitUntil(30_000) { rule.onAllNodesWithText("Geheim#123").fetchSemanticsNodes().isEmpty() }
     }
 }
 

@@ -81,8 +81,9 @@ sondern über Repositories bzw. ViewModels (`AppContainer` liefert Abhängigkeit
 - Workflows (`.github/workflows`) dürfen keine Secrets ausgeben und müssen externe Eingaben (Tag, Inputs) validieren.
 - README/CLAUDE.md aktualisieren, wenn sich Befehle, Struktur oder Sicherheitskonzept ändern.
 
-## Geplante Erweiterungen (Datenstruktur schon vorhanden)
+## Geplante Erweiterungen
 
-Tabellen `fault_codes`, `maintenance_intervals`, `checklists`, `checklist_items` samt `ReferenceDao` sind angelegt, aber noch ohne
-Oberfläche. Mögliche weitere Schritte: Störungscode-Suche je Controller, Wartungsintervalle mit Erinnerung, Checklisten für
-Inbetriebnahme, weitere p‑T-Tabellen (R454B, R513A), App-PIN/Biometrie.
+- Tabellen `maintenance_intervals`, `checklists`, `checklist_items` samt `ReferenceDao` sind angelegt, aber noch ohne Oberfläche
+  (Wartungsintervalle mit Erinnerung, Checklisten für Inbetriebnahme).
+- Verschlüsseltes Backup/Export (mit frei gewählter Passphrase; Passwörter nie unverschlüsselt exportieren), App-PIN/Biometrie.
+- Weitere p‑T-Tabellen (R454B, R513A) aus Herstellerdaten; Alarmlisten weiterer Gerätehersteller (z. B. Euroklimat) aus Handbüchern.

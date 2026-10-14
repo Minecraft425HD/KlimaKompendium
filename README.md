@@ -20,11 +20,8 @@ für die Baustelle, Inbetriebnahme und Wartung. Keine Cloud, keine Registrierung
 
 ## Screenshots
 
-> Platzhalter – nach dem ersten Build ergänzen (in den Einstellungen „Bildschirmfotos blockieren“ vorübergehend ausschalten).
-
-| Start | Begriffe | Druck & Temperatur | Anlage |
-|---|---|---|---|
-| ![Start](docs/screenshots/start.png) | ![Begriffe](docs/screenshots/terms.png) | ![Druck & Temperatur](docs/screenshots/helper.png) | ![Anlage](docs/screenshots/plant.png) |
+Folgen. Zum Aufnehmen in den Einstellungen „Bildschirmfotos & App-Vorschau blockieren“ vorübergehend ausschalten
+und die Bilder unter `docs/screenshots/` ablegen.
 
 ## Installation
 
@@ -131,6 +128,8 @@ und ein UI-Durchlauf (Anlage → Controller → Passwort nur nach Bestätigung s
 
 ## Bekannte Einschränkungen
 
-- Auf einem echten Gerät noch nicht von Hand durchgetestet; die Logik und der UI-Ablauf sind per Unit-/Robolectric-Tests abgesichert. Erste Eindrücke bitte als Issue melden.
+- Die Oberfläche wird per Unit-/Robolectric-Tests abgesichert; Rückmeldungen aus der Praxis bitte als Issue melden.
+- Kein Backup/Export: Anlagen, Controller und Passwörter liegen nur auf diesem Gerät (siehe „Passwörter“). Bei Verlust oder Wechsel des Geräts sind sie weg – wichtige Zugangsdaten zusätzlich an anderer, sicherer Stelle verwahren.
+- Fotos der Anlagen liegen im privaten App-Speicher, aber unverschlüsselt (anders als die Passwörter).
 - Keine Höhenkorrektur des Atmosphärendrucks (1,01325 bar).
 - p‑T-Tabellen enden bei −50 … +60 °C (R744 unterkritisch bis ca. 30 °C).
