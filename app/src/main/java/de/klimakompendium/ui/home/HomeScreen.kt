@@ -45,6 +45,7 @@ fun HomeScreen(
     onOpenPlant: (Long) -> Unit,
     onOpenRefrigerant: (String) -> Unit,
     onOpenFault: (String) -> Unit,
+    onOpenCalc: (String) -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val vm = appViewModel { HomeViewModel(it) }
@@ -74,7 +75,7 @@ fun HomeScreen(
                     )
                 }
                 if (state.query.isBlank()) idleContent(state, vm::onQuery, onOpenTerm, onOpenPlant)
-                else resultContent(state, onOpenTerm, onOpenPlant, onOpenRefrigerant, onOpenFault, vm::toggleFavorite)
+                else resultContent(state, onOpenTerm, onOpenPlant, onOpenRefrigerant, onOpenFault, onOpenCalc, vm::toggleFavorite)
             }
         }
     }
@@ -117,6 +118,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resultContent(
     onOpenPlant: (Long) -> Unit,
     onOpenRefrigerant: (String) -> Unit,
     onOpenFault: (String) -> Unit,
+    onOpenCalc: (String) -> Unit,
     onFavorite: (de.klimakompendium.domain.model.Term) -> Unit,
 ) {
     val r = state.result ?: return
@@ -149,6 +151,15 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resultContent(
         item { SectionHeader("Begriffe & Abkürzungen") }
         items(r.terms, key = { "term-${it.term.id}" }) { hit ->
             TermRow(hit.term, { onOpenTerm(hit.term.id) }, { onFavorite(hit.term) })
+        }
+    }
+    if (r.calcs.isNotEmpty()) {
+        item { SectionHeader("Berechnungen") }
+        items(r.calcs, key = { "calc-${it.id}" }) { c ->
+            KCard(onClick = { onOpenCalc(c.id) }) {
+                Text(c.name, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+                Text("Benötigt: " + c.needs.joinToString(" · ") { it.label }, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         }
     }
     if (r.faults.isNotEmpty()) {

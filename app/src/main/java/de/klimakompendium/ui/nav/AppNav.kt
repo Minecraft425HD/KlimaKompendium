@@ -25,6 +25,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import de.klimakompendium.ui.calc.CalcScreen
 import de.klimakompendium.ui.helper.HelperScreen
 import de.klimakompendium.ui.home.HomeScreen
 import de.klimakompendium.ui.plants.ControllerEditScreen
@@ -49,6 +50,7 @@ object Routes {
     const val HELPER_PATTERN = "helper?tab={tab}&ref={ref}"
     const val SERVICE_PATTERN = "service?tab={tab}&q={q}"
     const val FAULT_EDIT = "faultEdit/{id}"
+    const val CALC = "calc/{id}"
     const val TERM_DETAIL = "term/{id}"
     const val TERM_EDIT = "termEdit/{id}"
     const val PLANT_DETAIL = "plant/{id}"
@@ -58,6 +60,7 @@ object Routes {
     fun helper(tab: String = "explain", ref: String = "") = "helper?tab=$tab&ref=$ref"
     fun service(tab: String = "faults", q: String = "") = "service?tab=$tab&q=${android.net.Uri.encode(q)}"
     fun faultEdit(id: Long) = "faultEdit/$id"
+    fun calc(id: String) = "calc/$id"
     fun termDetail(id: Long) = "term/$id"
     fun termEdit(id: Long) = "termEdit/$id"
     fun plantDetail(id: Long) = "plant/$id"
@@ -109,6 +112,7 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
                     onOpenPlant = { nav.navigate(Routes.plantDetail(it)) },
                     onOpenRefrigerant = { nav.navigate(Routes.helper("pt", it)) },
                     onOpenFault = { nav.navigate(Routes.service("faults", it)) },
+                    onOpenCalc = { nav.navigate(Routes.calc(it)) },
                     onOpenSettings = { nav.navigate(Routes.SETTINGS) },
                 )
             }
@@ -122,7 +126,7 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
                     navArgument("ref") { type = NavType.StringType; defaultValue = "" },
                 ),
             ) { e ->
-                HelperScreen(e.arguments?.getString("tab") ?: "explain", e.arguments?.getString("ref") ?: "")
+                HelperScreen(e.arguments?.getString("tab") ?: "explain", e.arguments?.getString("ref") ?: "", onOpenCalc = { nav.navigate(Routes.calc(it)) })
             }
             composable(Routes.PLANTS) {
                 PlantsScreen(onOpenPlant = { nav.navigate(Routes.plantDetail(it)) }, onNewPlant = { nav.navigate(Routes.plantEdit(0)) })
@@ -138,6 +142,9 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
                     initialTab = e.arguments?.getString("tab") ?: "faults", initialQuery = e.arguments?.getString("q") ?: "",
                     onNewFault = { nav.navigate(Routes.faultEdit(0)) }, onEditFault = { nav.navigate(Routes.faultEdit(it)) },
                 )
+            }
+            composable(Routes.CALC, listOf(navArgument("id") { type = NavType.StringType })) { e ->
+                CalcScreen(id = e.arguments?.getString("id") ?: "", onBack = { nav.popBackStack() })
             }
             composable(Routes.FAULT_EDIT, listOf(navArgument("id") { type = NavType.LongType })) { e ->
                 FaultEditScreen(id = e.arguments!!.getLong("id"), onBack = { nav.popBackStack() })

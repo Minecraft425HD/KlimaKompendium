@@ -1,5 +1,7 @@
 package de.klimakompendium.domain.search
 
+import de.klimakompendium.domain.calc.Quantity
+import de.klimakompendium.domain.calc.QuantitySearch
 import de.klimakompendium.domain.convert.Measurement
 import de.klimakompendium.domain.convert.MeasurementParser
 import de.klimakompendium.domain.model.FaultCode
@@ -12,8 +14,9 @@ data class QuickResult(
     val refrigerants: List<Refrigerant>,
     val plants: List<Plant>,
     val faults: List<FaultCode> = emptyList(),
+    val calcs: List<Quantity> = emptyList(),
 ) {
-    val isEmpty get() = measurement == null && terms.isEmpty() && refrigerants.isEmpty() && plants.isEmpty() && faults.isEmpty()
+    val isEmpty get() = measurement == null && terms.isEmpty() && refrigerants.isEmpty() && plants.isEmpty() && faults.isEmpty() && calcs.isEmpty()
 }
 
 /** Zentrale Schnellsuche der Startseite: Begriffe, Kältemittel, Anlagen und Messwert-Umrechnung in einem Zug. */
@@ -36,6 +39,7 @@ object QuickSearch {
         }
         val matchedPlants = if (measurement != null) emptyList() else PlantSearch.filter(plants, PlantFilter(query = query))
         val faults = if (measurement != null) emptyList() else FaultCodeSearch.search(faultCodes, query, limit = 5)
-        return QuickResult(measurement, terms, refs, matchedPlants, faults)
+        val calcs = if (measurement != null) emptyList() else QuantitySearch.search(query, limit = 3)
+        return QuickResult(measurement, terms, refs, matchedPlants, faults, calcs)
     }
 }

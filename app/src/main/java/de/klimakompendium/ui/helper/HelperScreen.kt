@@ -56,11 +56,11 @@ import de.klimakompendium.ui.theme.OkColor
 import de.klimakompendium.ui.theme.WarnColor
 import de.klimakompendium.ui.util.appViewModel
 
-private val TABS = listOf("explain" to "Erklärung", "convert" to "Umrechner", "pt" to "p‑T‑Tabelle", "superheat" to "Überhitzung")
+private val TABS = listOf("explain" to "Erklärung", "calc" to "Berechnen", "convert" to "Umrechner", "pt" to "p‑T‑Tabelle", "superheat" to "Überhitzung")
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HelperScreen(initialTab: String, initialRefrigerant: String) {
+fun HelperScreen(initialTab: String, initialRefrigerant: String, onOpenCalc: (String) -> Unit) {
     val vm = appViewModel { HelperViewModel(it) }
     val settings by vm.settings.collectAsStateWithLifecycle()
     var tab by rememberSaveable(initialTab) { mutableIntStateOf(TABS.indexOfFirst { it.first == initialTab }.coerceAtLeast(0)) }
@@ -76,6 +76,7 @@ fun HelperScreen(initialTab: String, initialRefrigerant: String) {
             CenteredContent {
                 when (TABS[tab].first) {
                     "explain" -> ExplainTab(vm)
+                    "calc" -> de.klimakompendium.ui.calc.CalcTab(onOpenCalc)
                     "convert" -> ConvertTab(settings.pressureReference)
                     "pt" -> PtTab(vm, settings.lastRefrigerant, settings.pressureReference)
                     else -> SuperheatTab(vm, settings.lastRefrigerant, settings.pressureReference)
