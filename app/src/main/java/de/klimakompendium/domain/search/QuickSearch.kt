@@ -1,0 +1,37 @@
+package de.klimakompendium.domain.search
+
+import de.klimakompendium.domain.convert.Measurement
+import de.klimakompendium.domain.convert.MeasurementParser
+import de.klimakompendium.domain.model.Plant
+import de.klimakompendium.domain.model.Refrigerant
+
+data class QuickResult(
+    val measurement: Measurement?,
+    val terms: List<TermHit>,
+    val refrigerants: List<Refrigerant>,
+    val plants: List<Plant>,
+) {
+    val isEmpty get() = measurement == null && terms.isEmpty() && refrigerants.isEmpty() && plants.isEmpty()
+}
+
+/** Zentrale Schnellsuche der Startseite: Begriffe, Kältemittel, Anlagen und Messwert-Umrechnung in einem Zug. */
+object QuickSearch {
+    fun run(
+        query: String,
+        index: TermIndex,
+        plants: List<Plant>,
+        refrigerants: List<Refrigerant>,
+        termLimit: Int = 8,
+    ): QuickResult {
+        val q = TextNormalizer.compact(query)
+        if (q.isEmpty()) return QuickResult(null, emptyList(), emptyList(), emptyList())
+        val measurement = MeasurementParser.parse(query)
+        val terms = if (measurement != null) emptyList() else index.search(query, termLimit)
+        val refs = if (measurement != null) emptyList() else refrigerants.filter {
+            val id = TextNormalizer.compact(it.id)
+            id.startsWith(q) || (q.length >= 3 && id.contains(q)) || TextNormalizer.compact(it.type) == q
+        }
+        val matchedPlants = if (measurement != null) emptyList() else PlantSearch.filter(plants, PlantFilter(query = query))
+        return QuickResult(measurement, terms, refs, matchedPlants)
+    }
+}

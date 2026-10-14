@@ -1,0 +1,1644 @@
+{
+ "schema": 1,
+ "pressureReference": "absolute_bar",
+ "refrigerants": [
+  {
+   "id": "R32",
+   "name": "R32",
+   "type": "HFC",
+   "safetyClass": "A2L",
+   "gwp": 675,
+   "glideK": 0.0,
+   "note": "Standard in neuen Split-/VRF-Geräten; mild brennbar.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 1.101,
+     "pBubble": 1.101
+    },
+    {
+     "t": -45,
+     "pDew": 1.406,
+     "pBubble": 1.406
+    },
+    {
+     "t": -40,
+     "pDew": 1.774,
+     "pBubble": 1.774
+    },
+    {
+     "t": -35,
+     "pDew": 2.214,
+     "pBubble": 2.214
+    },
+    {
+     "t": -30,
+     "pDew": 2.734,
+     "pBubble": 2.734
+    },
+    {
+     "t": -25,
+     "pDew": 3.346,
+     "pBubble": 3.346
+    },
+    {
+     "t": -20,
+     "pDew": 4.058,
+     "pBubble": 4.058
+    },
+    {
+     "t": -15,
+     "pDew": 4.881,
+     "pBubble": 4.881
+    },
+    {
+     "t": -10,
+     "pDew": 5.826,
+     "pBubble": 5.826
+    },
+    {
+     "t": -5,
+     "pDew": 6.906,
+     "pBubble": 6.906
+    },
+    {
+     "t": 0,
+     "pDew": 8.131,
+     "pBubble": 8.131
+    },
+    {
+     "t": 5,
+     "pDew": 9.514,
+     "pBubble": 9.514
+    },
+    {
+     "t": 10,
+     "pDew": 11.069,
+     "pBubble": 11.069
+    },
+    {
+     "t": 15,
+     "pDew": 12.808,
+     "pBubble": 12.808
+    },
+    {
+     "t": 20,
+     "pDew": 14.746,
+     "pBubble": 14.746
+    },
+    {
+     "t": 25,
+     "pDew": 16.896,
+     "pBubble": 16.896
+    },
+    {
+     "t": 30,
+     "pDew": 19.275,
+     "pBubble": 19.275
+    },
+    {
+     "t": 35,
+     "pDew": 21.898,
+     "pBubble": 21.898
+    },
+    {
+     "t": 40,
+     "pDew": 24.783,
+     "pBubble": 24.783
+    },
+    {
+     "t": 45,
+     "pDew": 27.948,
+     "pBubble": 27.948
+    },
+    {
+     "t": 50,
+     "pDew": 31.412,
+     "pBubble": 31.412
+    },
+    {
+     "t": 55,
+     "pDew": 35.199,
+     "pBubble": 35.199
+    },
+    {
+     "t": 60,
+     "pDew": 39.332,
+     "pBubble": 39.332
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R410A",
+   "name": "R410A",
+   "type": "HFC",
+   "safetyClass": "A1",
+   "gwp": 2088,
+   "glideK": 0.1,
+   "note": "Klima-/Wärmepumpen-Bestand; hoher Druck, geringer Glide.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 1.086,
+     "pBubble": 1.09
+    },
+    {
+     "t": -45,
+     "pDew": 1.386,
+     "pBubble": 1.391
+    },
+    {
+     "t": -40,
+     "pDew": 1.748,
+     "pBubble": 1.755
+    },
+    {
+     "t": -35,
+     "pDew": 2.181,
+     "pBubble": 2.189
+    },
+    {
+     "t": -30,
+     "pDew": 2.693,
+     "pBubble": 2.703
+    },
+    {
+     "t": -25,
+     "pDew": 3.294,
+     "pBubble": 3.306
+    },
+    {
+     "t": -20,
+     "pDew": 3.993,
+     "pBubble": 4.007
+    },
+    {
+     "t": -15,
+     "pDew": 4.8,
+     "pBubble": 4.817
+    },
+    {
+     "t": -10,
+     "pDew": 5.727,
+     "pBubble": 5.746
+    },
+    {
+     "t": -5,
+     "pDew": 6.783,
+     "pBubble": 6.806
+    },
+    {
+     "t": 0,
+     "pDew": 7.981,
+     "pBubble": 8.007
+    },
+    {
+     "t": 5,
+     "pDew": 9.332,
+     "pBubble": 9.362
+    },
+    {
+     "t": 10,
+     "pDew": 10.848,
+     "pBubble": 10.883
+    },
+    {
+     "t": 15,
+     "pDew": 12.543,
+     "pBubble": 12.583
+    },
+    {
+     "t": 20,
+     "pDew": 14.429,
+     "pBubble": 14.475
+    },
+    {
+     "t": 25,
+     "pDew": 16.521,
+     "pBubble": 16.572
+    },
+    {
+     "t": 30,
+     "pDew": 18.834,
+     "pBubble": 18.891
+    },
+    {
+     "t": 35,
+     "pDew": 21.383,
+     "pBubble": 21.447
+    },
+    {
+     "t": 40,
+     "pDew": 24.186,
+     "pBubble": 24.256
+    },
+    {
+     "t": 45,
+     "pDew": 27.261,
+     "pBubble": 27.338
+    },
+    {
+     "t": 50,
+     "pDew": 30.63,
+     "pBubble": 30.711
+    },
+    {
+     "t": 55,
+     "pDew": 34.316,
+     "pBubble": 34.398
+    },
+    {
+     "t": 60,
+     "pDew": 38.348,
+     "pBubble": 38.426
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R404A",
+   "name": "R404A",
+   "type": "HFC",
+   "safetyClass": "A1",
+   "gwp": 3922,
+   "glideK": 0.5,
+   "note": "Kälteanlagen NK/TK im Bestand; Nachfüllverbot in der EU.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.81,
+     "pBubble": 0.842
+    },
+    {
+     "t": -45,
+     "pDew": 1.037,
+     "pBubble": 1.074
+    },
+    {
+     "t": -40,
+     "pDew": 1.31,
+     "pBubble": 1.353
+    },
+    {
+     "t": -35,
+     "pDew": 1.636,
+     "pBubble": 1.685
+    },
+    {
+     "t": -30,
+     "pDew": 2.022,
+     "pBubble": 2.078
+    },
+    {
+     "t": -25,
+     "pDew": 2.475,
+     "pBubble": 2.537
+    },
+    {
+     "t": -20,
+     "pDew": 3.002,
+     "pBubble": 3.071
+    },
+    {
+     "t": -15,
+     "pDew": 3.61,
+     "pBubble": 3.686
+    },
+    {
+     "t": -10,
+     "pDew": 4.307,
+     "pBubble": 4.391
+    },
+    {
+     "t": -5,
+     "pDew": 5.102,
+     "pBubble": 5.194
+    },
+    {
+     "t": 0,
+     "pDew": 6.003,
+     "pBubble": 6.102
+    },
+    {
+     "t": 5,
+     "pDew": 7.018,
+     "pBubble": 7.125
+    },
+    {
+     "t": 10,
+     "pDew": 8.157,
+     "pBubble": 8.271
+    },
+    {
+     "t": 15,
+     "pDew": 9.429,
+     "pBubble": 9.55
+    },
+    {
+     "t": 20,
+     "pDew": 10.844,
+     "pBubble": 10.971
+    },
+    {
+     "t": 25,
+     "pDew": 12.412,
+     "pBubble": 12.546
+    },
+    {
+     "t": 30,
+     "pDew": 14.145,
+     "pBubble": 14.284
+    },
+    {
+     "t": 35,
+     "pDew": 16.053,
+     "pBubble": 16.196
+    },
+    {
+     "t": 40,
+     "pDew": 18.149,
+     "pBubble": 18.295
+    },
+    {
+     "t": 45,
+     "pDew": 20.447,
+     "pBubble": 20.595
+    },
+    {
+     "t": 50,
+     "pDew": 22.961,
+     "pBubble": 23.109
+    },
+    {
+     "t": 55,
+     "pDew": 25.709,
+     "pBubble": 25.854
+    },
+    {
+     "t": 60,
+     "pDew": 28.712,
+     "pBubble": 28.85
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R407C",
+   "name": "R407C",
+   "type": "HFC",
+   "safetyClass": "A1",
+   "gwp": 1774,
+   "glideK": 6.2,
+   "note": "R22-Ersatz; deutlicher Temperatur-Glide.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.502,
+     "pBubble": 0.738
+    },
+    {
+     "t": -45,
+     "pDew": 0.661,
+     "pBubble": 0.948
+    },
+    {
+     "t": -40,
+     "pDew": 0.857,
+     "pBubble": 1.203
+    },
+    {
+     "t": -35,
+     "pDew": 1.097,
+     "pBubble": 1.508
+    },
+    {
+     "t": -30,
+     "pDew": 1.387,
+     "pBubble": 1.871
+    },
+    {
+     "t": -25,
+     "pDew": 1.735,
+     "pBubble": 2.299
+    },
+    {
+     "t": -20,
+     "pDew": 2.147,
+     "pBubble": 2.799
+    },
+    {
+     "t": -15,
+     "pDew": 2.632,
+     "pBubble": 3.379
+    },
+    {
+     "t": -10,
+     "pDew": 3.198,
+     "pBubble": 4.047
+    },
+    {
+     "t": -5,
+     "pDew": 3.853,
+     "pBubble": 4.811
+    },
+    {
+     "t": 0,
+     "pDew": 4.607,
+     "pBubble": 5.679
+    },
+    {
+     "t": 5,
+     "pDew": 5.469,
+     "pBubble": 6.66
+    },
+    {
+     "t": 10,
+     "pDew": 6.449,
+     "pBubble": 7.764
+    },
+    {
+     "t": 15,
+     "pDew": 7.556,
+     "pBubble": 8.999
+    },
+    {
+     "t": 20,
+     "pDew": 8.803,
+     "pBubble": 10.376
+    },
+    {
+     "t": 25,
+     "pDew": 10.199,
+     "pBubble": 11.902
+    },
+    {
+     "t": 30,
+     "pDew": 11.758,
+     "pBubble": 13.59
+    },
+    {
+     "t": 35,
+     "pDew": 13.491,
+     "pBubble": 15.448
+    },
+    {
+     "t": 40,
+     "pDew": 15.412,
+     "pBubble": 17.489
+    },
+    {
+     "t": 45,
+     "pDew": 17.535,
+     "pBubble": 19.722
+    },
+    {
+     "t": 50,
+     "pDew": 19.876,
+     "pBubble": 22.159
+    },
+    {
+     "t": 55,
+     "pDew": 22.453,
+     "pBubble": 24.812
+    },
+    {
+     "t": 60,
+     "pDew": 25.286,
+     "pBubble": 27.694
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R134a",
+   "name": "R134a",
+   "type": "HFC",
+   "safetyClass": "A1",
+   "gwp": 1430,
+   "glideK": 0.0,
+   "note": "Chiller, Kfz-Klima, Mitteltemperatur-Kälte.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.295,
+     "pBubble": 0.295
+    },
+    {
+     "t": -45,
+     "pDew": 0.391,
+     "pBubble": 0.391
+    },
+    {
+     "t": -40,
+     "pDew": 0.512,
+     "pBubble": 0.512
+    },
+    {
+     "t": -35,
+     "pDew": 0.661,
+     "pBubble": 0.661
+    },
+    {
+     "t": -30,
+     "pDew": 0.844,
+     "pBubble": 0.844
+    },
+    {
+     "t": -25,
+     "pDew": 1.064,
+     "pBubble": 1.064
+    },
+    {
+     "t": -20,
+     "pDew": 1.327,
+     "pBubble": 1.327
+    },
+    {
+     "t": -15,
+     "pDew": 1.639,
+     "pBubble": 1.639
+    },
+    {
+     "t": -10,
+     "pDew": 2.006,
+     "pBubble": 2.006
+    },
+    {
+     "t": -5,
+     "pDew": 2.433,
+     "pBubble": 2.433
+    },
+    {
+     "t": 0,
+     "pDew": 2.928,
+     "pBubble": 2.928
+    },
+    {
+     "t": 5,
+     "pDew": 3.497,
+     "pBubble": 3.497
+    },
+    {
+     "t": 10,
+     "pDew": 4.146,
+     "pBubble": 4.146
+    },
+    {
+     "t": 15,
+     "pDew": 4.884,
+     "pBubble": 4.884
+    },
+    {
+     "t": 20,
+     "pDew": 5.717,
+     "pBubble": 5.717
+    },
+    {
+     "t": 25,
+     "pDew": 6.654,
+     "pBubble": 6.654
+    },
+    {
+     "t": 30,
+     "pDew": 7.702,
+     "pBubble": 7.702
+    },
+    {
+     "t": 35,
+     "pDew": 8.87,
+     "pBubble": 8.87
+    },
+    {
+     "t": 40,
+     "pDew": 10.166,
+     "pBubble": 10.166
+    },
+    {
+     "t": 45,
+     "pDew": 11.599,
+     "pBubble": 11.599
+    },
+    {
+     "t": 50,
+     "pDew": 13.179,
+     "pBubble": 13.179
+    },
+    {
+     "t": 55,
+     "pDew": 14.915,
+     "pBubble": 14.915
+    },
+    {
+     "t": 60,
+     "pDew": 16.818,
+     "pBubble": 16.818
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R290",
+   "name": "R290",
+   "type": "HC",
+   "safetyClass": "A3",
+   "gwp": 3,
+   "glideK": 0.0,
+   "note": "Propan; brennbar, kleine Füllmengen, Wärmepumpen/Kälte.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.706,
+     "pBubble": 0.706
+    },
+    {
+     "t": -45,
+     "pDew": 0.891,
+     "pBubble": 0.891
+    },
+    {
+     "t": -40,
+     "pDew": 1.111,
+     "pBubble": 1.111
+    },
+    {
+     "t": -35,
+     "pDew": 1.372,
+     "pBubble": 1.372
+    },
+    {
+     "t": -30,
+     "pDew": 1.678,
+     "pBubble": 1.678
+    },
+    {
+     "t": -25,
+     "pDew": 2.034,
+     "pBubble": 2.034
+    },
+    {
+     "t": -20,
+     "pDew": 2.445,
+     "pBubble": 2.445
+    },
+    {
+     "t": -15,
+     "pDew": 2.916,
+     "pBubble": 2.916
+    },
+    {
+     "t": -10,
+     "pDew": 3.453,
+     "pBubble": 3.453
+    },
+    {
+     "t": -5,
+     "pDew": 4.06,
+     "pBubble": 4.06
+    },
+    {
+     "t": 0,
+     "pDew": 4.745,
+     "pBubble": 4.745
+    },
+    {
+     "t": 5,
+     "pDew": 5.511,
+     "pBubble": 5.511
+    },
+    {
+     "t": 10,
+     "pDew": 6.366,
+     "pBubble": 6.366
+    },
+    {
+     "t": 15,
+     "pDew": 7.315,
+     "pBubble": 7.315
+    },
+    {
+     "t": 20,
+     "pDew": 8.365,
+     "pBubble": 8.365
+    },
+    {
+     "t": 25,
+     "pDew": 9.521,
+     "pBubble": 9.521
+    },
+    {
+     "t": 30,
+     "pDew": 10.79,
+     "pBubble": 10.79
+    },
+    {
+     "t": 35,
+     "pDew": 12.179,
+     "pBubble": 12.179
+    },
+    {
+     "t": 40,
+     "pDew": 13.694,
+     "pBubble": 13.694
+    },
+    {
+     "t": 45,
+     "pDew": 15.343,
+     "pBubble": 15.343
+    },
+    {
+     "t": 50,
+     "pDew": 17.133,
+     "pBubble": 17.133
+    },
+    {
+     "t": 55,
+     "pDew": 19.072,
+     "pBubble": 19.072
+    },
+    {
+     "t": 60,
+     "pDew": 21.168,
+     "pBubble": 21.168
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R600a",
+   "name": "R600a",
+   "type": "HC",
+   "safetyClass": "A3",
+   "gwp": 3,
+   "glideK": 0.0,
+   "note": "Isobutan; brennbar, Haushaltskälte.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.168,
+     "pBubble": 0.168
+    },
+    {
+     "t": -45,
+     "pDew": 0.221,
+     "pBubble": 0.221
+    },
+    {
+     "t": -40,
+     "pDew": 0.287,
+     "pBubble": 0.287
+    },
+    {
+     "t": -35,
+     "pDew": 0.368,
+     "pBubble": 0.368
+    },
+    {
+     "t": -30,
+     "pDew": 0.466,
+     "pBubble": 0.466
+    },
+    {
+     "t": -25,
+     "pDew": 0.584,
+     "pBubble": 0.584
+    },
+    {
+     "t": -20,
+     "pDew": 0.725,
+     "pBubble": 0.725
+    },
+    {
+     "t": -15,
+     "pDew": 0.891,
+     "pBubble": 0.891
+    },
+    {
+     "t": -10,
+     "pDew": 1.085,
+     "pBubble": 1.085
+    },
+    {
+     "t": -5,
+     "pDew": 1.31,
+     "pBubble": 1.31
+    },
+    {
+     "t": 0,
+     "pDew": 1.57,
+     "pBubble": 1.57
+    },
+    {
+     "t": 5,
+     "pDew": 1.867,
+     "pBubble": 1.867
+    },
+    {
+     "t": 10,
+     "pDew": 2.206,
+     "pBubble": 2.206
+    },
+    {
+     "t": 15,
+     "pDew": 2.59,
+     "pBubble": 2.59
+    },
+    {
+     "t": 20,
+     "pDew": 3.022,
+     "pBubble": 3.022
+    },
+    {
+     "t": 25,
+     "pDew": 3.507,
+     "pBubble": 3.507
+    },
+    {
+     "t": 30,
+     "pDew": 4.047,
+     "pBubble": 4.047
+    },
+    {
+     "t": 35,
+     "pDew": 4.648,
+     "pBubble": 4.648
+    },
+    {
+     "t": 40,
+     "pDew": 5.312,
+     "pBubble": 5.312
+    },
+    {
+     "t": 45,
+     "pDew": 6.044,
+     "pBubble": 6.044
+    },
+    {
+     "t": 50,
+     "pDew": 6.849,
+     "pBubble": 6.849
+    },
+    {
+     "t": 55,
+     "pDew": 7.73,
+     "pBubble": 7.73
+    },
+    {
+     "t": 60,
+     "pDew": 8.692,
+     "pBubble": 8.692
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R744",
+   "name": "R744",
+   "type": "CO2",
+   "safetyClass": "A1",
+   "gwp": 1,
+   "glideK": 0.0,
+   "note": "CO2; sehr hoher Druck, transkritisch ab ca. 31 °C.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 6.823,
+     "pBubble": 6.823
+    },
+    {
+     "t": -45,
+     "pDew": 8.318,
+     "pBubble": 8.318
+    },
+    {
+     "t": -40,
+     "pDew": 10.045,
+     "pBubble": 10.045
+    },
+    {
+     "t": -35,
+     "pDew": 12.024,
+     "pBubble": 12.024
+    },
+    {
+     "t": -30,
+     "pDew": 14.278,
+     "pBubble": 14.278
+    },
+    {
+     "t": -25,
+     "pDew": 16.827,
+     "pBubble": 16.827
+    },
+    {
+     "t": -20,
+     "pDew": 19.696,
+     "pBubble": 19.696
+    },
+    {
+     "t": -15,
+     "pDew": 22.908,
+     "pBubble": 22.908
+    },
+    {
+     "t": -10,
+     "pDew": 26.487,
+     "pBubble": 26.487
+    },
+    {
+     "t": -5,
+     "pDew": 30.459,
+     "pBubble": 30.459
+    },
+    {
+     "t": 0,
+     "pDew": 34.851,
+     "pBubble": 34.851
+    },
+    {
+     "t": 5,
+     "pDew": 39.695,
+     "pBubble": 39.695
+    },
+    {
+     "t": 10,
+     "pDew": 45.022,
+     "pBubble": 45.022
+    },
+    {
+     "t": 15,
+     "pDew": 50.871,
+     "pBubble": 50.871
+    },
+    {
+     "t": 20,
+     "pDew": 57.291,
+     "pBubble": 57.291
+    },
+    {
+     "t": 25,
+     "pDew": 64.342,
+     "pBubble": 64.342
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R1234ze",
+   "name": "R1234ze",
+   "type": "HFO",
+   "safetyClass": "A2L",
+   "gwp": 1,
+   "glideK": 0.0,
+   "note": "Chiller; mild brennbar, niedriger Druck.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.209,
+     "pBubble": 0.209
+    },
+    {
+     "t": -45,
+     "pDew": 0.279,
+     "pBubble": 0.279
+    },
+    {
+     "t": -40,
+     "pDew": 0.367,
+     "pBubble": 0.367
+    },
+    {
+     "t": -35,
+     "pDew": 0.477,
+     "pBubble": 0.477
+    },
+    {
+     "t": -30,
+     "pDew": 0.611,
+     "pBubble": 0.611
+    },
+    {
+     "t": -25,
+     "pDew": 0.774,
+     "pBubble": 0.774
+    },
+    {
+     "t": -20,
+     "pDew": 0.969,
+     "pBubble": 0.969
+    },
+    {
+     "t": -15,
+     "pDew": 1.201,
+     "pBubble": 1.201
+    },
+    {
+     "t": -10,
+     "pDew": 1.474,
+     "pBubble": 1.474
+    },
+    {
+     "t": -5,
+     "pDew": 1.794,
+     "pBubble": 1.794
+    },
+    {
+     "t": 0,
+     "pDew": 2.166,
+     "pBubble": 2.166
+    },
+    {
+     "t": 5,
+     "pDew": 2.593,
+     "pBubble": 2.593
+    },
+    {
+     "t": 10,
+     "pDew": 3.084,
+     "pBubble": 3.084
+    },
+    {
+     "t": 15,
+     "pDew": 3.642,
+     "pBubble": 3.642
+    },
+    {
+     "t": 20,
+     "pDew": 4.273,
+     "pBubble": 4.273
+    },
+    {
+     "t": 25,
+     "pDew": 4.985,
+     "pBubble": 4.985
+    },
+    {
+     "t": 30,
+     "pDew": 5.783,
+     "pBubble": 5.783
+    },
+    {
+     "t": 35,
+     "pDew": 6.674,
+     "pBubble": 6.674
+    },
+    {
+     "t": 40,
+     "pDew": 7.665,
+     "pBubble": 7.665
+    },
+    {
+     "t": 45,
+     "pDew": 8.761,
+     "pBubble": 8.761
+    },
+    {
+     "t": 50,
+     "pDew": 9.972,
+     "pBubble": 9.972
+    },
+    {
+     "t": 55,
+     "pDew": 11.304,
+     "pBubble": 11.304
+    },
+    {
+     "t": 60,
+     "pDew": 12.766,
+     "pBubble": 12.766
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R1234yf",
+   "name": "R1234yf",
+   "type": "HFO",
+   "safetyClass": "A2L",
+   "gwp": 4,
+   "glideK": 0.0,
+   "note": "Kfz-Klima; mild brennbar.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.372,
+     "pBubble": 0.372
+    },
+    {
+     "t": -45,
+     "pDew": 0.484,
+     "pBubble": 0.484
+    },
+    {
+     "t": -40,
+     "pDew": 0.622,
+     "pBubble": 0.622
+    },
+    {
+     "t": -35,
+     "pDew": 0.789,
+     "pBubble": 0.789
+    },
+    {
+     "t": -30,
+     "pDew": 0.989,
+     "pBubble": 0.989
+    },
+    {
+     "t": -25,
+     "pDew": 1.228,
+     "pBubble": 1.228
+    },
+    {
+     "t": -20,
+     "pDew": 1.509,
+     "pBubble": 1.509
+    },
+    {
+     "t": -15,
+     "pDew": 1.837,
+     "pBubble": 1.837
+    },
+    {
+     "t": -10,
+     "pDew": 2.218,
+     "pBubble": 2.218
+    },
+    {
+     "t": -5,
+     "pDew": 2.657,
+     "pBubble": 2.657
+    },
+    {
+     "t": 0,
+     "pDew": 3.159,
+     "pBubble": 3.159
+    },
+    {
+     "t": 5,
+     "pDew": 3.73,
+     "pBubble": 3.73
+    },
+    {
+     "t": 10,
+     "pDew": 4.376,
+     "pBubble": 4.376
+    },
+    {
+     "t": 15,
+     "pDew": 5.104,
+     "pBubble": 5.104
+    },
+    {
+     "t": 20,
+     "pDew": 5.918,
+     "pBubble": 5.918
+    },
+    {
+     "t": 25,
+     "pDew": 6.827,
+     "pBubble": 6.827
+    },
+    {
+     "t": 30,
+     "pDew": 7.836,
+     "pBubble": 7.836
+    },
+    {
+     "t": 35,
+     "pDew": 8.953,
+     "pBubble": 8.953
+    },
+    {
+     "t": 40,
+     "pDew": 10.185,
+     "pBubble": 10.185
+    },
+    {
+     "t": 45,
+     "pDew": 11.539,
+     "pBubble": 11.539
+    },
+    {
+     "t": 50,
+     "pDew": 13.023,
+     "pBubble": 13.023
+    },
+    {
+     "t": 55,
+     "pDew": 14.647,
+     "pBubble": 14.647
+    },
+    {
+     "t": 60,
+     "pDew": 16.418,
+     "pBubble": 16.418
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R22",
+   "name": "R22",
+   "type": "HCFC",
+   "safetyClass": "A1",
+   "gwp": 1810,
+   "glideK": 0.0,
+   "note": "Altanlagen; Verwendungsverbot (Ozonabbau).",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.645,
+     "pBubble": 0.645
+    },
+    {
+     "t": -45,
+     "pDew": 0.829,
+     "pBubble": 0.829
+    },
+    {
+     "t": -40,
+     "pDew": 1.052,
+     "pBubble": 1.052
+    },
+    {
+     "t": -35,
+     "pDew": 1.32,
+     "pBubble": 1.32
+    },
+    {
+     "t": -30,
+     "pDew": 1.639,
+     "pBubble": 1.639
+    },
+    {
+     "t": -25,
+     "pDew": 2.014,
+     "pBubble": 2.014
+    },
+    {
+     "t": -20,
+     "pDew": 2.453,
+     "pBubble": 2.453
+    },
+    {
+     "t": -15,
+     "pDew": 2.962,
+     "pBubble": 2.962
+    },
+    {
+     "t": -10,
+     "pDew": 3.548,
+     "pBubble": 3.548
+    },
+    {
+     "t": -5,
+     "pDew": 4.218,
+     "pBubble": 4.218
+    },
+    {
+     "t": 0,
+     "pDew": 4.98,
+     "pBubble": 4.98
+    },
+    {
+     "t": 5,
+     "pDew": 5.841,
+     "pBubble": 5.841
+    },
+    {
+     "t": 10,
+     "pDew": 6.809,
+     "pBubble": 6.809
+    },
+    {
+     "t": 15,
+     "pDew": 7.893,
+     "pBubble": 7.893
+    },
+    {
+     "t": 20,
+     "pDew": 9.1,
+     "pBubble": 9.1
+    },
+    {
+     "t": 25,
+     "pDew": 10.439,
+     "pBubble": 10.439
+    },
+    {
+     "t": 30,
+     "pDew": 11.919,
+     "pBubble": 11.919
+    },
+    {
+     "t": 35,
+     "pDew": 13.548,
+     "pBubble": 13.548
+    },
+    {
+     "t": 40,
+     "pDew": 15.336,
+     "pBubble": 15.336
+    },
+    {
+     "t": 45,
+     "pDew": 17.292,
+     "pBubble": 17.292
+    },
+    {
+     "t": 50,
+     "pDew": 19.427,
+     "pBubble": 19.427
+    },
+    {
+     "t": 55,
+     "pDew": 21.751,
+     "pBubble": 21.751
+    },
+    {
+     "t": 60,
+     "pDew": 24.275,
+     "pBubble": 24.275
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R507A",
+   "name": "R507A",
+   "type": "HFC",
+   "safetyClass": "A1",
+   "gwp": 3985,
+   "glideK": 0.0,
+   "note": "TK-Kälte im Bestand (azeotrop).",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.864,
+     "pBubble": 0.864
+    },
+    {
+     "t": -45,
+     "pDew": 1.101,
+     "pBubble": 1.101
+    },
+    {
+     "t": -40,
+     "pDew": 1.387,
+     "pBubble": 1.387
+    },
+    {
+     "t": -35,
+     "pDew": 1.727,
+     "pBubble": 1.727
+    },
+    {
+     "t": -30,
+     "pDew": 2.128,
+     "pBubble": 2.129
+    },
+    {
+     "t": -25,
+     "pDew": 2.598,
+     "pBubble": 2.599
+    },
+    {
+     "t": -20,
+     "pDew": 3.144,
+     "pBubble": 3.145
+    },
+    {
+     "t": -15,
+     "pDew": 3.773,
+     "pBubble": 3.775
+    },
+    {
+     "t": -10,
+     "pDew": 4.493,
+     "pBubble": 4.495
+    },
+    {
+     "t": -5,
+     "pDew": 5.312,
+     "pBubble": 5.316
+    },
+    {
+     "t": 0,
+     "pDew": 6.24,
+     "pBubble": 6.244
+    },
+    {
+     "t": 5,
+     "pDew": 7.284,
+     "pBubble": 7.289
+    },
+    {
+     "t": 10,
+     "pDew": 8.454,
+     "pBubble": 8.46
+    },
+    {
+     "t": 15,
+     "pDew": 9.759,
+     "pBubble": 9.766
+    },
+    {
+     "t": 20,
+     "pDew": 11.209,
+     "pBubble": 11.218
+    },
+    {
+     "t": 25,
+     "pDew": 12.815,
+     "pBubble": 12.826
+    },
+    {
+     "t": 30,
+     "pDew": 14.587,
+     "pBubble": 14.6
+    },
+    {
+     "t": 35,
+     "pDew": 16.537,
+     "pBubble": 16.552
+    },
+    {
+     "t": 40,
+     "pDew": 18.679,
+     "pBubble": 18.695
+    },
+    {
+     "t": 45,
+     "pDew": 21.025,
+     "pBubble": 21.043
+    },
+    {
+     "t": 50,
+     "pDew": 23.592,
+     "pBubble": 23.612
+    },
+    {
+     "t": 55,
+     "pDew": 26.399,
+     "pBubble": 26.42
+    },
+    {
+     "t": 60,
+     "pDew": 29.469,
+     "pBubble": 29.489
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R717",
+   "name": "R717",
+   "type": "NH3",
+   "safetyClass": "B2L",
+   "gwp": 0,
+   "glideK": 0.0,
+   "note": "Ammoniak; giftig, Industriekälte.",
+   "pt": [
+    {
+     "t": -50,
+     "pDew": 0.408,
+     "pBubble": 0.408
+    },
+    {
+     "t": -45,
+     "pDew": 0.544,
+     "pBubble": 0.544
+    },
+    {
+     "t": -40,
+     "pDew": 0.716,
+     "pBubble": 0.716
+    },
+    {
+     "t": -35,
+     "pDew": 0.93,
+     "pBubble": 0.93
+    },
+    {
+     "t": -30,
+     "pDew": 1.194,
+     "pBubble": 1.194
+    },
+    {
+     "t": -25,
+     "pDew": 1.514,
+     "pBubble": 1.514
+    },
+    {
+     "t": -20,
+     "pDew": 1.9,
+     "pBubble": 1.9
+    },
+    {
+     "t": -15,
+     "pDew": 2.361,
+     "pBubble": 2.361
+    },
+    {
+     "t": -10,
+     "pDew": 2.906,
+     "pBubble": 2.906
+    },
+    {
+     "t": -5,
+     "pDew": 3.547,
+     "pBubble": 3.547
+    },
+    {
+     "t": 0,
+     "pDew": 4.292,
+     "pBubble": 4.292
+    },
+    {
+     "t": 5,
+     "pDew": 5.156,
+     "pBubble": 5.156
+    },
+    {
+     "t": 10,
+     "pDew": 6.148,
+     "pBubble": 6.148
+    },
+    {
+     "t": 15,
+     "pDew": 7.282,
+     "pBubble": 7.282
+    },
+    {
+     "t": 20,
+     "pDew": 8.57,
+     "pBubble": 8.57
+    },
+    {
+     "t": 25,
+     "pDew": 10.027,
+     "pBubble": 10.027
+    },
+    {
+     "t": 30,
+     "pDew": 11.665,
+     "pBubble": 11.665
+    },
+    {
+     "t": 35,
+     "pDew": 13.5,
+     "pBubble": 13.5
+    },
+    {
+     "t": 40,
+     "pDew": 15.545,
+     "pBubble": 15.545
+    },
+    {
+     "t": 45,
+     "pDew": 17.817,
+     "pBubble": 17.817
+    },
+    {
+     "t": 50,
+     "pDew": 20.33,
+     "pBubble": 20.33
+    },
+    {
+     "t": 55,
+     "pDew": 23.1,
+     "pBubble": 23.1
+    },
+    {
+     "t": 60,
+     "pDew": 26.145,
+     "pBubble": 26.145
+    }
+   ],
+   "source": "CoolProp 8.0.0"
+  },
+  {
+   "id": "R454B",
+   "name": "R454B",
+   "type": "HFO/HFC",
+   "safetyClass": "A2L",
+   "gwp": 466,
+   "glideK": 0.0,
+   "note": "R410A-Nachfolger; p-T-Tabelle nachtragen (Herstellerangabe).",
+   "pt": [],
+   "source": ""
+  },
+  {
+   "id": "R513A",
+   "name": "R513A",
+   "type": "HFO/HFC",
+   "safetyClass": "A1",
+   "gwp": 631,
+   "glideK": 0.0,
+   "note": "R134a-Ersatz; p-T-Tabelle nachtragen (Herstellerangabe).",
+   "pt": [],
+   "source": ""
+  }
+ ]
+}

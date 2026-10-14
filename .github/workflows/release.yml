@@ -1,0 +1,90 @@
+name: Release APK
+
+# Wird durch ein Versions-Tag (z. B. v1.0.0) oder manuell ausgelöst und hängt die APK an ein GitHub-Release.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versionsname ohne v (nur für manuellen Lauf), z. B. 1.0.0"
+        required: true
+
+permissions:
+  contents: write   # nötig, um das Release anzulegen
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      # Optional: echte Signatur. Ohne diese Secrets wird mit dem öffentlichen Debug-Schlüssel signiert.
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: gradle/actions/wrapper-validation@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Version bestimmen
+        id: ver
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then V="${GITHUB_REF_NAME#v}"; else V="${INPUT_VERSION#v}"; fi
+          # Nur sichere Zeichen zulassen (Schutz vor Shell-Injection über Tag-Namen)
+          if ! printf '%s' "$V" | grep -Eq '^[0-9]+(\.[0-9]+){1,3}([-.][0-9A-Za-z]+)?$'; then
+            echo "::error::Ungültige Version '$V' (erwartet z. B. 1.2.3)"; exit 1
+          fi
+          echo "name=$V" >> "$GITHUB_OUTPUT"
+          echo "tag=v$V" >> "$GITHUB_OUTPUT"
+
+      - name: Tests
+        run: ./gradlew --no-daemon testDebugUnitTest
+
+      - name: Keystore bereitstellen (falls Secrets vorhanden)
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            echo "KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+            echo "Signiere mit dem Release-Schlüssel aus den GitHub Secrets."
+          else
+            echo "::notice::Keine Signatur-Secrets gesetzt – APK wird mit dem öffentlichen Debug-Schlüssel signiert."
+          fi
+
+      - name: Release-APK bauen
+        run: >
+          ./gradlew --no-daemon assembleRelease
+          -PversionName=${{ steps.ver.outputs.name }}
+          -PversionCode=${{ github.run_number }}
+
+      - name: APK benennen und Prüfsumme erzeugen
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/release/app-release.apk "dist/KlimaKompendium-${{ steps.ver.outputs.tag }}.apk"
+          # Fester Dateiname → dauerhafter Direktlink .../releases/latest/download/KlimaKompendium.apk
+          cp app/build/outputs/apk/release/app-release.apk dist/KlimaKompendium.apk
+          (cd dist && sha256sum *.apk > SHA256SUMS.txt)
+          rm -f "$RUNNER_TEMP/release.jks"
+
+      - name: GitHub-Release erstellen
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: KlimaKompendium ${{ steps.ver.outputs.tag }}
+          generate_release_notes: true
+          files: dist/*
+          body: |
+            **Download (immer die neueste Version):**
+            https://github.com/${{ github.repository }}/releases/latest/download/KlimaKompendium.apk
+
+            Installation: APK auf das Android-Gerät laden und öffnen (Installation aus unbekannten Quellen erlauben).
