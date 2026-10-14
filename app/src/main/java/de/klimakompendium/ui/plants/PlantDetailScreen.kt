@@ -85,6 +85,7 @@ fun PlantDetailScreen(
     onEditController: (plantId: Long, controllerId: Long) -> Unit,
     onOpenRefrigerant: (String) -> Unit,
     onOpenTerm: (Long) -> Unit,
+    onOpenService: (tab: String, query: String) -> Unit,
 ) {
     val vm = appViewModel(key = "plant-$id") { PlantDetailViewModel(it, id) }
     val plant by vm.plant.collectAsStateWithLifecycle()
@@ -149,6 +150,22 @@ fun PlantDetailScreen(
                             OutlinedButton(onClick = { onOpenTerm(t.id) }, Modifier.heightIn(min = TouchTarget)) { Text("Begriff ${t.abbreviation}") }
                         }
                     }
+                }
+            }
+
+            suggestions.manufacturer?.let { m ->
+                SectionHeader("Hersteller: ${m.name}")
+                KCard {
+                    m.tips.take(2).forEach { Text("• $it", Modifier.padding(vertical = 2.dp), style = MaterialTheme.typography.bodyMedium) }
+                    Row(Modifier.padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        if (suggestions.hasFaultCodes) OutlinedButton(onClick = { onOpenService("faults", m.name) }, Modifier.heightIn(min = TouchTarget)) { Text("Störungscodes") }
+                        OutlinedButton(onClick = { onOpenService("makers", "") }, Modifier.heightIn(min = TouchTarget)) { Text("Profil") }
+                    }
+                }
+            }
+            if (suggestions.carelRelated || suggestions.manufacturer != null) {
+                OutlinedButton(onClick = { onOpenService("guides", "Carel") }, Modifier.fillMaxWidth().heightIn(min = TouchTarget)) {
+                    Text("Carel-Leitfäden (Tasten, pLAN, Passwörter, pCOWeb)")
                 }
             }
 

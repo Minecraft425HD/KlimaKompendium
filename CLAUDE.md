@@ -27,7 +27,7 @@ app/src/main/java/de/klimakompendium/
   data/     db/ (Room), repo/ (Repositories + Mapper), security/ (SecretCipher), prefs/ (DataStore), seed/ (JSON-Import)
   ui/       Compose: home, terms, helper, plants, settings, nav, components, theme, util
   AppContainer.kt  manuelle Dependency-Injection;  KlimaApp.kt  Application (Seed beim Start)
-app/src/main/assets/   terms.json, refrigerants.json   (Seed-Daten)
+app/src/main/assets/   terms.json, refrigerants.json, fault_codes.json, service.json   (Seed-Daten)
 app/src/test/          Unit-Tests (JVM) + Robolectric (DB, UI-Flow)
 app/schemas/           exportierte Room-Schemas – immer mit einchecken
 tools/                 Hilfsskripte (p-T-Tabellen aus CoolProp)
@@ -65,6 +65,10 @@ sondern über Repositories bzw. ViewModels (`AppContainer` liefert Abhängigkeit
   eintragen. Drücke in der JSON sind **absolut** (bar). Die Anzeige rechnet je Einstellung auf Überdruck um.
 - Richtwerte in Begriffen sind als „Richtwert“ zu kennzeichnen; Herstellerangaben haben Vorrang.
 - Bei Gemischen: Überhitzung mit Taupunkt, Unterkühlung mit Siedepunkt.
+- Hersteller-/Gerätedaten (Alarmcodes, Passwörter, Menüs, Leitfäden) **nur aus belegbaren Quellen** eintragen und die Quelle im Datensatz
+  nennen (`source`), siehe `docs/DATENQUELLEN.md`. Nichts raten; unbekannte Felder leer lassen. Service-/Herstellerpasswörter, die der
+  Hersteller nicht veröffentlicht, werden nicht aufgenommen.
+- Alarmcodes: `fault_codes.json` (Feld `version` erhöhen). Eigene Codes des Nutzers (`isCustom`) bleiben beim Update erhalten.
 
 ## Änderungen und Commits
 

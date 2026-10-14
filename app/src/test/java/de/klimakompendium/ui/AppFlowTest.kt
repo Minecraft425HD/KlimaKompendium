@@ -79,7 +79,8 @@ class AppFlowTest {
 
         waitForText("Hauptregler")
         // Passwort ist standardmäßig verborgen
-        rule.onNodeWithText("••••••••").performScrollTo().assertIsDisplayed()
+        waitForText("••••••••")
+        rule.onNodeWithText("••••••••", useUnmergedTree = true).performScrollTo().assertIsDisplayed()
         check(rule.onAllNodesWithText("Geheim#123").fetchSemanticsNodes().isEmpty()) { "Passwort im Klartext sichtbar!" }
 
         // Anzeigen erfordert explizite Bestätigung
@@ -88,5 +89,54 @@ class AppFlowTest {
         check(rule.onAllNodesWithText("Geheim#123").fetchSemanticsNodes().isEmpty()) { "Passwort vor Bestätigung sichtbar!" }
         rule.onNodeWithText("Anzeigen").performClick()
         waitForText("Geheim#123")
+    }
+}
+
+/** Ablauf der neuen Service-Funktionen (Störungscodes, Hersteller-Vorschläge, Controller-Vorlagen). */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class ServiceFlowTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 15_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    @Test fun faultCodeSearchFindsAermecAlarm() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Service").performClick()
+        waitForText("Uhrenbatterie")                // erster Eintrag; Seed lädt asynchron
+        rule.onNode(hasSetTextAction()).performTextInput("AL33")
+        waitForText("Hochdruck Kreis 1")
+        waitForText("NRG 0282-0804")
+    }
+
+    @Test fun quickSearchOnHomeShowsFaultCode() {
+        waitForText("KlimaKompendium")
+        rule.onNode(hasSetTextAction()).performTextInput("AL33")
+        waitForText("Störungscodes")
+    }
+
+    @Test fun plantWithAermecShowsManufacturerHelpAndTemplateFillsController() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Anlagen").performClick()
+        waitForText("Neue Anlage")
+        rule.onNodeWithText("Neue Anlage", useUnmergedTree = true).performClick()
+        waitForText("Name der Anlage *")
+        rule.onNode(hasText("Name der Anlage *") and hasSetTextAction()).performTextInput("Chiller Dach")
+        rule.onNode(hasText("Hersteller") and hasSetTextAction()).performTextInput("Aermec")
+        rule.onNodeWithText("Speichern").performScrollTo().performClick()
+
+        waitForText("Hersteller: Aermec")
+        rule.onNodeWithText("Störungscodes").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText("Carel-Leitfäden", substring = true).performScrollTo().assertIsDisplayed()
+
+        rule.onNodeWithText("Controller hinzufügen", substring = true).performScrollTo().performClick()
+        waitForText("Vorlage (optional)")
+        rule.onNodeWithText("Keine Vorlage").performClick()
+        waitForText("pCOWeb (Ethernet)")
+        rule.onNodeWithText("pCOWeb (Ethernet)").performClick()
+        waitForText("172.16.0.1")                    // Adresse aus der Vorlage übernommen
+        waitForText("fadmin")                        // Passwort nur als Hinweis, nicht als Feldinhalt
+        check(rule.onAllNodes(hasText("fadmin") and hasSetTextAction()).fetchSemanticsNodes().isEmpty()) { "Passwort darf nicht vorbelegt werden" }
     }
 }

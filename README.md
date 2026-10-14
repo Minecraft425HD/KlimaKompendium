@@ -10,10 +10,12 @@ für die Baustelle, Inbetriebnahme und Wartung. Keine Cloud, keine Registrierung
 | Bereich | Was die App kann |
 |---|---|
 | **Schnellsuche** (Startseite) | Ein Suchfeld für alles: Abkürzungen/Begriffe, Kältemittel, Anlagen – und Messwerte wie `8,5 bar` oder `-5 °C` werden direkt umgerechnet (inkl. Sättigungstemperatur des zuletzt genutzten Kältemittels). |
-| **Begriffe & Abkürzungen** | 150+ Einträge (ND, HD, SAP, SAT, RAT, LP, HP, EEV, VFD, COP, EER, SEER, R32, R410A, R290, R134a, R1234ze …) mit Bedeutung, Einheit, Kontext und Richtwerten – jeweils **Deutsch / Englisch / Italienisch**. Sofortsuche, tippfehlertolerant, Favoriten, eigene Begriffe ergänzbar. Mehrdeutige Abkürzungen (z. B. `SAT` = Zulufttemperatur *oder* Sättigungstemperatur) werden beide gezeigt. |
+| **Begriffe & Abkürzungen** | 165+ Einträge (u. a. Carel pCO, PGD1, pLAN, pCOWeb, EVD) (ND, HD, SAP, SAT, RAT, LP, HP, EEV, VFD, COP, EER, SEER, R32, R410A, R290, R134a, R1234ze …) mit Bedeutung, Einheit, Kontext und Richtwerten – jeweils **Deutsch / Englisch / Italienisch**. Sofortsuche, tippfehlertolerant, Favoriten, eigene Begriffe ergänzbar. Mehrdeutige Abkürzungen (z. B. `SAT` = Zulufttemperatur *oder* Sättigungstemperatur) werden beide gezeigt. |
 | **Druck & Temperatur** | *Erklärung*: ist ND/HD/SAP/SAT … ein Druck oder eine Temperatur, welche Einheit, welcher Richtwert. *Umrechner*: bar, mbar, kPa, MPa, psi · °C, K, °F · Überdruck ↔ absolut. *p‑T‑Tabelle*: Druck → Temperatur und Temperatur → Druck für 13 Kältemittel (Tau-/Siedepunkt bei Gemischen). *Überhitzung/Unterkühlung* aus Druck und Rohrtemperatur. |
 | **Anlagen & Controller** | Anlagen mit Name, Kunde, Standort, Baujahr, Kältemittel, Hersteller, Seriennummer, Controller-Typ, Notizen und Fotos. Mehrere Controller je Anlage (Bezeichnung, Modell, Zugriffsart, IP/Adresse, Benutzer, **verschlüsseltes Passwort**, Hinweise). Beim Öffnen einer Anlage erscheinen sofort Controller, Zugangsdaten, Notizen sowie passende Vorschläge (Kältemittel-Info, p‑T‑Tabelle, Begriff). Suche und Filter nach Anlage, Kunde, Controller, Kältemittel, Hersteller. |
-| **Vorbereitet** | Datenbanktabellen für Störungscodes, Wartungsintervalle und Checklisten existieren bereits (noch ohne Oberfläche – bewusste spätere Erweiterung). |
+| **Service** | *Störungen*: 268 Alarmcodes der Aermec-Serien NRG 0282-0804 und NRP/NXP/CPS (Carel pCO5 + PGD1) – Suche nach Code, Nummer oder Text (DE/EN), Reset-Art, eigene Codes ergänzbar (z. B. für Euroklimat). *Leitfäden*: Carel-Tasten, pLAN-Adresse (PGD0/pCO), Standardwerte, Passwörter, pCOWeb, BMS/Modbus, EVD-Alarme. *Hersteller*: Profile Aermec, Euroklimat, Carel. Alle Angaben mit Quelle, siehe [docs/DATENQUELLEN.md](docs/DATENQUELLEN.md). |
+| **Controller-Vorlagen** | Beim Anlegen eines Controllers vorbelegbar (pCOWeb, Aermec NRG/NRP, Carel Standard, Modbus/BMS). Passwörter werden nie vorbelegt, nur als Hinweis angezeigt. |
+| **Vorbereitet** | Datenbanktabellen für Wartungsintervalle und Checklisten existieren bereits (noch ohne Oberfläche – bewusste spätere Erweiterung). |
 
 ## Screenshots
 
@@ -95,7 +97,9 @@ app/src/main/java/de/klimakompendium/
 └── ui/          Jetpack Compose (Material 3, dunkel): home, terms, helper, plants, settings, nav, components
 app/src/main/assets/
 ├── terms.json          mitgelieferte Begriffe (DE/EN/IT)
-└── refrigerants.json   Kältemittel-Stammdaten + p-T-Sättigungstabellen
+├── refrigerants.json   Kältemittel-Stammdaten + p-T-Sättigungstabellen
+├── fault_codes.json    Alarmcodes (Aermec NRG, NRP/NXP/CPS)
+└── service.json        Hersteller, Leitfäden, Controller-Vorlagen
 tools/generate_pt_table.py   erzeugt refrigerants.json aus CoolProp
 ```
 

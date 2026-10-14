@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import de.klimakompendium.AppContainer
 import de.klimakompendium.data.security.SecretCipherException
 import de.klimakompendium.domain.model.Controller
+import de.klimakompendium.domain.model.Manufacturer
 import de.klimakompendium.domain.model.PasswordChange
 import de.klimakompendium.domain.model.Plant
 import de.klimakompendium.domain.model.Refrigerant
@@ -56,7 +57,13 @@ class PlantsViewModel(c: AppContainer) : ViewModel() {
 }
 
 /** Vorschläge, die beim Öffnen einer Anlage automatisch eingeblendet werden. */
-data class PlantSuggestions(val refrigerant: Refrigerant?, val refrigerantTerm: Term?)
+data class PlantSuggestions(
+    val refrigerant: Refrigerant?,
+    val refrigerantTerm: Term?,
+    val manufacturer: Manufacturer? = null,
+    val hasFaultCodes: Boolean = false,
+    val carelRelated: Boolean = false,
+)
 
 sealed interface PlantEvent {
     data class Message(val text: String) : PlantEvent
@@ -67,10 +74,17 @@ sealed interface PlantEvent {
 class PlantDetailViewModel(private val c: AppContainer, private val plantId: Long) : ViewModel() {
     val plant: StateFlow<Plant?> = c.plants.observe(plantId).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
-    val suggestions: StateFlow<PlantSuggestions> = combine(c.plants.observe(plantId), c.terms.terms) { p, terms ->
+    val suggestions: StateFlow<PlantSuggestions> = combine(c.plants.observe(plantId), c.terms.terms, c.faultCodes.codes) { p, terms, faults ->
         val ref = p?.refrigerant?.takeIf { it.isNotBlank() }?.let { c.refrigerants.findLoose(it) }
         val term = ref?.let { r -> TermIndex(terms.filter { it.category == TermCategory.REFRIGERANT }).search(r.name, 1).firstOrNull()?.term }
-        PlantSuggestions(ref, term)
+        val maker = p?.manufacturer?.let { c.service.manufacturerFor(it) }
+        val carelWords = listOf("carel", "pco", "pgd")
+        val controllerText = ((p?.controllers ?: emptyList()).flatMap { listOf(it.model, it.label) } + listOfNotNull(p?.controllerType)).joinToString(" ").lowercase()
+        PlantSuggestions(
+            refrigerant = ref, refrigerantTerm = term, manufacturer = maker,
+            hasFaultCodes = maker != null && faults.any { it.manufacturer.equals(maker.name, ignoreCase = true) },
+            carelRelated = carelWords.any { controllerText.contains(it) },
+        )
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), PlantSuggestions(null, null))
 
     /** Angezeigte (entschlüsselte) Passwörter je Controller-ID. Verschwinden automatisch wieder. */
@@ -130,12 +144,16 @@ class PlantDetailViewModel(private val c: AppContainer, private val plantId: Lon
 class PlantEditViewModel(private val c: AppContainer, private val id: Long) : ViewModel() {
     val existing: StateFlow<Plant?> = if (id == 0L) MutableStateFlow(null) else c.plants.observe(id).stateIn(viewModelScope, SharingStarted.Eagerly, null)
     val refrigerantNames: List<String> = c.refrigerants.all.map { it.name }
+    val manufacturerNames: List<String> = c.service.data.manufacturers.filter { it.id != "carel" }.map { it.name }
+    val controllerTypeNames: List<String> = c.service.data.templates.map { it.model }
     val plants: StateFlow<List<Plant>> = c.plants.plants.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     fun save(plant: Plant, onSaved: (Long) -> Unit) { viewModelScope.launch { onSaved(c.plants.savePlant(plant)) } }
 }
 
 class ControllerEditViewModel(private val c: AppContainer, private val plantId: Long, private val controllerId: Long) : ViewModel() {
+    val templates = c.service.data.templates
+
     val existing: StateFlow<Controller?> = c.plants.observe(plantId)
         .map { p -> p?.controllers?.firstOrNull { it.id == controllerId } }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)

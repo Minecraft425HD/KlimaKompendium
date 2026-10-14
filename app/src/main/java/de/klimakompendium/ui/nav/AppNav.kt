@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Thermostat
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -30,6 +31,8 @@ import de.klimakompendium.ui.plants.ControllerEditScreen
 import de.klimakompendium.ui.plants.PlantDetailScreen
 import de.klimakompendium.ui.plants.PlantEditScreen
 import de.klimakompendium.ui.plants.PlantsScreen
+import de.klimakompendium.ui.service.FaultEditScreen
+import de.klimakompendium.ui.service.ServiceScreen
 import de.klimakompendium.ui.settings.SettingsScreen
 import de.klimakompendium.ui.terms.TermDetailScreen
 import de.klimakompendium.ui.terms.TermEditScreen
@@ -41,8 +44,11 @@ object Routes {
     const val HELPER = "helper"
     const val PLANTS = "plants"
     const val SETTINGS = "settings"
+    const val SERVICE = "service"
 
     const val HELPER_PATTERN = "helper?tab={tab}&ref={ref}"
+    const val SERVICE_PATTERN = "service?tab={tab}&q={q}"
+    const val FAULT_EDIT = "faultEdit/{id}"
     const val TERM_DETAIL = "term/{id}"
     const val TERM_EDIT = "termEdit/{id}"
     const val PLANT_DETAIL = "plant/{id}"
@@ -50,6 +56,8 @@ object Routes {
     const val CONTROLLER_EDIT = "controllerEdit/{plantId}/{id}"
 
     fun helper(tab: String = "explain", ref: String = "") = "helper?tab=$tab&ref=$ref"
+    fun service(tab: String = "faults", q: String = "") = "service?tab=$tab&q=${android.net.Uri.encode(q)}"
+    fun faultEdit(id: Long) = "faultEdit/$id"
     fun termDetail(id: Long) = "term/$id"
     fun termEdit(id: Long) = "termEdit/$id"
     fun plantDetail(id: Long) = "plant/$id"
@@ -64,6 +72,7 @@ private val topLevel = listOf(
     TopLevel(Routes.TERMS, "Begriffe", Icons.Default.Menu),
     TopLevel(Routes.HELPER, "Druck/Temp", Icons.Default.Thermostat),
     TopLevel(Routes.PLANTS, "Anlagen", Icons.Default.Build),
+    TopLevel(Routes.SERVICE, "Service", Icons.Default.Warning),
 )
 
 @Composable
@@ -99,6 +108,7 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
                     onOpenTerm = { nav.navigate(Routes.termDetail(it)) },
                     onOpenPlant = { nav.navigate(Routes.plantDetail(it)) },
                     onOpenRefrigerant = { nav.navigate(Routes.helper("pt", it)) },
+                    onOpenFault = { nav.navigate(Routes.service("faults", it)) },
                     onOpenSettings = { nav.navigate(Routes.SETTINGS) },
                 )
             }
@@ -116,6 +126,21 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
             }
             composable(Routes.PLANTS) {
                 PlantsScreen(onOpenPlant = { nav.navigate(Routes.plantDetail(it)) }, onNewPlant = { nav.navigate(Routes.plantEdit(0)) })
+            }
+            composable(
+                Routes.SERVICE_PATTERN,
+                arguments = listOf(
+                    navArgument("tab") { type = NavType.StringType; defaultValue = "faults" },
+                    navArgument("q") { type = NavType.StringType; defaultValue = "" },
+                ),
+            ) { e ->
+                ServiceScreen(
+                    initialTab = e.arguments?.getString("tab") ?: "faults", initialQuery = e.arguments?.getString("q") ?: "",
+                    onNewFault = { nav.navigate(Routes.faultEdit(0)) }, onEditFault = { nav.navigate(Routes.faultEdit(it)) },
+                )
+            }
+            composable(Routes.FAULT_EDIT, listOf(navArgument("id") { type = NavType.LongType })) { e ->
+                FaultEditScreen(id = e.arguments!!.getLong("id"), onBack = { nav.popBackStack() })
             }
             composable(Routes.SETTINGS) { SettingsScreen(onBack = { nav.popBackStack() }) }
 
@@ -143,6 +168,7 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
                     onEditController = { pid, cid -> nav.navigate(Routes.controllerEdit(pid, cid)) },
                     onOpenRefrigerant = { nav.navigate(Routes.helper("pt", it)) },
                     onOpenTerm = { nav.navigate(Routes.termDetail(it)) },
+                    onOpenService = { tab, q -> nav.navigate(Routes.service(tab, q)) },
                 )
             }
             composable(Routes.PLANT_EDIT, listOf(navArgument("id") { type = NavType.LongType })) { e ->

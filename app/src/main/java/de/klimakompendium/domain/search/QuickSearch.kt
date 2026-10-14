@@ -2,6 +2,7 @@ package de.klimakompendium.domain.search
 
 import de.klimakompendium.domain.convert.Measurement
 import de.klimakompendium.domain.convert.MeasurementParser
+import de.klimakompendium.domain.model.FaultCode
 import de.klimakompendium.domain.model.Plant
 import de.klimakompendium.domain.model.Refrigerant
 
@@ -10,8 +11,9 @@ data class QuickResult(
     val terms: List<TermHit>,
     val refrigerants: List<Refrigerant>,
     val plants: List<Plant>,
+    val faults: List<FaultCode> = emptyList(),
 ) {
-    val isEmpty get() = measurement == null && terms.isEmpty() && refrigerants.isEmpty() && plants.isEmpty()
+    val isEmpty get() = measurement == null && terms.isEmpty() && refrigerants.isEmpty() && plants.isEmpty() && faults.isEmpty()
 }
 
 /** Zentrale Schnellsuche der Startseite: Begriffe, Kältemittel, Anlagen und Messwert-Umrechnung in einem Zug. */
@@ -21,6 +23,7 @@ object QuickSearch {
         index: TermIndex,
         plants: List<Plant>,
         refrigerants: List<Refrigerant>,
+        faultCodes: List<FaultCode> = emptyList(),
         termLimit: Int = 8,
     ): QuickResult {
         val q = TextNormalizer.compact(query)
@@ -32,6 +35,7 @@ object QuickSearch {
             id.startsWith(q) || (q.length >= 3 && id.contains(q)) || TextNormalizer.compact(it.type) == q
         }
         val matchedPlants = if (measurement != null) emptyList() else PlantSearch.filter(plants, PlantFilter(query = query))
-        return QuickResult(measurement, terms, refs, matchedPlants)
+        val faults = if (measurement != null) emptyList() else FaultCodeSearch.search(faultCodes, query, limit = 5)
+        return QuickResult(measurement, terms, refs, matchedPlants, faults)
     }
 }

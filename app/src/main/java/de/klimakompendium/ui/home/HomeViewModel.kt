@@ -34,9 +34,9 @@ class HomeViewModel(private val c: AppContainer) : ViewModel() {
     private val query = MutableStateFlow("")
 
     val state: StateFlow<HomeState> = combine(
-        query, c.terms.terms, c.plants.plants, c.preferences.settings,
-    ) { q, terms, plants, settings ->
-        val result = QuickSearch.run(q, TermIndex(terms), plants, c.refrigerants.all)
+        query, c.terms.terms, c.plants.plants, c.preferences.settings, c.faultCodes.codes,
+    ) { q, terms, plants, settings, faults ->
+        val result = QuickSearch.run(q, TermIndex(terms), plants, c.refrigerants.all, faults)
         HomeState(
             query = q,
             result = result.takeIf { q.isNotBlank() },

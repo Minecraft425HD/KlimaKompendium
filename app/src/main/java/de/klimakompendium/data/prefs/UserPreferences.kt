@@ -31,6 +31,7 @@ class UserPreferences(private val context: Context) {
         val secureScreen = booleanPreferencesKey("secure_screen")
         val passwordSeconds = intPreferencesKey("password_visible_seconds")
         val seedVersion = intPreferencesKey("seed_version")
+        val faultSeedVersion = intPreferencesKey("fault_seed_version")
     }
 
     val settings: Flow<Settings> = context.dataStore.data.map { p ->
@@ -52,4 +53,7 @@ class UserPreferences(private val context: Context) {
 
     suspend fun seedVersion(): Int = context.dataStore.data.first()[Keys.seedVersion] ?: 0
     suspend fun setSeedVersion(v: Int) = context.dataStore.edit { it[Keys.seedVersion] = v }
+
+    suspend fun faultSeedVersion(): Int = context.dataStore.data.first()[Keys.faultSeedVersion] ?: 0
+    suspend fun setFaultSeedVersion(v: Int) = context.dataStore.edit { it[Keys.faultSeedVersion] = v }
 }
