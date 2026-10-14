@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.klimakompendium.domain.model.AccessType
 import de.klimakompendium.domain.model.Controller
+import de.klimakompendium.domain.model.ControllerTemplate
 import de.klimakompendium.domain.model.PasswordChange
 import de.klimakompendium.domain.model.Plant
 import de.klimakompendium.ui.components.BackTopBar
@@ -75,10 +76,10 @@ fun PlantEditScreen(id: Long, onBack: () -> Unit, onSaved: (Long) -> Unit) {
             LabeledField("Kältemittel", refrigerant, { refrigerant = it })
             SuggestionRow(vm.refrigerantNames, refrigerant, onlyWhenBlank = true) { refrigerant = it }
             LabeledField("Hersteller", maker, { maker = it })
-            SuggestionRow(all.map { it.manufacturer }, maker) { maker = it }
+            SuggestionRow(all.map { it.manufacturer } + vm.manufacturerNames, maker) { maker = it }
             LabeledField("Seriennummer", serial, { serial = it })
             LabeledField("Controller-Typ (Übersicht)", ctype, { ctype = it })
-            SuggestionRow(all.map { it.controllerType }, ctype) { ctype = it }
+            SuggestionRow(all.map { it.controllerType } + vm.controllerTypeNames, ctype) { ctype = it }
             LabeledField("Notizen", notes, { notes = it }, singleLine = false, minLines = 3)
             Button(
                 onClick = {
@@ -123,9 +124,24 @@ fun ControllerEditScreen(plantId: Long, controllerId: Long, onBack: () -> Unit, 
     var clearPassword by rememberSaveable { mutableStateOf(false) }
     var notes by rememberSaveable { mutableStateOf(e?.notes ?: "") }
     val hadPassword = e?.hasPassword == true
+    var template by rememberSaveable { mutableStateOf<String?>(null) }
+    val selectedTemplate = vm.templates.firstOrNull { it.id == template }
+    fun apply(t: ControllerTemplate?) {
+        template = t?.id
+        if (t == null) return
+        if (label.isBlank()) label = t.label
+        model = t.model; access = t.accessType; address = t.address; user = t.username
+        if (notes.isBlank()) notes = t.notes
+    }
 
     Scaffold(topBar = { BackTopBar(if (controllerId == 0L) "Neuer Controller" else "Controller bearbeiten", onBack) }) { padding ->
         FormColumn(Modifier.padding(padding)) {
+            if (controllerId == 0L && vm.templates.isNotEmpty()) {
+                SelectField(
+                    "Vorlage (optional)", listOf<ControllerTemplate?>(null) + vm.templates, selectedTemplate,
+                    { it?.label ?: "Keine Vorlage" }, { apply(it) },
+                )
+            }
             LabeledField("Bezeichnung *", label, { label = it }, supportingText = "z. B. „Hauptregler Kühlstelle 1“")
             LabeledField("Modell", model, { model = it })
             SelectField("Zugriffsart", AccessType.entries.toList(), access, { it.label }, { access = it })
@@ -137,7 +153,8 @@ fun ControllerEditScreen(plantId: Long, controllerId: Long, onBack: () -> Unit, 
                 enabled = !clearPassword,
                 visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardType = KeyboardType.Password,
-                supportingText = "Wird verschlüsselt (AES-256, Android Keystore) nur auf diesem Gerät gespeichert.",
+                supportingText = (selectedTemplate?.passwordHint?.takeIf { it.isNotBlank() }?.let { "Hinweis: $it\n" } ?: "") +
+                    "Wird verschlüsselt (AES-256, Android Keystore) nur auf diesem Gerät gespeichert.",
                 trailing = {
                     IconButton(onClick = { showPassword = !showPassword }, Modifier.heightIn(min = TouchTarget)) {
                         Icon(if (showPassword) Icons.Default.VisibilityOff else Icons.Default.Visibility, if (showPassword) "Verbergen" else "Anzeigen")

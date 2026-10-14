@@ -44,6 +44,7 @@ fun HomeScreen(
     onOpenTerm: (Long) -> Unit,
     onOpenPlant: (Long) -> Unit,
     onOpenRefrigerant: (String) -> Unit,
+    onOpenFault: (String) -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val vm = appViewModel { HomeViewModel(it) }
@@ -69,11 +70,11 @@ fun HomeScreen(
                 item {
                     SearchField(
                         value = state.query, onValueChange = vm::onQuery,
-                        placeholder = "ND, R32, SAP, Anlage, \"10 bar\" …",
+                        placeholder = "ND, R32, AL33, Anlage, \"10 bar\" …",
                     )
                 }
                 if (state.query.isBlank()) idleContent(state, vm::onQuery, onOpenTerm, onOpenPlant)
-                else resultContent(state, onOpenTerm, onOpenPlant, onOpenRefrigerant, vm::toggleFavorite)
+                else resultContent(state, onOpenTerm, onOpenPlant, onOpenRefrigerant, onOpenFault, vm::toggleFavorite)
             }
         }
     }
@@ -115,6 +116,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resultContent(
     onOpenTerm: (Long) -> Unit,
     onOpenPlant: (Long) -> Unit,
     onOpenRefrigerant: (String) -> Unit,
+    onOpenFault: (String) -> Unit,
     onFavorite: (de.klimakompendium.domain.model.Term) -> Unit,
 ) {
     val r = state.result ?: return
@@ -147,6 +149,18 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resultContent(
         item { SectionHeader("Begriffe & Abkürzungen") }
         items(r.terms, key = { "term-${it.term.id}" }) { hit ->
             TermRow(hit.term, { onOpenTerm(hit.term.id) }, { onFavorite(hit.term) })
+        }
+    }
+    if (r.faults.isNotEmpty()) {
+        item { SectionHeader("Störungscodes") }
+        items(r.faults, key = { "fault-${it.id}" }) { f ->
+            KCard(onClick = { onOpenFault(f.code) }) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(f.code, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                    Text(f.title, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
+                }
+                Text("${f.manufacturer} · ${f.series}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         }
     }
     if (r.plants.isNotEmpty()) {
