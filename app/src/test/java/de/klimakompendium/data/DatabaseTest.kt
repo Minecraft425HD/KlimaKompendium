@@ -159,6 +159,30 @@ class DatabaseTest {
         assertTrue(after.none { it.id == customId })
     }
 
+    @Test fun faultCodeSeedingKeepsCustomCodes() = runBlocking {
+        val repo = de.klimakompendium.data.repo.FaultCodeRepository(db.referenceDao(), UserPreferences(ApplicationProvider.getApplicationContext<Context>()))
+        val file = SeedParser.parseFaultCodes(File("src/main/assets/fault_codes.json").readText())
+        val n = repo.seedIfNeeded(file)
+        assertTrue(n > 250)
+        assertEquals("zweiter Aufruf darf nichts tun", 0, repo.seedIfNeeded(file))
+
+        repo.saveCustom(de.klimakompendium.domain.model.FaultCode(manufacturer = "Euroklimat", series = "EKO", code = "E05", title = "Test", cause = "c", remedy = "r", isCustom = true))
+        val total = repo.codes.first().size
+        assertEquals(n + 1, total)
+
+        // Neue Datenversion: Seed ersetzt nur mitgelieferte Codes, der eigene bleibt
+        repo.seedIfNeeded(file.copy(version = file.version + 1))
+        val after = repo.codes.first()
+        assertEquals(n + 1, after.size)
+        assertTrue(after.any { it.code == "E05" && it.isCustom })
+
+        // Mitgelieferte Codes sind nicht löschbar, eigene schon
+        repo.deleteCustom(after.first { it.manufacturer == "Aermec" }.id)
+        repo.deleteCustom(after.first { it.isCustom }.id)
+        val end = repo.codes.first()
+        assertEquals(n, end.size)
+    }
+
     @Test fun preparedFutureTablesWork() = runBlocking {
         val ref = db.referenceDao()
         ref.upsertFaultCode(FaultCodeEntity(manufacturer = "Carel", controllerModel = "pCO5", code = "AL01", title = "t", cause = "c", remedy = "r"))

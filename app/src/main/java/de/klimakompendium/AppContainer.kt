@@ -4,8 +4,10 @@ import android.content.Context
 import de.klimakompendium.data.FilePhotoStore
 import de.klimakompendium.data.db.AppDatabase
 import de.klimakompendium.data.prefs.UserPreferences
+import de.klimakompendium.data.repo.FaultCodeRepository
 import de.klimakompendium.data.repo.PlantRepository
 import de.klimakompendium.data.repo.RefrigerantRepository
+import de.klimakompendium.data.repo.ServiceRepository
 import de.klimakompendium.data.repo.TermRepository
 import de.klimakompendium.data.security.KeystoreKeyProvider
 import de.klimakompendium.data.security.SecretCipher
@@ -31,14 +33,19 @@ class AppContainer(
     val refrigerants: RefrigerantRepository by lazy {
         RefrigerantRepository(SeedParser.parseRefrigerants(readAsset("refrigerants.json")))
     }
+    val faultCodes: FaultCodeRepository by lazy { FaultCodeRepository(database.referenceDao(), preferences) }
+    val service: ServiceRepository by lazy { ServiceRepository(SeedParser.parseService(readAsset("service.json"))) }
     val terms: TermRepository by lazy { TermRepository(database.termDao(), preferences) }
     val plants: PlantRepository by lazy {
         PlantRepository(database.plantDao(), cipher, FilePhotoStore(appContext))
     }
 
-    /** Spielt die mitgelieferte Begriffsdatenbank beim ersten Start bzw. nach App-Updates ein. */
+    /** Spielt Begriffe und Störungscodes beim ersten Start bzw. nach App-Updates ein. */
     fun seedAsync() {
-        appScope.launch(Dispatchers.IO) { terms.seedIfNeeded(SeedParser.parseTerms(readAsset("terms.json"))) }
+        appScope.launch(Dispatchers.IO) {
+            terms.seedIfNeeded(SeedParser.parseTerms(readAsset("terms.json")))
+            faultCodes.seedIfNeeded(SeedParser.parseFaultCodes(readAsset("fault_codes.json")))
+        }
     }
 
     private fun readAsset(name: String): String =

@@ -98,6 +98,25 @@ interface ReferenceDao {
     @Query("SELECT * FROM fault_codes WHERE manufacturer = :manufacturer ORDER BY code")
     fun observeFaultCodes(manufacturer: String): Flow<List<FaultCodeEntity>>
 
+    @Query("SELECT * FROM fault_codes ORDER BY manufacturer COLLATE NOCASE, controllerModel COLLATE NOCASE, id")
+    fun observeAllFaultCodes(): Flow<List<FaultCodeEntity>>
+
+    @Query("SELECT * FROM fault_codes WHERE id = :id")
+    fun observeFaultCode(id: Long): Flow<FaultCodeEntity?>
+
+    @Query("SELECT COUNT(*) FROM fault_codes WHERE isCustom = 0")
+    suspend fun seededFaultCodeCount(): Int
+
+    @Query("DELETE FROM fault_codes WHERE isCustom = 0")
+    suspend fun deleteSeededFaultCodes()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFaultCodes(codes: List<FaultCodeEntity>)
+
+    /** Nur eigene Codes sind löschbar; mitgelieferte bleiben erhalten. */
+    @Query("DELETE FROM fault_codes WHERE id = :id AND isCustom = 1")
+    suspend fun deleteCustomFaultCode(id: Long)
+
     @Insert
     suspend fun insertMaintenance(item: MaintenanceIntervalEntity): Long
 

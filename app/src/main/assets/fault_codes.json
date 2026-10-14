@@ -1,0 +1,1630 @@
+{
+ "schema": 1,
+ "version": 1,
+ "sets": [
+  {
+   "manufacturer": "Aermec",
+   "series": "NRG 0282-0804",
+   "controller": "Carel pCO5 + PGD1",
+   "source": "Aermec Bedienungsanleitung NRG 0282-0804, Dok. 5723310_05 (04/2026), Kapitel 11 „List of alarms“",
+   "codes": [
+    {
+     "code": "AL01",
+     "title": "Uhrenbatterie leer",
+     "original": "Clock battery flat alarm",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL02",
+     "title": "pCO-Speicherfehler",
+     "original": "pCO memory error alarm",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL03",
+     "title": "Phasenwächter",
+     "original": "Phase monitor alarm",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL04",
+     "title": "Display-Alarm zurückgesetzt",
+     "original": "Display alarm reset",
+     "reset": ""
+    },
+    {
+     "code": "AL05",
+     "title": "Hochdruckfühler Kreis 1 defekt",
+     "original": "Circ.1 high pressure faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL06",
+     "title": "Hochdruckfühler Kreis 2 defekt",
+     "original": "Circ. 2 high pressure faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL07",
+     "title": "Niederdruckfühler Kreis 1 defekt",
+     "original": "Circ. 1 low pressure faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL08",
+     "title": "Niederdruckfühler Kreis 2 defekt",
+     "original": "Circ. 2 low pressure faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL09",
+     "title": "Eintrittsfühler Verdampfer 1 defekt",
+     "original": "Evaporator 1 input faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL10",
+     "title": "Austrittsfühler Verdampfer 1 defekt",
+     "original": "Evaporator 1 output faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL11",
+     "title": "Fühler gemeinsamer Verdampferaustritt defekt",
+     "original": "Evap. common outlet faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL12",
+     "title": "Eintrittsfühler Rückgewinnung defekt",
+     "original": "Recovery inlet faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL13",
+     "title": "Austrittsfühler Rückgewinnung defekt",
+     "original": "Recovery outlet faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL16",
+     "title": "Außentemperaturfühler defekt",
+     "original": "Outside temperature faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL17",
+     "title": "Flüssigkeitstemperaturfühler Kreis 1 defekt",
+     "original": "Circ.1 liquid temperature faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL18",
+     "title": "Flüssigkeitstemperaturfühler Kreis 2 defekt",
+     "original": "Circ.2 liquid temperature faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL19",
+     "title": "Strömungswächter Verdampfer blockiert",
+     "original": "Evaporator flow switch blocked alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL22",
+     "title": "Wartungsanforderung Verdampferpumpe 1",
+     "original": "Evap pump 1 maintenance request",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL23",
+     "title": "Wartungsanforderung Verdampferpumpe 2",
+     "original": "Evap pump 2 maintenance request",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL24",
+     "title": "Thermoschutz Verdampferpumpe 1",
+     "original": "Evaporator 1 pump thermal alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL25",
+     "title": "Thermoschutz Verdampferpumpe 2",
+     "original": "Evaporator 2 pump thermal alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL26",
+     "title": "Leitungsschutz Rückgewinnungspumpe 1",
+     "original": "Recovery pump 1 circuit breaker alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL28",
+     "title": "Thermoschutz Ventilatoreinheit 1",
+     "original": "Ventilation unit 1 thermal alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL29",
+     "title": "Leitungsschutz Ventilator 2",
+     "original": "Fan 2 circuit breaker alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL30",
+     "title": "Niederdruck-Pressostat Kreis 1",
+     "original": "Circ. 1 low pressure switch alarm",
+     "reset": "manuell mit Passwort (nur Service)"
+    },
+    {
+     "code": "AL31",
+     "title": "Niederdruck Kreis 1",
+     "original": "Circ. 1 low pressure alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL32",
+     "title": "Hochdruck-Pressostat Kreis 1",
+     "original": "Circ. 1 high pressure switch alarm",
+     "reset": "manuell mit Passwort (nur Service)"
+    },
+    {
+     "code": "AL33",
+     "title": "Hochdruck Kreis 1",
+     "original": "Circ. 1 high pressure alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL34",
+     "title": "Schwerer Niederdruck Kreis 1",
+     "original": "Circ. 1 serious low pressure alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL35",
+     "title": "Schwerer Niederdruck Kreis 2",
+     "original": "Circ. 2 serious low pressure alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL38",
+     "title": "Strömungswächter Verdampfer",
+     "original": "Evaporator flow switch alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL39",
+     "title": "Durchflussmesser Rückgewinnung",
+     "original": "Recovery flow meter alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL40",
+     "title": "Frostschutz Verdampfer",
+     "original": "Evaporator anti-freeze alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL41",
+     "title": "Frostschutz gemeinsamer Verdampferaustritt",
+     "original": "Common evap. anti-freeze alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL42",
+     "title": "Frostschutz Rückgewinnung",
+     "original": "Recovery anti-freeze alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL46",
+     "title": "pCOe-Erweiterung offline (Adresse 2), Verflüssigereinheit",
+     "original": "Alarm offline pCOE expansion (address=2) condenser unit",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL48",
+     "title": "Drucktemperatur Verdichter CP1A Kreis 1",
+     "original": "Discharge gas temperature CP1A Circ.1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL49",
+     "title": "Drucktemperatur Verdichter CP1B Kreis 1",
+     "original": "Discharge gas temperature CP1BB Circ.1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL51",
+     "title": "Wartungsstunden Verdichter CP1A Kreis 1",
+     "original": "Maintenance hours alarm CP1A circ.1",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL52",
+     "title": "Wartungsstunden Verdichter CP1B Kreis 1",
+     "original": "Maintenance hours alarm CP1B circ.1",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL54",
+     "title": "Wartungsstunden Verdichter CP2B Kreis 2",
+     "original": "Maintenance hours alarm CP2B circ.2",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL55",
+     "title": "Wartungsstunden Verdichter CP2B Kreis 2",
+     "original": "Maintenance hours alarm CP2B circ.2",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL58",
+     "title": "Technischer Alarm Verdichter 1 Kreis 1",
+     "original": "Circ. 1 compressor 1 technical alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL59",
+     "title": "Technischer Alarm Verdichter 2 Kreis 1",
+     "original": "Circ. 1 compressor 2 technical alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL61",
+     "title": "Technischer Alarm Verdichter 1 Kreis 2",
+     "original": "Circ. 2 compressor 1 technical alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL62",
+     "title": "Technischer Alarm Verdichter 2 Kreis 2",
+     "original": "Circ. 2 compressor 2 technical alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL64",
+     "title": "Niederdruck-Pressostat Kreis 2",
+     "original": "Circuit 2 low pressure gauge alarm",
+     "reset": "manuell mit Passwort (nur Service)"
+    },
+    {
+     "code": "AL65",
+     "title": "Niederdruck Kreis 2",
+     "original": "Circ. 2 low pressure alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL66",
+     "title": "Hochdruck-Pressostat Kreis 2",
+     "original": "Circ. 2 high pressure switch alarm",
+     "reset": "manuell mit Passwort (nur Service)"
+    },
+    {
+     "code": "AL67",
+     "title": "Hochdruck Kreis 2",
+     "original": "Circ. 2 high pressure alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL68",
+     "title": "Thermoschutz Ventilatoren Kreis 1 (Reihe)",
+     "original": "Circuit 1 fan thermal series",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL73",
+     "title": "Zu hohe Druckgastemperatur Verdichter 1 Kreis 1",
+     "original": "Circ. 1 comp. 1 discharge gas high temp. alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL74",
+     "title": "Zu hohe Druckgastemperatur Verdichter 1 Kreis 2",
+     "original": "Circ. 2 comp. 1 discharge gas high temp. alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL76",
+     "title": "Zu hohe Druckgastemperatur Verdichter 1 Kreis 2 (Text so im Handbuch)",
+     "original": "Circ. 2 comp. 1 discharge gas high temp. alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL77",
+     "title": "Zu hohe Druckgastemperatur Verdichter 2 Kreis 2",
+     "original": "Circ. 2 comp. 2 discharge gas high temp. alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL79",
+     "title": "Free-Cooling-Ausgangsalarm",
+     "original": "Free cooling ouput alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL82",
+     "title": "Zu geringer Wasserinhalt – Zwangsabschaltung",
+     "original": "Low water content force off alarm",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL83",
+     "title": "Betriebsgrenzen Luft-Wasser überschritten (Envelope)",
+     "original": "Air-water envelope alarm",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL85",
+     "title": "Systemtemperatur zu hoch",
+     "original": "System high temperature",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL86",
+     "title": "Fühler Brauchwarmwasserspeicher (SAC) defekt",
+     "original": "SAC storage tank probe faulty",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL87",
+     "title": "Master offline",
+     "original": "Master offline",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL88",
+     "title": "Slave offline",
+     "original": "Slave offline",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL89",
+     "title": "Master/Slave-Softwareversion unterschiedlich",
+     "original": "Incorrect master/slave SW version",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL90",
+     "title": "Sammelalarm Slave",
+     "original": "Slave alarm summary",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL91",
+     "title": "pCOe-Erweiterung offline (Adresse 4), Free-Cooling-Einheit",
+     "original": "Alarm offline pCOE expansion (address=4) free cooling unit",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL92",
+     "title": "Free-Cooling-Eintrittsfühler Alarm",
+     "original": "Alarm inlet freecooling probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL93",
+     "title": "Free-Cooling-Austrittsfühler Alarm",
+     "original": "Alarm oulet freecooling probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL97",
+     "title": "Free-Cooling-Ausgangsalarm",
+     "original": "Free cooling ouput alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL98",
+     "title": "pCOe-DK-Erweiterung offline (Adresse 3)",
+     "original": "pCOE DK expansion offline alarm (address=3)",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL99",
+     "title": "Fühler gemeinsamer Verdampferaustritt defekt",
+     "original": "Evaporator common outlet faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL100",
+     "title": "Austrittsfühler Verdampfer 2 defekt",
+     "original": "Evaporator 2 output faulty probe alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL102",
+     "title": "Wassereintrittstemperatur außerhalb der Betriebsgrenzen",
+     "original": "Water inlet temp. out of operating limits",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL103",
+     "title": "Sauggasfühler Kreis 1 defekt oder nicht angeschlossen",
+     "original": "Suction probe broken or not connected circ. 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL104",
+     "title": "Sauggasfühler Kreis 2 defekt oder nicht angeschlossen",
+     "original": "Suction probe broken or not connected circ. 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL105",
+     "title": "EVD: Ventilmotorfehler Kreis 1",
+     "original": "EVD error valve motor circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL106",
+     "title": "EVD: Verdampfungstemperatur zu niedrig (LOP) Kreis 1",
+     "original": "Evap. Low Temperature EVD (LOP) Circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL107",
+     "title": "EVD: Verdampfungstemperatur zu hoch (MOP) Kreis 1",
+     "original": "EVD High evap. temperature (MOP) circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL108",
+     "title": "EVD: Überhitzung zu niedrig (LowSH) Kreis 1",
+     "original": "Overheat. low EVD (LowSH) Circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL109",
+     "title": "EVD: Saugtemperatur zu niedrig Kreis 1",
+     "original": "EVD Low suction temperature circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL110",
+     "title": "EVD: Verdampfungstemperatur zu hoch Kreis 1",
+     "original": "EVD High evap. temperature circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL111",
+     "title": "EVD: Ventilmotorfehler Kreis 2",
+     "original": "EVD Error Valve Motor Circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL112",
+     "title": "EVD: Verdampfungstemperatur zu niedrig (LOP) Kreis 2",
+     "original": "Evap. low temperature EVD (LOP) Circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL113",
+     "title": "EVD: Verdampfungstemperatur zu hoch (MOP) Kreis 2",
+     "original": "EVD High evap. temperature (MOP) circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL114",
+     "title": "EVD: Überhitzung zu niedrig (LowSH) Kreis 2",
+     "original": "Overheat. low EVD (LowSH) Circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL115",
+     "title": "EVD: Saugtemperatur zu niedrig Kreis 2",
+     "original": "EVD Low suction temperature circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL116",
+     "title": "EVD: Fühler S1 Fehler",
+     "original": "EVD S1 probe error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL117",
+     "title": "EVD: Fühler S2 Fehler",
+     "original": "EVD S2 probe error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL118",
+     "title": "EVD: Fühler S3 Fehler",
+     "original": "EVD S3 probe error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL119",
+     "title": "EVD: Fühler S4 Fehler",
+     "original": "EVD S4 probe error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL120",
+     "title": "EVD: EEPROM-Alarm",
+     "original": "EVD EEPROM alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL121",
+     "title": "EVD: Treiber offline",
+     "original": "EVD Driver offline",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL122",
+     "title": "EVD: Batterie entladen",
+     "original": "EVD Battery discharged",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL123",
+     "title": "EVD: Parameterübertragung fehlerhaft",
+     "original": "EVD Parameter transmission error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL124",
+     "title": "EVD: Firmware nicht kompatibel",
+     "original": "EVD Firmware not compatible",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL126",
+     "title": "Leckagewarnung (Leak Detector)",
+     "original": "Leak Detector Alarm",
+     "reset": "manuell mit Passwort (nur Service)"
+    },
+    {
+     "code": "AL127",
+     "title": "Leckage-Sensor Anomalie",
+     "original": "Leak detector sensor anomaly",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL128",
+     "title": "Leckage-Detektor offline",
+     "original": "Leak Detector Offline",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL129",
+     "title": "Flüssigkeitsfühler Verflüssiger 1 defekt (NRGH einkreisig)",
+     "original": "Temp.Sensor liquid cond.1 broken or not connect. NRGH Monocirc.",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL130",
+     "title": "Flüssigkeitsfühler Verflüssiger 2 defekt (NRGH einkreisig)",
+     "original": "Temp.Sensor liquid cond.2 broken or not connect. NRGH Monocirc.",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL131",
+     "title": "Starke Überhitzung Kreis 1 (Kreis entleert)",
+     "original": "High overheating of Circuit 1 (circuit discharged)",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL132",
+     "title": "Starke Überhitzung Kreis 2 (Kreis entleert)",
+     "original": "High overheating of Circuit 2 (circuit discharged)",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL133",
+     "title": "PEC offline",
+     "original": "PEC offline",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL134",
+     "title": "PEC Software – Alarmgruppe 1",
+     "original": "PEC Software - alarm set 1",
+     "reset": ""
+    },
+    {
+     "code": "AL135",
+     "title": "PEC Software – Alarmgruppe 2",
+     "original": "PEC Software - alarm set 2",
+     "reset": ""
+    },
+    {
+     "code": "AL136",
+     "title": "PEC Hardware – Alarmgruppe 1",
+     "original": "PEC Hardware - alarm set 1",
+     "reset": ""
+    },
+    {
+     "code": "AL137",
+     "title": "PEC Hardware – Alarmgruppe 2",
+     "original": "PEC Hardware - alarm set 2",
+     "reset": ""
+    },
+    {
+     "code": "AL140",
+     "title": "Erweiterung pCOe VPF offline (Adresse 5)",
+     "original": "Expansion pCOE VPF OffLine (address=5)",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL141",
+     "title": "Differenzdruckgeber defekt oder nicht angeschlossen",
+     "original": "Differential Transducer broken or not connected",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL142",
+     "title": "Überhitzung zu niedrig Kreis 1",
+     "original": "Low SH circ.1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL143",
+     "title": "Überhitzung zu niedrig Kreis 2",
+     "original": "Low SH circ.2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL144",
+     "title": "EVD-Sammelalarm Kreis 1",
+     "original": "EVD alarms summary Circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL145",
+     "title": "EVD-Sammelalarm Kreis 2",
+     "original": "EVD alarms summary Circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL156",
+     "title": "Druckgasleitung Kreis 1: Fühler vertauscht",
+     "original": "Inverted probes gas pressing line circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL157",
+     "title": "Druckgasleitung Kreis 2: Fühler vertauscht",
+     "original": "Inverted probes gas pressing line circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW1 Bit 0",
+     "title": "Niederdruck Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW1 Bit 1",
+     "title": "Überhitzung zu niedrig Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW1 Bit 2",
+     "title": "Überhitzung zu hoch Kreis 1",
+     "original": "",
+     "reset": "automatisch"
+    },
+    {
+     "code": "PEC SW1 Bit 5",
+     "title": "Kältemittelverlust (Warnung) Kreis 1: Ventilöffnung 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 6",
+     "title": "Verflüssigungsdruck zu hoch Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW1 Bit 7",
+     "title": "Verflüssigungstemperatur zu niedrig (Envelope, Warnung) Kreis 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 8",
+     "title": "Verflüssigungstemperatur zu hoch (Envelope, Warnung) Kreis 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 9",
+     "title": "Verdampfungstemperatur zu niedrig (Envelope, Warnung) Kreis 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 10",
+     "title": "Verdampfungstemperatur zu hoch (Envelope, Warnung) Kreis 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 11",
+     "title": "Frostschutz Kreis 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 12",
+     "title": "Envelope-Alarm Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW1 Bit 13",
+     "title": "Abtauende durch Timeout",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW1 Bit 14",
+     "title": "Druckgastemperatur zu hoch Verdichter 1 Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW1 Bit 15",
+     "title": "Überhitzung zu niedrig Kreis 2",
+     "original": "",
+     "reset": "automatisch"
+    },
+    {
+     "code": "PEC HW1 Bit 0",
+     "title": "Fühler P1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 1",
+     "title": "Fühler P2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 2",
+     "title": "Fühler T1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW1 Bit 3",
+     "title": "Fühler T2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 4",
+     "title": "Fühler T3",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 5",
+     "title": "Fühler T4",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 6",
+     "title": "Fühler T5",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 7",
+     "title": "Fühler T6",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 8",
+     "title": "Fühler T7",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW1 Bit 9",
+     "title": "Fühler P3",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 10",
+     "title": "Fühler P4",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 11",
+     "title": "Fühler T8",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW1 Bit 12",
+     "title": "Fühler T9",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 13",
+     "title": "Fühler T10",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 14",
+     "title": "Fühler T11",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW1 Bit 15",
+     "title": "Fühler T12",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 0",
+     "title": "Überhitzung zu hoch Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 1",
+     "title": "Kältemittelverlust (Warnung) Kreis 2: Ventilöffnung 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 2",
+     "title": "Druckgastemperatur zu hoch Verdichter 2 Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 3",
+     "title": "Druckgastemperatur zu hoch Verdichter 3 Kreis 1",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 4",
+     "title": "Niederdruck Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 5",
+     "title": "Verflüssigungsdruck zu hoch Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 6",
+     "title": "Druckgastemperatur zu hoch Verdichter 1 Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 7",
+     "title": "Druckgastemperatur zu hoch Verdichter 2 Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 8",
+     "title": "Druckgastemperatur zu hoch Verdichter 3 Kreis 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 9",
+     "title": "Verflüssigungstemperatur zu niedrig (Envelope, Warnung) Kreis 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 10",
+     "title": "Verflüssigungstemperatur zu hoch (Envelope, Warnung) Kreis 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 11",
+     "title": "Verdampfungstemperatur zu niedrig (Envelope, Warnung) Kreis 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 12",
+     "title": "Verdampfungstemperatur zu hoch (Envelope, Warnung) Kreis 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 13",
+     "title": "Envelope-Alarm Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC SW2 Bit 14",
+     "title": "Frostschutz Kreis 2",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC SW2 Bit 15",
+     "title": "Differenzdruck am Umkehrventil zu gering",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 0",
+     "title": "Fühler T13",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 1",
+     "title": "Kommunikation Drive VS",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 2",
+     "title": "EEPROM-Fehler",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 3",
+     "title": "Timeout Kommunikation Systemregler (60 s)",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 4",
+     "title": "Alarm Drive VS",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 5",
+     "title": "Konfigurationsalarm Drive VS",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 6",
+     "title": "Sicherheitsrückmeldung Kreis 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 7",
+     "title": "Sicherheitsrückmeldung Kreis 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 8",
+     "title": "Systemspannungsausfall",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 9",
+     "title": "Drive VS gesperrt",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 10",
+     "title": "Ventil-Konfigurationsalarm",
+     "original": "",
+     "reset": "automatisch"
+    },
+    {
+     "code": "PEC HW2 Bit 11",
+     "title": "Ventilalarm 1",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 12",
+     "title": "Ventilalarm 2",
+     "original": "",
+     "reset": "manuell"
+    },
+    {
+     "code": "PEC HW2 Bit 13",
+     "title": "Startalarm Drive VS",
+     "original": "",
+     "reset": ""
+    },
+    {
+     "code": "PEC HW2 Bit 14",
+     "title": "Pack-Konfigurationsalarm",
+     "original": "",
+     "reset": "automatisch"
+    }
+   ]
+  },
+  {
+   "manufacturer": "Aermec",
+   "series": "NRP/NXP/CPS",
+   "controller": "Carel pCO5 + PGD1",
+   "source": "Aermec Bedienungsanleitung NRP/NXP/CPS, Dok. 4724311_03 (10/2025), Kapitel 13 „List of alarms“",
+   "codes": [
+    {
+     "code": "AL01",
+     "title": "Uhrenbatterie defekt oder nicht angeschlossen",
+     "original": "Clock battery faulty or not connected",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL02",
+     "title": "Erweiterungsspeicher beschädigt",
+     "original": "Expansion memory damaged",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL03",
+     "title": "Phasenwächter (ID8)",
+     "original": "ID8 phase monitor",
+     "reset": ""
+    },
+    {
+     "code": "AL04",
+     "title": "Platine nach Spannungsausfall neu gestartet",
+     "original": "Board re-start from lost power",
+     "reset": ""
+    },
+    {
+     "code": "AL05",
+     "title": "Hochdruckfühler Kreis 1 defekt oder nicht angeschlossen",
+     "original": "High pressure sensor circuit 1 faulty or not connected [B1, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL06",
+     "title": "Hochdruckfühler Kreis 2 defekt oder nicht angeschlossen",
+     "original": "High pressure sensor circuit 2 faulty or not connected [B6, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL07",
+     "title": "Niederdruckfühler Kreis 1 defekt oder nicht angeschlossen",
+     "original": "Low pressure sensor circuit 1 faulty or not connected [B2, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL08",
+     "title": "Niederdruckfühler Kreis 2 defekt oder nicht angeschlossen",
+     "original": "Low pressure sensor circuit 2 faulty or not connected [B7, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL09",
+     "title": "Wassereintrittsfühler Verdampfer defekt oder nicht angeschlossen",
+     "original": "Inlet water temp sensor evap. faulty or not connected [B4, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL10",
+     "title": "Wasseraustrittsfühler Verdampfer defekt oder nicht angeschlossen",
+     "original": "Evap Out. Temp. broken or disconnected [B3, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL11",
+     "title": "Fühler gemeinsamer Verdampferaustritt defekt",
+     "original": "Outlet water temp sensor evap.com. faulty or not connected [B3 uPC, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL12",
+     "title": "Eintrittsfühler Rückgewinnung defekt",
+     "original": "Inlet water temp sensor recovery faulty or not connected [B1 uPC, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL13",
+     "title": "Austrittsfühler Rückgewinnung 1 defekt",
+     "original": "Outlet water temp sensor recovery1 faulty or not connected [B2 uPC, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL14",
+     "title": "Austrittsfühler Rückgewinnung 2 defekt",
+     "original": "Outlet water temp sensor recovery2 faulty or not connected [B6 uPC, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL15",
+     "title": "Fühler gemeinsamer Austritt Rückgewinnung defekt",
+     "original": "Outlet water temp sensor recovery common faulty or not connected [B4 uPC, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL16",
+     "title": "Außentemperaturfühler defekt oder nicht angeschlossen",
+     "original": "External temperature sensor faulty or not connected [B9, Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL17 (NRP)",
+     "title": "Flüssigkeitstemperaturfühler Kreis 1 defekt (NRP)",
+     "original": "Circuit 1 Liquid temperature probe broken or not connected [Verzögerung 30 s]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL17 (NXP)",
+     "title": "Geothermie-Eintrittsfühler defekt (NXP)",
+     "original": "Geothermal input's temperature probe is broken or not connected [Verzögerung 30 s]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL18 (NRP)",
+     "title": "Flüssigkeitstemperaturfühler Kreis 2 defekt (NRP)",
+     "original": "Liquid temperature sensor circuit 2 faulty or not connected [Verzögerung 30 s]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL18 (NXP)",
+     "title": "Geothermie-Austrittsfühler defekt (NXP)",
+     "original": "Geothermal output's temperature probe is broken or not connected [Verzögerung 30 s]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL19",
+     "title": "Wartungsanforderung Verdichter Kreis 1",
+     "original": "Request for maintenance on compressors of circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL21",
+     "title": "Wartungsanforderung Pumpe 1 (Text so im Handbuch)",
+     "original": "Circuit 1 Pump 1 Rec. maintenance",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL22",
+     "title": "Wartungsanforderung Pumpe 1 (Text so im Handbuch)",
+     "original": "Circuit 1 Pump 1 Rec. maintenance",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL23",
+     "title": "Leitungsschutz Verdichter 1 Kreis 1",
+     "original": "Circuit breaker compressor 1 circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL24",
+     "title": "Überlast Anlagenpumpe 1 (ID13)",
+     "original": "ID13 Pump 1 system overload [ID 6]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL25",
+     "title": "Überlast Anlagenpumpe 2 (ID14)",
+     "original": "ID14 Pump 2 system overload",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL26",
+     "title": "Thermoschutz Rückgewinnungspumpe 1",
+     "original": "Thermal alarm heat recovery pump 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL27",
+     "title": "Überlast Rückgewinnungspumpe 2",
+     "original": "Pump 2 rec. overload",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL28 (NRP)",
+     "title": "Leitungsschutz Ventilator Kreis 1 (ID15, NRP)",
+     "original": "ID15 Fan circuit breaker circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL28 (NXP)",
+     "title": "Thermoschutz Geothermiepumpe (ID15, NXP)",
+     "original": "ID15 Thermal geothermal pump",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL29",
+     "title": "Leitungsschutz Ventilator Kreis 2 (ID16)",
+     "original": "ID16 Fan circuit breaker circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL30",
+     "title": "Niederdruck-Pressostat Kreis 1",
+     "original": "Low pressure indicated by pressure switch on circuit 1 [Verzögerung 180 s + 3 s (M48)]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL31",
+     "title": "Niederdruckfühler Kreis 1 meldet Niederdruck",
+     "original": "Low pressure sensor circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL32",
+     "title": "Hochdruck-Pressostat Kreis 1",
+     "original": "High pressure indicated by pressure switch on circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL33",
+     "title": "Hochdruckfühler Kreis 1 meldet Hochdruck",
+     "original": "High pressure sensor circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL34",
+     "title": "Niederdruck Kreis 1 vom Fühler (unverzögert)",
+     "original": "Circuit 1 Low pressure from probe (not delayed)",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL35",
+     "title": "Niederdruck Kreis 2 vom Fühler (unverzögert)",
+     "original": "Circuit 2 Low pressure from probe (not delayed)",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL36",
+     "title": "Kreis 1: Prävention durch Fühler",
+     "original": "Circ 1 prevention by probe",
+     "reset": ""
+    },
+    {
+     "code": "AL37",
+     "title": "Kreis 2: Prävention durch Fühler",
+     "original": "Circ 2 prevention by probe",
+     "reset": ""
+    },
+    {
+     "code": "AL38",
+     "title": "Wasserdurchfluss Verdampfer fehlt",
+     "original": "Loss of evaporator water flow",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL39",
+     "title": "Wasserdurchfluss Rückgewinnung fehlt",
+     "original": "Loss of heat recovery water flow",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL40",
+     "title": "Frostschutz Anlage Ein-/Austrittstemperatur",
+     "original": "Anti-freeze alarm system inlet/outlet temperature [3 °C (Parameter Ma9)]",
+     "reset": ""
+    },
+    {
+     "code": "AL41",
+     "title": "Frostschutz gemeinsamer Anlagenaustritt",
+     "original": "Anti-freeze alarm system common outlet temperature [3 °C (Parameter Ma9)]",
+     "reset": ""
+    },
+    {
+     "code": "AL42",
+     "title": "Frostschutz Rückgewinnung 1 Ein-/Austritt",
+     "original": "Anti-freeze alarm heat recovery 1 inlet/outlet temperature [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL43",
+     "title": "Frostschutz Rückgewinnung 2 Austritt",
+     "original": "Anti-freeze alarm heat recovery 2 outlet temperature [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL44",
+     "title": "Frostschutz gemeinsamer Austritt Rückgewinnung",
+     "original": "Output temp com. rec. anti-freeze [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL45",
+     "title": "E/A-Erweiterung (uPC) offline",
+     "original": "Expansion IO (uPC) Off-line [Verzögerung 20 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL46",
+     "title": "E/A-Erweiterung (pCOe) offline",
+     "original": "Expansion IO (pCOe) Off-line [Verzögerung 20 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL47",
+     "title": "Zwangsabschaltung Rückgewinnung 1",
+     "original": "Forcing off recovery 1",
+     "reset": ""
+    },
+    {
+     "code": "AL48",
+     "title": "Druckgasfühler Kreis 1 defekt oder nicht angeschlossen",
+     "original": "Discharge gas temperature sensor circuit 1 faulty or not connected [Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL49",
+     "title": "Druckgasfühler Kreis 2 defekt oder nicht angeschlossen",
+     "original": "Discharge gas temperature sensor circuit 2 faulty or not connected [Verzögerung 30 s]",
+     "reset": ""
+    },
+    {
+     "code": "AL50",
+     "title": "Platine nach Spannungsausfall neu gestartet (kein Alarm)",
+     "original": "Board re-start from lost power [It is not an alarm]",
+     "reset": ""
+    },
+    {
+     "code": "AL51",
+     "title": "Wartung Verdichter 2 Kreis 1 (nur Anzeige)",
+     "original": "Circuit 1 Comp. 2 maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL52",
+     "title": "Wartung Verdichter 3 Kreis 1 (nur Anzeige)",
+     "original": "Circuit 1 Comp.3 maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL53",
+     "title": "Wartung Verdichter 1 Kreis 2 (nur Anzeige)",
+     "original": "Circuit 2 Comp.1 maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL54",
+     "title": "Wartung Verdichter 2 Kreis 2 (nur Anzeige)",
+     "original": "Circuit 2 Comp.2 maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL55",
+     "title": "Wartung Verdichter 3 Kreis 2 (nur Anzeige)",
+     "original": "Circuit 2 Comp.3 maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL56",
+     "title": "Wartung Ventilator Kreis 2 (nur Anzeige)",
+     "original": "Circuit 2 Fan maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL57",
+     "title": "Wartung Rückgewinnungspumpe 2 (nur Anzeige)",
+     "original": "Circuit 1 Pump 2 Rec. maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL58",
+     "title": "Wartung Anlagenpumpe 2 (nur Anzeige)",
+     "original": "Circuit 1 Pump 2 syst. maintenance [Display only, W18]",
+     "reset": ""
+    },
+    {
+     "code": "AL59",
+     "title": "Leitungsschutz Verdichter 2 Kreis 1",
+     "original": "Circuit breaker compressor 2 circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL60",
+     "title": "Leitungsschutz Verdichter 3 Kreis 1",
+     "original": "Circuit breaker compressor 3 circuit 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL61",
+     "title": "Leitungsschutz Verdichter 1 Kreis 2",
+     "original": "Circuit breaker compressor 1 circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL62",
+     "title": "Leitungsschutz Verdichter 2 Kreis 2",
+     "original": "Circuit breaker compressor 2 circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL63",
+     "title": "Leitungsschutz Verdichter 3 Kreis 2",
+     "original": "Circuit breaker compressor 3 circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL64",
+     "title": "Niederdruck-Pressostat Kreis 2",
+     "original": "Pressure switch BP 2 from pressure switch [Verzögerung 180 s + 3 s (M48)]",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL65",
+     "title": "Niederdruck Kreis 2 vom Fühler",
+     "original": "Low pressure 2 from probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL66",
+     "title": "Hochdruck-Pressostat Kreis 2",
+     "original": "High pressure pressostat circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL67",
+     "title": "Hochdruckfühler Kreis 2 meldet Hochdruck",
+     "original": "High pressure sensor circuit 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL68",
+     "title": "Kreis 1: Niederdruck-Prävention",
+     "original": "Circ.1 low pressure prevention",
+     "reset": ""
+    },
+    {
+     "code": "AL69",
+     "title": "Kreis 2: Niederdruck-Prävention",
+     "original": "Circ.2 low pressure prevention",
+     "reset": ""
+    },
+    {
+     "code": "AL71 (NRP)",
+     "title": "Frostschutz Austritt Rückgewinnung 2 (NRP)",
+     "original": "Recovery 2 output anti-freeze [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL71 (NXP)",
+     "title": "Zwangsabschaltung Rückgewinnung 2 (NXP)",
+     "original": "Forcing off recovery 2 [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL72 (NRP)",
+     "title": "Frostschutz gemeinsamer Austritt Rückgewinnung (NRP)",
+     "original": "Rec. common output anti-freeze [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL72 (NXP)",
+     "title": "Zwangsabschaltung gemeinsame Rückgewinnung (NXP)",
+     "original": "Forcing off common recovery [3 °C (Parameter Ma12)]",
+     "reset": ""
+    },
+    {
+     "code": "AL73",
+     "title": "Kreis 1: TGP-Prävention (Druckgastemperatur)",
+     "original": "Circuit 1 TGP prevention [Parameter Ma39]",
+     "reset": ""
+    },
+    {
+     "code": "AL74",
+     "title": "Kreis 2: TGP-Prävention (Druckgastemperatur)",
+     "original": "Circuit 2 TGP prevention [Parameter Ma39]",
+     "reset": ""
+    },
+    {
+     "code": "AL75",
+     "title": "Druckgastemperatur Kreis 1 zu hoch",
+     "original": "High discharge gas temperature circuit 1 [Parameter Ma54]",
+     "reset": ""
+    },
+    {
+     "code": "AL76",
+     "title": "Druckgastemperatur Kreis 2 zu hoch",
+     "original": "High discharge gas temperature circuit 2 [Parameter Ma54]",
+     "reset": ""
+    },
+    {
+     "code": "AL78",
+     "title": "Abtauung der Anlage nicht möglich",
+     "original": "Defrost on system not available",
+     "reset": ""
+    },
+    {
+     "code": "AL79",
+     "title": "Abtauung der Rückgewinnung nicht möglich",
+     "original": "Defrost on recovery not available",
+     "reset": ""
+    },
+    {
+     "code": "AL80",
+     "title": "Master-Platine offline",
+     "original": "Alarm Offline Master board disconnected",
+     "reset": ""
+    },
+    {
+     "code": "AL81",
+     "title": "NRP-2-Platine offline",
+     "original": "Alarm Offline NRP 2 board disconnected",
+     "reset": ""
+    },
+    {
+     "code": "AL82",
+     "title": "NRP-3-Platine offline",
+     "original": "Alarm Offline NRP 3 board disconnected",
+     "reset": ""
+    },
+    {
+     "code": "AL83",
+     "title": "NRP-4-Platine offline",
+     "original": "Alarm Offline NRP 4 board disconnected",
+     "reset": ""
+    },
+    {
+     "code": "AL84",
+     "title": "Anlagen-Eintrittstemperatur zu hoch",
+     "original": "High system inlet temperature alarm",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL85",
+     "title": "Eintrittstemperatur Rückgewinnung zu hoch",
+     "original": "Alarm high temperature - Recovery inlet",
+     "reset": "halbautomatisch"
+    },
+    {
+     "code": "AL86",
+     "title": "Zwangsabschaltung Heizen Kreis 1",
+     "original": "Heating off forcing, circuit 1",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL87",
+     "title": "Zwangsabschaltung Heizen Kreis 2",
+     "original": "Heating off forcing, circuit 2",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL88",
+     "title": "Zwangsabschaltung Kühlen Kreis 1",
+     "original": "Cooling off forcing, circuit 1",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL89",
+     "title": "Zwangsabschaltung Kühlen Kreis 2",
+     "original": "Cooling off forcing, circuit 2",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL91",
+     "title": "Strömungswächter Geothermie",
+     "original": "Geothermal flow switch alarm",
+     "reset": ""
+    },
+    {
+     "code": "AL92",
+     "title": "Frostschutz Geothermie",
+     "original": "Alarm antifreeze geo",
+     "reset": ""
+    }
+   ]
+  }
+ ]
+}

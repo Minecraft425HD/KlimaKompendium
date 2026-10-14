@@ -1,0 +1,321 @@
+{
+ "schema": 1,
+ "manufacturers": [
+  {
+   "id": "aermec",
+   "name": "Aermec",
+   "fullName": "Aermec S.p.A.",
+   "country": "Italien",
+   "location": "Bevilacqua (VR)",
+   "website": "www.aermec.com",
+   "description": "Hersteller von Kaltwassersätzen, Wärmepumpen und Klimageräten. Die hinterlegten Geräteserien arbeiten laut Handbuch mit Carel-Regler pCO5 und Bedienteil PGD1.",
+   "series": [
+    {
+     "name": "NRG 0282-0804",
+     "controller": "Carel pCO5 + PGD1",
+     "note": "Handbuch mit Installer-, Service- (Assistance) und Hersteller-Menü, BMS1/BMS2-Schnittstellen (Modbus u. a.), EVD-Ventiltreiber, Free-Cooling- und Leckage-Erkennung.",
+     "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026)"
+    },
+    {
+     "name": "NRP/NXP/CPS",
+     "controller": "Carel pCO5 + PGD1",
+     "note": "Multifunktionsgeräte mit 2- oder 4-Leiter-System. NRP: Anzeige für Ventilatoren und Abtauung; NXP: Anzeige für Geothermiepumpe (laut Handbuchkapiteln).",
+     "source": "Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025)"
+    }
+   ],
+   "tips": [
+    "Installer-Menü (Aermec NRG): Passwort 0000 laut Handbuch.",
+    "Service-(Assistance-) und Hersteller-Menü sind nur für autorisiertes Personal – Passwörter werden von Aermec nicht veröffentlicht und hier nicht geführt.",
+    "Alarme mit Reset „manuell mit Passwort“ darf nur der Aermec-Kundendienst quittieren.",
+    "Aktuelle Handbücher: www.aermec.com (QR-Code auf der letzten Handbuchseite)."
+   ]
+  },
+  {
+   "id": "euroklimat",
+   "name": "Euroklimat",
+   "fullName": "Euroklimat S.p.A.",
+   "country": "Italien",
+   "location": "",
+   "website": "www.euroklimat.it",
+   "description": "Hersteller von Kaltwassersätzen (luft- und wassergekühlt, mit Free-Cooling), Wärmepumpen, Anlagen ohne Verflüssiger, Verflüssigern und Präzisionsklimageräten; EKO-Baureihe mit R290 für Normal- und Tiefkühlung (laut Herstellerlisten).",
+   "series": [],
+   "tips": [
+    "Auf deinen Euroklimat-Anlagen sind Carel-Regler mit Carel-Bedienteilen verbaut. Zu den Euroklimat-Applikationen konnte kein verlässliches öffentliches Handbuch gefunden werden – Alarm- und Menütexte hier daher bewusst nicht hinterlegt.",
+    "Die allgemeinen Carel-Leitfäden (Tasten, pLAN-Adresse, Standardwerte, pCOWeb) gelten für alle pCO-Applikationen.",
+    "Eigene Alarmcodes der Euroklimat-Anlagen lassen sich unter Service → Störungen ergänzen (siehe README)."
+   ]
+  },
+  {
+   "id": "carel",
+   "name": "Carel",
+   "fullName": "CAREL INDUSTRIES S.p.A.",
+   "country": "Italien",
+   "location": "Brugine (PD)",
+   "website": "www.carel.com",
+   "description": "Hersteller der Regler (pCO-Familie), Bedienteile (pGD), Ventiltreiber (EVD) und Kommunikationskarten (pCOWeb). Die Applikation (Software) stammt vom Anlagenhersteller – Menüs, Alarme und Passwörter können daher je Gerät abweichen.",
+   "series": [],
+   "tips": [
+    "Wichtig: Die Standard-Passwörter hängen von der Applikation des Geräteherstellers ab. Zuerst im Gerätehandbuch nachsehen."
+   ]
+  }
+ ],
+ "guides": [
+  {
+   "id": "pgd-keys",
+   "title": "Carel PGD/pGD: Tastenfunktionen (6 Tasten)",
+   "category": "Bedienung",
+   "appliesTo": "Carel pCO mit PGD0/PGD1, Standardapplikationen",
+   "steps": [
+    "ALARM: zeigt Alarme, stummt den Summer und löscht aktive Alarme (rote LED = Alarm aktiv).",
+    "UP / DOWN: in der Cursor-Grundposition (oben links) zwischen Masken blättern; im Eingabefeld Wert erhöhen/verringern.",
+    "ENTER: Cursor von der Grundposition ins Eingabefeld; im Feld Wert bestätigen und zum nächsten Parameter springen.",
+    "PRG: Menü zur Auswahl der Parametergruppe; Zugriff mit ENTER bestätigen.",
+    "ESC: eine Ebene zurück.",
+    "PRG + ENTER: zeigt kurz die pLAN-Adresse der verbundenen Platine; bei mehreren Platinen am gemeinsamen Bedienteil wird zwischen den Geräten umgeschaltet.",
+    "ESC + ENTER (20 s halten): Maske zum Ein-/Ausschalten der Einheit (Carel Standard-Chiller-Applikation)."
+   ],
+   "notes": "Belegung gilt für die Carel-Standardapplikation; Gerätehersteller (z. B. Aermec) können Tasten anders nutzen.",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008)"
+  },
+  {
+   "id": "pgd1-aermec-keys",
+   "title": "Aermec PGD1: Tasten und Navigation",
+   "category": "Bedienung",
+   "appliesTo": "Aermec NRG, NRP/NXP/CPS (pCO5 + PGD1)",
+   "steps": [
+    "Grafikdisplay mit sechs Tasten; nach dem Einschalten ca. 60 s Startvorgang, danach Sprachauswahl (ENTER = ändern, ESC = bestätigen).",
+    "ALARM-Taste: zeigt die Liste aktiver Alarme und das Alarmlog (rote LED = aktiver Alarm). Laut NRP/NXP/CPS-Handbuch die Taste gedrückt halten, um einen manuellen Alarm zu quittieren.",
+    "PRG/Menü-Taste: Navigation zwischen den Menüs; orange LED = Winterbetrieb aktiv (2-Leiter + Brauchwasser).",
+    "ESC: zurück zum vorherigen Fenster.",
+    "UP/DOWN: nächster/voriger Parameter oder Menü; bei Eingabe Wert erhöhen/verringern.",
+    "ENTER: Menü öffnen, Parameter zur Eingabe auswählen, Eingabe bestätigen.",
+    "Das Alarmlog fasst 100 Alarme (Index 00–99, danach wird der älteste überschrieben) und lässt sich nicht löschen."
+   ],
+   "notes": "Nach Spannungsausfall startet das Gerät selbstständig mit den gespeicherten Einstellungen.",
+   "source": "Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025)"
+  },
+  {
+   "id": "aermec-menus",
+   "title": "Aermec: Menüstruktur und Passwörter",
+   "category": "Bedienung",
+   "appliesTo": "Aermec NRG / NRP / NXP / CPS",
+   "steps": [
+    "Benutzermenüs: IN/OUT (Messwerte, Zustände), ON/OFF (Ein/Aus, Betriebsart), Anlage/System bzw. Kühlen/Heizen (Sollwerte, Zeitbänder), Rückgewinnung (falls vorhanden), Uhr, Alarm.",
+    "NRG: Installer-Menü (Digitaleingänge, BMS-Konfiguration, Regelung, Pumpen …) – Passwort laut Handbuch 0000.",
+    "Assistance- (Service-) und Hersteller-Menü: nur für autorisiertes Personal, passwortgeschützt – Passwort wird nicht veröffentlicht.",
+    "NRP/NXP/CPS Assistance-Menü (Punkte A–L): Sprache, Info, Chiller/Kühlen, Rückgewinnung/Heizen, Lüftung/Geothermie, Pumpen, Betriebsstundenzähler, Handbetrieb, Zubehör, Anlagendefinition."
+   ],
+   "notes": "Änderungen im Installer-Menü können Fehlfunktionen verursachen – nur durch Installations-/Inbetriebnahmepersonal.",
+   "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026); Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025)"
+  },
+  {
+   "id": "aermec-alarm-reset",
+   "title": "Aermec: Alarmarten und Quittieren",
+   "category": "Störung",
+   "appliesTo": "Aermec NRG / NRP / NXP / CPS",
+   "steps": [
+    "Auto: Alarm verschwindet von selbst, wenn die Ursache behoben ist.",
+    "Manuell: Betrieb erst nach manuellem Quittieren (ALARM-Taste gedrückt halten).",
+    "Halbautomatisch: automatisch, wird aber manuell, wenn der Alarm zu oft auftritt (NRP: mehr als 3-mal pro Stunde; NRG: n-mal, Zähler sinkt stündlich um 1, zusätzlich Timeout).",
+    "„Manuell mit Passwort“: Reset nur durch den autorisierten Kundendienst."
+   ],
+   "notes": "Die Codeliste findest du unter Service → Störungen.",
+   "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026); Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025)"
+  },
+  {
+   "id": "plan-terminal",
+   "title": "pLAN: Adresse des Bedienteils (PGD0/PGD1) einstellen",
+   "category": "Inbetriebnahme",
+   "appliesTo": "Carel pCO mit PGD0/PGD1",
+   "steps": [
+    "Werkseinstellung des Bedienteils: Adresse 32 (sieht alle Platinen im pLAN).",
+    "Bedienteil mit Spannung versorgen.",
+    "UP + DOWN + ENTER gleichzeitig halten, bis „display address setting“ erscheint.",
+    "Mit UP/DOWN die pLAN-Adresse einstellen, mit ENTER bestätigen.",
+    "Danach erscheint die Maske „No link“. Erscheint sie nicht, UP + DOWN + ENTER erneut drücken.",
+    "Danach in „display address setting“ dreimal ENTER, in der Maske „adr Priv/Shared“ die passenden Werte setzen und mit „YES“ bestätigen."
+   ],
+   "notes": "Adressen im pLAN müssen eindeutig sein und zum Schaltplan passen.",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008)"
+  },
+  {
+   "id": "plan-pco",
+   "title": "pCO1 / pCO3: pLAN-Adresse der Platine einstellen",
+   "category": "Inbetriebnahme",
+   "appliesTo": "Carel pCO1, pCO3",
+   "steps": [
+    "pCO-Platine spannungsfrei schalten.",
+    "LCD-4x20- oder PGD0-Bedienteil mit pLAN-Adresse 0 anschließen.",
+    "Platine einschalten und dabei ALARM + UP gedrückt halten, bis die Maske „pLAN Address“ erscheint.",
+    "Mit UP/DOWN die Adresse (1, 2, 3, 4 …) einstellen und mit ENTER bestätigen.",
+    "Platine wieder spannungsfrei schalten.",
+    "Falls vorgesehen, dem externen Bedienteil seine Adresse zuweisen (siehe Leitfaden Bedienteil).",
+    "Platine wieder einschalten."
+   ],
+   "notes": "Die aktuelle Adresse zeigt PRG + ENTER (6-Tasten-Bedienteil) bzw. die Taste PRINTER (15-Tasten-Bedienteil).",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008)"
+  },
+  {
+   "id": "plan-dip",
+   "title": "pCO2, pCOI/pCOT und EVD-200: pLAN-Adresse per DIP-Schalter",
+   "category": "Inbetriebnahme",
+   "appliesTo": "Carel pCO2, pCOI/pCOT, EVD-200",
+   "steps": [
+    "Alle beteiligten Geräte spannungsfrei schalten.",
+    "Adresse binär über die DIP-Schalter an der Rückseite von pCOI/pCOT, auf der pCO2-Platine bzw. im EVD-200 einstellen.",
+    "Wertigkeit der Schalter im Handbuch des jeweiligen Geräts nachschlagen."
+   ],
+   "notes": "Die Adresse darf im pLAN nicht doppelt vorkommen.",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008)"
+  },
+  {
+   "id": "carel-15key",
+   "title": "Carel LCD-Bedienteil mit 15 Tasten",
+   "category": "Bedienung",
+   "appliesTo": "Carel pCO Standardapplikationen",
+   "steps": [
+    "MENU: zurück zur Hauptmaske M0 (Zustand, Regelfühler, Betriebsart).",
+    "WARTUNG (Maintenance): Maske A0 – Gerätezustand, Fühlerprüfung/Kalibrierung, Handbetrieb.",
+    "PRINTER: zeigt kurz die pLAN-Adresse der Platine.",
+    "EIN-/AUSGÄNGE: Maske I0 – Zustand der Ein- und Ausgänge.",
+    "UHR: Maske K0 – Uhr und Zeitbänder.",
+    "SET POINT: Maske S0 – Sollwerte innerhalb der konfigurierten Grenzen.",
+    "PROGRAM: Eingabe des Benutzerpassworts (P0), Benutzerparameter.",
+    "MENU + PROG: Eingabe des Hersteller-Passworts (Z0), Konfiguration der Geräte.",
+    "INFO: bei mehreren Platinen am gemeinsamen Bedienteil zwischen Geräten umschalten.",
+    "ROT/BLAU (Chiller + Wärmepumpe, Gerät aus): Heizen bzw. Kühlen freigeben."
+   ],
+   "notes": "Gilt für die Carel Standard-Chiller/HP-Applikation.",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008)"
+  },
+  {
+   "id": "carel-passwords",
+   "title": "Carel-Standardpasswörter (laut Handbuch)",
+   "category": "Zugang",
+   "appliesTo": "Carel Standard-Chiller/HP-Applikation, Aermec NRG",
+   "steps": [
+    "Carel Standard-Chiller/HP: Passwörter für Benutzer (P0), Wartung (A3), Uhr (K2) und Hersteller (Z0) sind ab Werk 1234 und änderbar (0–9999).",
+    "Im Handbuchkapitel „Standardwerte installieren“ wird für die Herstellermaske als Beispiel 0000 angezeigt – die Eingabemaske kann je nach Softwarestand 0000 vorbelegen. Wenn 1234 nicht passt, 0000 versuchen.",
+    "Aermec NRG: Installer-Menü 0000.",
+    "Aermec Assistance-/Hersteller-Menü: nicht veröffentlicht, nur Kundendienst."
+   ],
+   "notes": "Gerätehersteller und Anlagenbauer ändern diese Werte oft. Nur an Anlagen verwenden, für die du zuständig bist.",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008); Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026)"
+  },
+  {
+   "id": "carel-defaults",
+   "title": "Carel Standardwerte neu installieren (Werkseinstellung)",
+   "category": "Inbetriebnahme",
+   "appliesTo": "Carel Standard-Chiller/HP (pCO1/2/3)",
+   "steps": [
+    "ACHTUNG: löscht alle Einstellungen unwiderruflich – bei mehreren Platinen für jede einzeln wiederholen.",
+    "Am 15-Tasten-Bedienteil MENU + PROG gleichzeitig drücken (beim 6-Tasten-Bedienteil PRG); beide LEDs leuchten.",
+    "Herstellerpasswort mit den Pfeiltasten eingeben und ENTER drücken (Maske „Manufacturer – Type in password“).",
+    "Mit UP-Taste schnell zur Maske „Erase memory – Install global default values“ (V0).",
+    "ENTER, Cursor auf „N“, mit Pfeiltasten auf „S“ (Ja) stellen. „Please wait …“ erscheint.",
+    "Anzeige „DEFAULT STATUS“: ✓ = fertig, ? = läuft, – = keine Einheit. Nach Abschluss alle Einheiten aus- und wieder einschalten."
+   ],
+   "notes": "Beim ersten Einschalten werden die Werkswerte automatisch installiert – der Vorgang ist nur zum Zurücksetzen nötig.",
+   "source": "Carel Standard Chiller Modular HP 1/4 Generic, User manual 1.4 (Code +030221296, 09/2008)"
+  },
+  {
+   "id": "pcoweb",
+   "title": "pCOWeb: Werks-IP, Web-Zugang und Passwörter",
+   "category": "Netzwerk",
+   "appliesTo": "Carel pCOWeb (Ethernet-Karte für pCO)",
+   "steps": [
+    "„Factory bootswitch parameters“ (Taste an der Karte beim Start, siehe Handbuch): IP 172.16.0.1, Netzmaske 255.255.0.0.",
+    "PC direkt per Ethernet-Kabel anschließen, im selben Netz: 172.16.x.x mit beliebigem x.x außer 0.1.",
+    "Im Browser die IP öffnen → „Go to Administrator Area“ → Benutzer admin, Passwort fadmin.",
+    "Konfiguration → Network: IP-Adresse und drei Alias-Adressen; für DHCP „DHCP“ statt IP eintragen.",
+    "FTP/Telnet-Konten ab Werk: root / froot, httpadmin / fhttpadmin (Webseiten-Verzeichnis, FTP), carel / fcarel (nur pCO-Dienste), guest / fguest.",
+    "Der Bootswitch-Modus speichert nichts: Beim nächsten Start ohne Taste gelten wieder die vom Anwender gesetzten Werte (frisch: DHCP).",
+    "Unterstützte Protokolle: HTTP, FTP, SNMP v1/v2c, DHCP, DNS, BACnet Ethernet (ISO 8802-2/8802-3), BACnet/IP."
+   ],
+   "notes": "Handbuchstand 2005 – neuere Firmware kann abweichen. Werkspasswörter sind öffentlich bekannt: nach Inbetriebnahme ändern. Vor dem Anschluss ans Kundennetz den Netzwerkadministrator fragen.",
+   "source": "Carel pCOWeb – Ethernet interface board for pCO*, +050003238 rel. 1.0 (08.03.2005)"
+  },
+  {
+   "id": "aermec-bms",
+   "title": "Aermec NRG: BMS-/Modbus-Parameter",
+   "category": "Netzwerk",
+   "appliesTo": "Aermec NRG (Installer-Menü, Passwort 0000)",
+   "steps": [
+    "Installer-Menü → BMS1 bzw. BMS2: Protokoll, Geschwindigkeit, Stoppbits, serielle Adresse, Parität.",
+    "Protokolle: 0 CAREL (Erweiterungen), 1 MODBUS (RS485), 2 pCOWeb, 3 LON, 4 MODBUS EXT (mehrere Adressen).",
+    "Geschwindigkeit: 1200 / 2400 / 4800 / 9600 / 19200 / 38400 Baud. Parität: None, Even, Odd.",
+    "Beispielanzeige im Handbuch: MODBUS EXT, 19200 Baud, 2 Stoppbits, Adresse 1, Parität NONE (Beispiel, nicht zwingend der Werkswert).",
+    "Freigabe von Umschaltung Kühlen/Heizen und Ein/Aus per Supervisor: eigene Maske im Installer-Menü."
+   ],
+   "notes": "Gegenstelle muss exakt dieselben Parameter verwenden.",
+   "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026)"
+  },
+  {
+   "id": "evd-alarms",
+   "title": "EVD-Alarme verstehen (LOP, MOP, LowSH)",
+   "category": "Störung",
+   "appliesTo": "Carel EVD (Ventiltreiber) in Aermec NRG",
+   "steps": [
+    "LOP (Low Operating Pressure/Temperature): Verdampfungstemperatur zu niedrig.",
+    "MOP (Maximum Operating Pressure/Temperature): Verdampfungstemperatur zu hoch.",
+    "LowSH: Überhitzung zu niedrig – Gefahr von Flüssigkeitsschlag am Verdichter.",
+    "Alarme S1–S4: Fühlerfehler am Treiber (Druck- und Temperaturfühler).",
+    "Weitere: Ventilmotorfehler, EEPROM, Treiber offline, Batterie entladen, Parameterübertragung, Firmware nicht kompatibel."
+   ],
+   "notes": "Ursachen immer am Kältekreis prüfen (Überhitzung, Fühler, Ventil); die Codes AL105–AL124 stehen unter Service → Störungen.",
+   "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026)"
+  }
+ ],
+ "controllerTemplates": [
+  {
+   "id": "carel-pcoweb",
+   "label": "pCOWeb (Ethernet)",
+   "model": "Carel pCOWeb",
+   "accessType": "WEB",
+   "address": "172.16.0.1",
+   "username": "admin",
+   "passwordHint": "Werkspasswort laut Carel-Handbuch (2005): fadmin – nach Inbetriebnahme meist geändert",
+   "notes": "Werks-IP 172.16.0.1 / 255.255.0.0. Admin-Bereich über „Go to Administrator Area“. Neuere Firmware kann abweichen."
+  },
+  {
+   "id": "aermec-nrg",
+   "label": "Aermec NRG – pCO5 + PGD1",
+   "model": "Carel pCO5 / PGD1 (Aermec NRG)",
+   "accessType": "DISPLAY",
+   "address": "",
+   "username": "",
+   "passwordHint": "Installer-Menü: 0000 (laut Aermec-Handbuch). Assistance/Hersteller: nur Kundendienst",
+   "notes": "Menü INSTALLER passwortgeschützt. Alarm-Codes: Service → Störungen (Aermec NRG)."
+  },
+  {
+   "id": "aermec-nrp",
+   "label": "Aermec NRP/NXP/CPS – pCO5 + PGD1",
+   "model": "Carel pCO5 / PGD1 (Aermec NRP/NXP/CPS)",
+   "accessType": "DISPLAY",
+   "address": "",
+   "username": "",
+   "passwordHint": "Assistance-Menü passwortgeschützt (Kundendienst) – Passwort nicht veröffentlicht",
+   "notes": "Alarm-Codes: Service → Störungen (Aermec NRP/NXP/CPS)."
+  },
+  {
+   "id": "carel-standard",
+   "label": "Carel pCO – Standard-Applikation",
+   "model": "Carel pCO1/2/3 + PGD0/PGD1",
+   "accessType": "DISPLAY",
+   "address": "pLAN-Adresse: ",
+   "username": "",
+   "passwordHint": "Standard-Chiller/HP: Benutzer/Wartung/Hersteller 1234 (änderbar); Hersteller-Reset-Maske zeigt 0000",
+   "notes": "Anlagenspezifische Applikationen (z. B. Euroklimat) können abweichende Passwörter haben."
+  },
+  {
+   "id": "modbus-bms",
+   "label": "Modbus / BMS-Anschluss (RS485)",
+   "model": "Modbus RTU",
+   "accessType": "MODBUS",
+   "address": "RS485, Adresse 1, 19200 Baud, 2 Stoppbits, keine Parität",
+   "username": "",
+   "passwordHint": "",
+   "notes": "Beispielwerte aus dem Aermec-NRG-Handbuch – an der Anlage prüfen."
+  }
+ ]
+}
