@@ -98,6 +98,15 @@ fun PlantDetailScreen(
     var deleteController by rememberSaveable { mutableStateOf<Long?>(null) }
     var viewPhoto by rememberSaveable { mutableStateOf<Long?>(null) }
 
+    // Sicherheit: Passwörter nie sichtbar lassen, wenn die App den Vordergrund verlässt.
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    androidx.compose.runtime.DisposableEffect(lifecycleOwner, vm) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
+            if (event == androidx.lifecycle.Lifecycle.Event.ON_STOP) vm.hideAll()
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
     LaunchedEffect(vm) {
         vm.events.collect { e ->
             when (e) {

@@ -36,6 +36,7 @@ data class PlantsState(
     val refrigerants: List<String> = emptyList(),
     val manufacturers: List<String> = emptyList(),
     val customers: List<String> = emptyList(),
+    val controllers: List<String> = emptyList(),
 )
 
 class PlantsViewModel(c: AppContainer) : ViewModel() {
@@ -46,6 +47,7 @@ class PlantsViewModel(c: AppContainer) : ViewModel() {
         PlantsState(
             filter = f, plants = PlantSearch.filter(all, f), total = all.size,
             refrigerants = distinct { it.refrigerant }, manufacturers = distinct { it.manufacturer }, customers = distinct { it.customer },
+            controllers = all.flatMap { PlantSearch.controllerNames(it) }.distinctBy { it.lowercase() }.sortedBy { it.lowercase() },
         )
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), PlantsState())
 
@@ -53,6 +55,7 @@ class PlantsViewModel(c: AppContainer) : ViewModel() {
     fun setRefrigerant(v: String?) { filter.value = filter.value.copy(refrigerant = v) }
     fun setManufacturer(v: String?) { filter.value = filter.value.copy(manufacturer = v) }
     fun setCustomer(v: String?) { filter.value = filter.value.copy(customer = v) }
+    fun setController(v: String?) { filter.value = filter.value.copy(controller = v) }
     fun clearFilters() { filter.value = PlantFilter() }
 }
 
@@ -111,6 +114,13 @@ class PlantDetailViewModel(private val c: AppContainer, private val plantId: Lon
     fun hide(controllerId: Long) {
         hideJobs.remove(controllerId)?.cancel()
         _revealed.value = _revealed.value - controllerId
+    }
+
+    /** Verbirgt alle angezeigten Passwörter sofort (z. B. wenn die App in den Hintergrund geht). */
+    fun hideAll() {
+        hideJobs.values.forEach { it.cancel() }
+        hideJobs.clear()
+        _revealed.value = emptyMap()
     }
 
     fun copyPassword(controllerId: Long) {
