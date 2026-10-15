@@ -264,6 +264,23 @@
    ],
    "notes": "Ursachen immer am Kältekreis prüfen (Überhitzung, Fühler, Ventil); die Codes AL105–AL124 stehen unter Service → Störungen.",
    "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026)"
+  },
+  {
+   "id": "aermec-signal-codes",
+   "title": "Aermec/Carel: Fühler- und Signalkürzel entschlüsseln (SIW, SUW, SAE, SL1 …)",
+   "category": "Fühler & Signale",
+   "appliesTo": "Aermec NRG, NRP/NXP/CPS (Carel pCO5, PEC, EVD, pCOe)",
+   "steps": [
+    "Fühler (Eingänge): SIW = Wassereintrittsfühler Verdampfer · SUW = Wasseraustrittsfühler Verdampfer · SAE = Außenluftfühler · SL / SL1 = Flüssigkeitsfühler (SL1B1/SL1B2 = Lamellenfühler Kreis 1/2) · SGA = Sauggasfühler · SGP = Druckgasfühler (SGP1A = Verdichter 1, Kreis 1; SGP1B = Verdichter 2, Kreis 1; SGP2A = Verdichter 1, Kreis 2).",
+    "Druckgeber (4–20 mA): TBP = Niederdruckgeber · TAP = Hochdruckgeber; die Ziffer ist der Kältekreis (TAP1 = Hochdruck Kreis 1, TBP2 = Niederdruck Kreis 2).",
+    "Schalter/Wächter (digitale Eingänge): AP1/AP2 = Hochdruck-Pressostat Kreis 1/2 · BP1/BP2 = Niederdruck-Pressostat · FL = Strömungswächter · RCS = Phasenwächter · QM… = Motorschutzschalter (QM11 = Verdichter 1 Kreis 1) · QMT1/QMT2 = Pumpe 1/2 · QMF1 = Ventilator.",
+    "Ausgänge: CP1A/CP1B/CP1C = Verdichter 1/2/3 in Kreis 1, CP2A … in Kreis 2 · MPE1/MPE2 = Verdampferpumpe 1/2 · VIC1/VIC2 = Kreisumkehrventil · RS1/RS2 = Heizwiderstand · FAN1… = drehzahlgeregelter Ventilator · AE = Sammelalarm.",
+    "Klemmen am Regler: U1…U10 = analoge Eingänge, ID1…ID18 = digitale Eingänge, NO1…NO18 = Relaisausgänge, Y1…Y6 = analoge Ausgänge (0–10 V). Beim NRP/NXP/CPS-Handbuch heißen die Fühlereingänge B1…B10. Auf der PEC-Platine: P = Druck, T = Temperatur; beim EVD-Treiber S1…S4.",
+    "„SWI“ kommt in den Handbüchern nicht vor – gemeint ist sehr wahrscheinlich SIW (Wassereintritt). Im Zweifel die Beschriftung am Fühlerkabel bzw. im Schaltplan lesen.",
+    "Herkunft der Kürzel: Sie stammen offenbar aus dem Italienischen (Sonda = Fühler, Aria Esterna = Außenluft, Alta/Bassa Pressione = Hoch-/Niederdruck). Das ist eine Lesehilfe – die Handbücher erklären die Kürzel nur auf Englisch."
+   ],
+   "notes": "Alle Zuordnungen mit Klemme und Platine findest du unter Service → Signale. Bei anderen Gerätereihen oder Softwareständen können Kürzel und Klemmen abweichen.",
+   "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026), Kapitel 4; Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025), Kapitel 5.7/5.8"
   }
  ],
  "controllerTemplates": [

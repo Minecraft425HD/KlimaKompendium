@@ -34,6 +34,8 @@ class AppContainer(
         RefrigerantRepository(SeedParser.parseRefrigerants(readAsset("refrigerants.json")))
     }
     val faultCodes: FaultCodeRepository by lazy { FaultCodeRepository(database.referenceDao(), preferences) }
+    /** Signal-/Fühlerkürzel (SIW, TAP1 …) – statisch aus assets, im Speicher. */
+    val signals: List<de.klimakompendium.domain.model.SignalCode> by lazy { SeedParser.parseSignals(readAsset("signal_codes.json")) }
     val service: ServiceRepository by lazy { ServiceRepository(SeedParser.parseService(readAsset("service.json"))) }
     private val termsFile by lazy { SeedParser.parseTerms(readAsset("terms.json")) }
     val terms: TermRepository by lazy { TermRepository(database.termDao(), preferences, termsFile.groups.map { it.keys }) }

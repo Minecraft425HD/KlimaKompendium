@@ -64,6 +64,14 @@ class TermSearchTest {
         assertTrue(hits.any { it.term.key == "nd" })        // ND wird über seine Variante LP mitgefunden
     }
 
+    @Test fun aermecSignalTermsFoundAlsoWithTypo() {
+        assertEquals("siw", top("SIW").first())
+        assertEquals("suw", top("SUW").first())
+        assertEquals("sae", top("SAE").first())
+        assertEquals("sl1", top("SL1").first())
+        assertTrue(top("SWI", 5).contains("siw")) // Buchstabendreher
+    }
+
     @Test fun italianAbbreviationsFound() {
         assertEquals("bp", top("BP").first())
         assertEquals("ap", top("AP").first())
