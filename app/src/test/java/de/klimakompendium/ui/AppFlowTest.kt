@@ -294,3 +294,32 @@ class VariantsInRowTest {
         waitForText("= HP · AP · pc · Pd")
     }
 }
+
+/** Service → Signale: Kürzel wie SIW auflösen, auch mit Buchstabendreher. */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class SignalsFlowTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 30_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    @Test fun swiFindsSiwWithMeaning() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Service").performClick()
+        waitForText("Signale")
+        rule.onNodeWithText("Signale").performClick()
+        waitForText("Kürzel (SIW")
+        rule.onNode(hasSetTextAction()).performTextInput("SWI")
+        waitForText("Wassereintrittsfühler Verdampfer")
+        waitForText("Klemme U1")
+    }
+
+    @Test fun quickSearchShowsSignal() {
+        waitForText("KlimaKompendium")
+        rule.onNode(hasSetTextAction()).performTextInput("SUW")
+        waitForText("Begriffe & Abkürzungen")          // Ergebnisliste ist geladen
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("Signale & Fühlerkürzel"))
+        waitForText("Signale & Fühlerkürzel")
+    }
+}

@@ -7,7 +7,7 @@ plugins {
 }
 
 // Versionsangaben können im CI über -PversionName=1.2.3 -PversionCode=12 gesetzt werden.
-val appVersionName = (findProperty("versionName") as String?) ?: "1.2.3"
+val appVersionName = (findProperty("versionName") as String?) ?: "1.2.4"
 val appVersionCode = ((findProperty("versionCode") as String?) ?: "1").toInt()
 
 android {

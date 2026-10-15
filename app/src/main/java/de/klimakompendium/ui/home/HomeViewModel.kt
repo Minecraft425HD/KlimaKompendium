@@ -37,7 +37,7 @@ class HomeViewModel(private val c: AppContainer) : ViewModel() {
     val state: StateFlow<HomeState> = combine(
         search.flow, c.terms.terms, c.plants.plants, c.preferences.settings, c.faultCodes.codes,
     ) { q, terms, plants, settings, faults ->
-        val result = QuickSearch.run(q, TermIndex(terms), plants, c.refrigerants.all, faults)
+        val result = QuickSearch.run(q, TermIndex(terms), plants, c.refrigerants.all, faults, c.signals)
         HomeState(
             query = q,
             result = result.takeIf { q.isNotBlank() },

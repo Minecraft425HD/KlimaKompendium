@@ -27,7 +27,7 @@ app/src/main/java/de/klimakompendium/
   data/     db/ (Room), repo/ (Repositories + Mapper), security/ (SecretCipher), prefs/ (DataStore), seed/ (JSON-Import)
   ui/       Compose: home, terms, helper, plants, settings, nav, components, theme, util
   AppContainer.kt  manuelle Dependency-Injection;  KlimaApp.kt  Application (Seed beim Start)
-app/src/main/assets/   terms.json, refrigerants.json, fault_codes.json, service.json   (Seed-Daten)
+app/src/main/assets/   terms.json, refrigerants.json, fault_codes.json, signal_codes.json, service.json   (Seed-Daten)
 app/src/test/          Unit-Tests (JVM) + Robolectric (DB, UI-Flow)
 app/schemas/           exportierte Room-Schemas – immer mit einchecken
 tools/                 Hilfsskripte (p-T-Tabellen aus CoolProp)

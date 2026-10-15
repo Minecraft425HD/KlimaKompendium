@@ -44,6 +44,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.klimakompendium.domain.model.FaultCode
 import de.klimakompendium.domain.model.Guide
 import de.klimakompendium.domain.model.Manufacturer
+import de.klimakompendium.domain.model.SignalCode
 import de.klimakompendium.ui.components.BackTopBar
 import de.klimakompendium.ui.components.CenteredContent
 import de.klimakompendium.ui.components.EmptyState
@@ -57,7 +58,7 @@ import de.klimakompendium.ui.theme.MonoStyle
 import de.klimakompendium.ui.theme.TouchTarget
 import de.klimakompendium.ui.util.appViewModel
 
-private val TABS = listOf("faults" to "Störungen", "guides" to "Leitfäden", "makers" to "Hersteller")
+private val TABS = listOf("faults" to "Störungen", "signals" to "Signale", "guides" to "Leitfäden", "makers" to "Hersteller")
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,6 +83,7 @@ fun ServiceScreen(initialTab: String, initialQuery: String, onNewFault: () -> Un
             CenteredContent {
                 when (TABS[tab].first) {
                     "faults" -> FaultsTab(vm, onEditFault)
+                    "signals" -> SignalsTab(vm)
                     "guides" -> GuidesTab(vm)
                     else -> MakersTab(vm, onShowFaults = { name -> vm.setFaultQuery(name); vm.setFaultGroup(null); tab = 0 },
                         onShowGuides = { vm.setGuideQuery("Carel"); tab = 1 })
@@ -184,6 +186,49 @@ fun FaultEditScreen(id: Long, onBack: () -> Unit) {
                 modifier = Modifier.fillMaxWidth().heightIn(min = TouchTarget),
             ) { Text("Speichern") }
         }
+    }
+}
+
+// ----------------------------------------------------------------------------- Signale
+
+@Composable
+private fun SignalsTab(vm: ServiceViewModel) {
+    val s by vm.signals.collectAsStateWithLifecycle()
+    LazyColumn(
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 32.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        item { SearchField(vm.signalSearch.text, vm::setSignalQuery, "Kürzel (SIW, SAE, TAP1), Klemme (U1, B3) oder Text") }
+        item {
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterDropdown("Gerät / Serie", s.seriesOptions, s.series, { it }, vm::setSignalSeries)
+                FilterDropdown("Art", s.typeOptions, s.type, { it }, vm::setSignalType)
+            }
+        }
+        item { Text("${s.signals.size} von ${s.all} Signalen", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        if (s.signals.isEmpty()) item { EmptyState("Kein Signal gefunden.") }
+        items(s.signals, key = { "${it.series}|${it.board}|${it.terminal}|${it.code}|${it.title}" }) { SignalRow(it) }
+        item {
+            Text(
+                "Quelle: Aermec-Handbücher NRG 0282-0804 (Dok. 5723310_05, Kap. 4) und NRP/NXP/CPS (Dok. 4724311_03, Kap. 5.7/5.8). " +
+                    "Das NRP/NXP/CPS-Handbuch nennt nur Klemmen, keine Kürzel. Bei anderen Gerätereihen oder Softwareständen kann die Belegung abweichen.",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    }
+}
+
+@Composable
+private fun SignalRow(sig: SignalCode) {
+    KCard {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(sig.code, style = MonoStyle.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.primary)
+            Text(sig.title, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+        }
+        Text("Klemme ${sig.terminal} · ${sig.board} · ${sig.type}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
+        Text("${sig.manufacturer} ${sig.series}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (sig.original.isNotBlank()) Text("Original: ${sig.original}", Modifier.padding(top = 2.dp), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (sig.note.isNotBlank()) Text(sig.note, style = MaterialTheme.typography.bodyMedium)
     }
 }
 

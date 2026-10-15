@@ -46,6 +46,7 @@ fun HomeScreen(
     onOpenRefrigerant: (String) -> Unit,
     onOpenFault: (String) -> Unit,
     onOpenCalc: (String) -> Unit,
+    onOpenSignal: (String) -> Unit,
     onOpenSettings: () -> Unit,
 ) {
     val vm = appViewModel { HomeViewModel(it) }
@@ -75,7 +76,7 @@ fun HomeScreen(
                     )
                 }
                 if (state.query.isBlank()) idleContent(state, vm::onQuery, onOpenTerm, onOpenPlant)
-                else resultContent(state, onOpenTerm, onOpenPlant, onOpenRefrigerant, onOpenFault, onOpenCalc, vm::toggleFavorite)
+                else resultContent(state, onOpenTerm, onOpenPlant, onOpenRefrigerant, onOpenFault, onOpenCalc, onOpenSignal, vm::toggleFavorite)
             }
         }
     }
@@ -119,6 +120,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resultContent(
     onOpenRefrigerant: (String) -> Unit,
     onOpenFault: (String) -> Unit,
     onOpenCalc: (String) -> Unit,
+    onOpenSignal: (String) -> Unit,
     onFavorite: (de.klimakompendium.domain.model.Term) -> Unit,
 ) {
     val r = state.result ?: return
@@ -159,6 +161,18 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resultContent(
             KCard(onClick = { onOpenCalc(c.id) }) {
                 Text(c.name, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 Text("Benötigt: " + c.needs.joinToString(" · ") { it.label }, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+    }
+    if (r.signals.isNotEmpty()) {
+        item { SectionHeader("Signale & Fühlerkürzel") }
+        items(r.signals, key = { "sig-${it.series}-${it.board}-${it.terminal}-${it.code}" }) { s ->
+            KCard(onClick = { onOpenSignal(s.code) }) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(s.code, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                    Text(s.title, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
+                }
+                Text("${s.terminal} · ${s.board} · ${s.manufacturer} ${s.series}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
     }
