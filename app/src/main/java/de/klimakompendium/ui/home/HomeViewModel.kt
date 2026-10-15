@@ -13,7 +13,7 @@ import de.klimakompendium.domain.search.QuickResult
 import de.klimakompendium.domain.search.QuickSearch
 import de.klimakompendium.domain.search.TermIndex
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
+import de.klimakompendium.ui.util.SearchState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -31,10 +31,11 @@ data class HomeState(
 )
 
 class HomeViewModel(private val c: AppContainer) : ViewModel() {
-    private val query = MutableStateFlow("")
+    /** Suchtext synchron im Snapshot-Zustand (siehe [SearchState]); die Ergebnisse folgen asynchron. */
+    val search = SearchState()
 
     val state: StateFlow<HomeState> = combine(
-        query, c.terms.terms, c.plants.plants, c.preferences.settings, c.faultCodes.codes,
+        search.flow, c.terms.terms, c.plants.plants, c.preferences.settings, c.faultCodes.codes,
     ) { q, terms, plants, settings, faults ->
         val result = QuickSearch.run(q, TermIndex(terms), plants, c.refrigerants.all, faults)
         HomeState(
@@ -46,7 +47,7 @@ class HomeViewModel(private val c: AppContainer) : ViewModel() {
         )
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeState())
 
-    fun onQuery(q: String) { query.value = q }
+    fun onQuery(q: String) { search.text = q }
 
     fun toggleFavorite(t: Term) { viewModelScope.launch { c.terms.setFavorite(t.id, !t.isFavorite) } }
 

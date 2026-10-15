@@ -101,7 +101,7 @@ private fun FaultsTab(vm: ServiceViewModel, onEdit: (Long) -> Unit) {
         contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        item { SearchField(s.query, vm::setFaultQuery, "Code (AL33, 33) oder Text (Hochdruck, Fühler …)") }
+        item { SearchField(vm.faultSearch.text, vm::setFaultQuery, "Code (AL33, 33) oder Text (Hochdruck, Fühler …)") }
         item {
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 FilterDropdown("Gerät / Serie", s.groups, s.series, { it }, vm::setFaultGroup)
@@ -195,7 +195,7 @@ private fun GuidesTab(vm: ServiceViewModel) {
     val state by vm.guideState.collectAsStateWithLifecycle()
     var open by rememberSaveable { mutableStateOf(listOf<String>()) }
     LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        item { SearchField(state.first, vm::setGuideQuery, "z. B. pLAN, Passwort, pCOWeb, Tasten") }
+        item { SearchField(vm.guideSearch.text, vm::setGuideQuery, "z. B. pLAN, Passwort, pCOWeb, Tasten") }
         item {
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
                 FilterDropdown("Kategorie", vm.guideCategories, state.second, { it }, vm::setGuideCategory)

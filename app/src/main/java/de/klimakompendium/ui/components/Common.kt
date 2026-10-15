@@ -259,7 +259,17 @@ fun TermRow(term: Term, onClick: () -> Unit, onToggleFavorite: (() -> Unit)?) {
                     Text(term.language.name, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.secondary)
                     if (term.isCustom) Text("eigen", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.tertiary)
                 }
+                if (term.variants.isNotEmpty()) {
+                    Text(
+                        "= " + term.variants.joinToString(" · "),
+                        style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary,
+                    )
+                }
                 Text(term.fullTerm, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                Text(
+                    term.meaning, maxLines = 2, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
                 Text(
                     listOf(term.termEn, term.termIt).filter { it.isNotBlank() && it != term.fullTerm }.joinToString("  ·  "),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,

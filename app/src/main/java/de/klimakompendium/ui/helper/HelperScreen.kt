@@ -97,7 +97,7 @@ private fun ExplainTab(vm: HelperViewModel) {
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        item { SearchField(s.query, vm::setQuery, "z. B. ND, SAP, SAT, Verdampfungstemperatur") }
+        item { SearchField(vm.search.text, vm::setQuery, "z. B. ND, SAP, SAT, Verdampfungstemperatur") }
         item {
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 listOf("ND", "HD", "SAP", "SAT", "RAT", "t0", "tc", "SH", "SC").forEach { q -> SmallChip(q) { vm.setQuery(q) } }

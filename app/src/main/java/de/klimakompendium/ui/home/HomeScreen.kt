@@ -70,7 +70,7 @@ fun HomeScreen(
             ) {
                 item {
                     SearchField(
-                        value = state.query, onValueChange = vm::onQuery,
+                        value = vm.search.text, onValueChange = vm::onQuery,
                         placeholder = "ND, R32, AL33, Anlage, \"10 bar\" …",
                     )
                 }

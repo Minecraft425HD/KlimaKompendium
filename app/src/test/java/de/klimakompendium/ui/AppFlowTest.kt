@@ -1,6 +1,7 @@
 package de.klimakompendium.ui
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -205,5 +206,91 @@ class CalcFlowTest {
         waitForText("Begriffe & Abkürzungen")   // Ergebnisliste ist geladen
         scrollTo("Heißgas-Überhitzung")
         waitForText("Heißgas-Überhitzung")
+    }
+}
+
+/** Regression: Der Cursor darf beim Tippen in Suchfeldern nicht nach links springen (Zeichen landen sonst vorn). */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class SearchFieldTypingTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 30_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    /** Tippt Zeichen für Zeichen wie eine Tastatur und prüft, dass die Reihenfolge stimmt. */
+    private fun typeCharByChar(word: String) {
+        val field = rule.onNode(hasSetTextAction())
+        word.forEach { ch -> field.performTextInput(ch.toString()) }
+        field.assertTextEquals(word)
+    }
+
+    @Test fun homeSearchKeepsCursorAtEnd() {
+        waitForText("KlimaKompendium")
+        typeCharByChar("Verdampfer")
+    }
+
+    @Test fun termsSearchKeepsCursorAtEnd() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Begriffe").performClick()
+        waitForText("Abkürzung oder Begriff")
+        typeCharByChar("Niederdruck")
+    }
+
+    @Test fun plantsSearchKeepsCursorAtEnd() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Anlagen").performClick()
+        waitForText("Anlage, Kunde")
+        typeCharByChar("Kuehlhaus")
+    }
+
+    @Test fun explainSearchKeepsCursorAtEnd() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Druck/Temp").performClick()
+        waitForText("z. B. ND, SAP")
+        typeCharByChar("Verdampfung")
+    }
+
+    @Test fun serviceSearchKeepsCursorAtEnd() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Service").performClick()
+        waitForText("Code (AL33")
+        typeCharByChar("Hochdruck")
+    }
+}
+
+/** Abkürzungs-Varianten müssen direkt in der Listenzeile stehen, nicht erst in der Detailansicht. */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class VariantsInRowTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 30_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    /** Listeneinträge außerhalb des (kleinen) Testbildschirms existieren erst nach dem Scrollen. */
+    private fun scrollTo(text: String) {
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText(text, substring = true))
+    }
+
+    @Test fun pcRowShowsHdHpAp() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Begriffe").performClick()
+        waitForText("Abkürzung oder Begriff")
+        rule.onNode(hasSetTextAction()).performTextInput("Verflüssigungsdruck")
+        // Zeile des Eintrags "pc" nennt die gleichbedeutenden Abkürzungen sofort
+        waitForText("Verflüssigungsdruck")
+        scrollTo("= HD · HP · AP")
+        waitForText("= HD · HP · AP")
+    }
+
+    @Test fun hdRowShowsAllSynonyms() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Begriffe").performClick()
+        waitForText("Abkürzung oder Begriff")
+        rule.onNode(hasSetTextAction()).performTextInput("Hochdruck")
+        waitForText("Hochdruck")
+        scrollTo("= HP · AP · pc · Pd")
+        waitForText("= HP · AP · pc · Pd")
     }
 }

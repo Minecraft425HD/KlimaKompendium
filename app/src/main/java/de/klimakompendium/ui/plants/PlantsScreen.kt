@@ -49,7 +49,7 @@ fun PlantsScreen(onOpenPlant: (Long) -> Unit, onNewPlant: () -> Unit) {
                 contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 96.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                item { SearchField(s.filter.query, vm::setQuery, "Anlage, Kunde, Standort, Controller …") }
+                item { SearchField(vm.search.text, vm::setQuery, "Anlage, Kunde, Standort, Controller …") }
                 item {
                     Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         FilterDropdown("Kältemittel", s.refrigerants, s.filter.refrigerant, { it }, vm::setRefrigerant)
