@@ -10,10 +10,27 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.util.UUID
 
-class TermRepository(private val dao: TermDao, private val prefs: UserPreferences) {
-    val terms: Flow<List<Term>> = dao.observeAll().map { list -> list.map { it.toDomain() } }
+class TermRepository(
+    private val dao: TermDao,
+    private val prefs: UserPreferences,
+    /** Gruppen gleichbedeutender Begriffe (Schlüssel) aus terms.json; leer = keine Varianten. */
+    private val groups: List<List<String>> = emptyList(),
+) {
+    val terms: Flow<List<Term>> = dao.observeAll().map { list -> withVariants(list.map { it.toDomain() }) }
 
-    fun observe(id: Long): Flow<Term?> = dao.observeById(id).map { it?.toDomain() }
+    fun observe(id: Long): Flow<Term?> = terms.map { list -> list.firstOrNull { it.id == id } }
+
+    /** Ergänzt je Begriff die Abkürzungen der übrigen Gruppenmitglieder (ohne die eigene, ohne Duplikate). */
+    private fun withVariants(list: List<Term>): List<Term> {
+        if (groups.isEmpty()) return list
+        val abbrByKey = list.associate { it.key to it.abbreviation }
+        val groupOf = groups.flatMap { g -> g.map { it to g } }.toMap()
+        return list.map { t ->
+            val others = groupOf[t.key]?.filter { it != t.key }?.mapNotNull { abbrByKey[it] }.orEmpty()
+            val variants = others.filter { !it.equals(t.abbreviation, ignoreCase = true) }.distinctBy { it.lowercase() }
+            if (variants.isEmpty()) t else t.copy(variants = variants)
+        }
+    }
 
     suspend fun setFavorite(id: Long, favorite: Boolean) = dao.setFavorite(id, favorite)
 

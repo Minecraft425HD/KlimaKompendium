@@ -13,7 +13,11 @@ import kotlinx.serialization.json.Json
 
 /** DTOs für assets/terms.json und assets/refrigerants.json. */
 @Serializable
-data class TermsFile(val schema: Int = 1, val version: Int, val terms: List<TermDto>)
+data class TermsFile(val schema: Int = 1, val version: Int, val terms: List<TermDto>, val groups: List<TermGroupDto> = emptyList())
+
+/** Begriffe, die dasselbe bedeuten (z. B. ND = LP = BP). */
+@Serializable
+data class TermGroupDto(val keys: List<String>)
 
 @Serializable
 data class TermDto(

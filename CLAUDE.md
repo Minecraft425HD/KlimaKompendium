@@ -42,6 +42,8 @@ sondern über Repositories bzw. ViewModels (`AppContainer` liefert Abhängigkeit
 - Kommentare auf Deutsch, erklären das *Warum*; keine auskommentierten Codeblöcke, keine TODO-Stubs als Endstand.
 - UI: Material 3, immer dunkel; **alle antippbaren Elemente mindestens 56 dp** (`TouchTarget`); Inhalte über
   `CenteredContent`/`FormColumn` in der Breite begrenzen (Tablets/Querformat).
+- **Suchtexte** gehören in `SearchState` (Snapshot-Zustand, synchron), nie in einen asynchron abgeleiteten Flow – sonst springt der Cursor
+  im Textfeld nach links (Regressionstest `SearchFieldTypingTest`). Nur die Ergebnisse dürfen asynchron berechnet werden.
 - Zustände in ViewModels als `StateFlow`; Compose-Zustand für Formulare mit `rememberSaveable` – **außer Passwörter** (siehe unten).
 - Suche und Berechnung gehören in `domain` und müssen per Unit-Test abgedeckt sein.
 - Neue berechenbare Größe: in `domain/calc/Quantities.kt` als `Quantity` ergänzen (Erklärung, Formel, Pflicht-/optionale `Measure`s, `compute`) und in `QuantitiesTest`
@@ -62,7 +64,8 @@ sondern über Repositories bzw. ViewModels (`AppContainer` liefert Abhängigkeit
 
 ## Daten und Fachlogik
 
-- Begriffe: `terms.json` (Pflichtfelder: key, abbr, full, de/en/it, meaning). Datenversion `version` erhöhen, damit Updates
+- Begriffe: `terms.json` (Pflichtfelder: key, abbr, full, de/en/it, meaning). Gleichbedeutende Abkürzungen werden in `groups` (Schlüssellisten) gruppiert
+  und in der Liste als Varianten angezeigt; ein Begriff darf nur in einer Gruppe stehen (`SeedDataTest`). Datenversion `version` erhöhen, damit Updates
   eingespielt werden; Favoriten und eigene Begriffe bleiben erhalten. `SeedDataTest` muss grün bleiben.
 - p‑T-Daten **nie von Hand erfinden**: mit `tools/generate_pt_table.py` (CoolProp) erzeugen oder Herstellertabellen mit Quelle
   eintragen. Drücke in der JSON sind **absolut** (bar). Die Anzeige rechnet je Einstellung auf Überdruck um.

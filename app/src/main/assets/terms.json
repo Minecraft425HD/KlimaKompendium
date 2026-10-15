@@ -2627,5 +2627,93 @@
    "context": "Berechnung: Berechnen → „Motor-Schlupf“.",
    "typicalRange": ""
   }
+ ],
+ "groups": [
+  {
+   "keys": [
+    "nd",
+    "lp",
+    "bp",
+    "p0",
+    "ps"
+   ]
+  },
+  {
+   "keys": [
+    "hd",
+    "hp",
+    "ap",
+    "pc",
+    "pd"
+   ]
+  },
+  {
+   "keys": [
+    "t0",
+    "sst"
+   ]
+  },
+  {
+   "keys": [
+    "tc",
+    "sdt"
+   ]
+  },
+  {
+   "keys": [
+    "sap",
+    "dsp"
+   ]
+  },
+  {
+   "keys": [
+    "vl",
+    "lwt"
+   ]
+  },
+  {
+   "keys": [
+    "rl",
+    "ewt"
+   ]
+  },
+  {
+   "keys": [
+    "vd",
+    "comp"
+   ]
+  },
+  {
+   "keys": [
+    "fu",
+    "vfd",
+    "vsd"
+   ]
+  },
+  {
+   "keys": [
+    "rlt",
+    "ahu",
+    "uta"
+   ]
+  },
+  {
+   "keys": [
+    "wp",
+    "pdc"
+   ]
+  },
+  {
+   "keys": [
+    "gl",
+    "bms"
+   ]
+  },
+  {
+   "keys": [
+    "at",
+    "oat"
+   ]
+  }
  ]
 }

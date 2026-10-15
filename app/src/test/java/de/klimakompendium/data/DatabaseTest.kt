@@ -183,6 +183,27 @@ class DatabaseTest {
         assertEquals(n, end.size)
     }
 
+    @Test fun synonymVariantsAreAttachedToTerms() = runBlocking {
+        val file = SeedParser.parseTerms(File("src/main/assets/terms.json").readText())
+        val ctx = ApplicationProvider.getApplicationContext<Context>()
+        val repo = TermRepository(db.termDao(), UserPreferences(ctx), file.groups.map { it.keys })
+        repo.seedIfNeeded(file)
+        val all = repo.terms.first()
+        fun variants(key: String) = all.first { it.key == key }.variants
+        // Niederdruck/Hochdruck: alle gleichbedeutenden Schreibweisen stehen direkt am Eintrag
+        assertEquals(listOf("ND", "LP", "BP", "Ps"), variants("p0").also { assertTrue(it.isNotEmpty()) }.let { listOf("ND") + it.filter { v -> v in setOf("LP", "BP", "Ps") } })
+        assertTrue(variants("pc").containsAll(listOf("HD", "HP", "AP", "Pd")))
+        assertTrue(variants("hd").containsAll(listOf("HP", "AP", "pc", "Pd")))
+        assertTrue("eigene Abkürzung gehört nicht in die Varianten", "HD" !in variants("hd"))
+        assertTrue(variants("r32").isEmpty())
+        // observe(id) liefert dieselben Varianten
+        val pc = all.first { it.key == "pc" }
+        assertTrue(repo.observe(pc.id).first()!!.variants.contains("HD"))
+        // Eigene Begriffe bekommen keine Varianten
+        val id = repo.saveCustom(pc.copy(id = 0, key = "", abbreviation = "XY", fullTerm = "Eigener Begriff", variants = emptyList()))
+        assertTrue(repo.observe(id).first()!!.variants.isEmpty())
+    }
+
     @Test fun preparedFutureTablesWork() = runBlocking {
         val ref = db.referenceDao()
         ref.upsertFaultCode(FaultCodeEntity(manufacturer = "Carel", controllerModel = "pCO5", code = "AL01", title = "t", cause = "c", remedy = "r"))

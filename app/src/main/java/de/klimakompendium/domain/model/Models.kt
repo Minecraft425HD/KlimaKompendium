@@ -53,6 +53,8 @@ data class Term(
     val typicalRange: String,
     val isFavorite: Boolean = false,
     val isCustom: Boolean = false,
+    /** Andere Abkürzungen mit derselben Bedeutung (z. B. bei ND: LP, BP, p0, Ps) – aus den Gruppen in terms.json. */
+    val variants: List<String> = emptyList(),
 )
 
 enum class SaturationPhase { DEW, BUBBLE }

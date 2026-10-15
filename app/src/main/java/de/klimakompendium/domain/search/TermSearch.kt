@@ -15,6 +15,7 @@ data class TermHit(val term: Term, val score: Int)
 class TermIndex(terms: List<Term>) {
     internal class Entry(val term: Term) {
         val abbr = TextNormalizer.compact(term.abbreviation)
+        val variants: List<String> = term.variants.map { TextNormalizer.compact(it) }
         val names: List<String> = listOf(term.fullTerm, term.termDe, term.termEn, term.termIt)
             .filter { it.isNotBlank() }.map { TextNormalizer.compact(it) }.distinct()
         val words: List<String> = listOf(term.abbreviation, term.fullTerm, term.termDe, term.termEn, term.termIt)
@@ -39,6 +40,9 @@ class TermIndex(terms: List<Term>) {
         if (e.abbr == q) best = 1000
         else if (e.abbr.startsWith(q)) best = 800 - minOf(100, e.abbr.length - q.length)
         if (best >= 800) return best
+        // Variante (z. B. "LP" findet auch den Eintrag ND, der dasselbe bedeutet)
+        if (e.variants.any { it == q }) best = maxOf(best, 750)
+        else if (e.variants.any { it.startsWith(q) }) best = maxOf(best, 650)
 
         if (e.names.any { it == q }) best = maxOf(best, 700)
 
