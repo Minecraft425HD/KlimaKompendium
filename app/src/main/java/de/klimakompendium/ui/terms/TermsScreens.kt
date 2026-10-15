@@ -73,7 +73,7 @@ fun TermsScreen(onOpenTerm: (Long) -> Unit, onNewTerm: () -> Unit) {
                 contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 96.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                item { SearchField(s.query, vm::setQuery, "Abkürzung oder Begriff (DE/EN/IT)") }
+                item { SearchField(vm.search.text, vm::setQuery, "Abkürzung oder Begriff (DE/EN/IT)") }
                 item {
                     Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                         FilterDropdown("Sprache", TermLanguage.entries.toList(), s.language, { it.label }, vm::setLanguage)
@@ -123,6 +123,7 @@ fun TermDetailScreen(id: Long, onBack: () -> Unit, onEdit: (Long) -> Unit, onOpe
             KCard {
                 Text(t.abbreviation, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary)
                 Text(t.fullTerm, style = MaterialTheme.typography.titleMedium)
+                if (t.variants.isNotEmpty()) Text("Gleichbedeutend: " + t.variants.joinToString(" · "), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.secondary)
                 Text("Gebräuchlich: ${t.language.label}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             KCard {

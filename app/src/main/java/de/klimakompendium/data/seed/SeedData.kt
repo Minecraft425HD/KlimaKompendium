@@ -13,7 +13,11 @@ import kotlinx.serialization.json.Json
 
 /** DTOs für assets/terms.json und assets/refrigerants.json. */
 @Serializable
-data class TermsFile(val schema: Int = 1, val version: Int, val terms: List<TermDto>)
+data class TermsFile(val schema: Int = 1, val version: Int, val terms: List<TermDto>, val groups: List<TermGroupDto> = emptyList())
+
+/** Begriffe, die dasselbe bedeuten (z. B. ND = LP = BP). */
+@Serializable
+data class TermGroupDto(val keys: List<String>)
 
 @Serializable
 data class TermDto(
@@ -114,6 +118,13 @@ object SeedParser {
         }
     }
 
+    fun parseSignals(text: String): List<de.klimakompendium.domain.model.SignalCode> =
+        json.decodeFromString(SignalCodesFile.serializer(), text).sets.flatMap { set ->
+            set.signals.map { s ->
+                de.klimakompendium.domain.model.SignalCode(set.manufacturer, set.series, s.board, s.terminal, s.code, s.type, s.title, s.original, s.note)
+            }
+        }
+
     fun parseFaultCodes(text: String): FaultCodesFile = json.decodeFromString(FaultCodesFile.serializer(), text)
 
     fun parseService(text: String): ServiceData {
@@ -132,3 +143,19 @@ object SeedParser {
         )
     }
 }
+
+/** assets/signal_codes.json */
+@Serializable
+data class SignalCodesFile(val schema: Int = 1, val version: Int = 1, val sets: List<SignalSetDto>)
+
+@Serializable
+data class SignalSetDto(
+    val manufacturer: String, val series: String, val controller: String = "", val source: String = "",
+    val signals: List<SignalDto>,
+)
+
+@Serializable
+data class SignalDto(
+    val board: String, val terminal: String, val code: String, val type: String,
+    val title: String, val original: String = "", val note: String = "",
+)

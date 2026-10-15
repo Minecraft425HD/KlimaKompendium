@@ -28,6 +28,17 @@ class SeedDataTest {
         }
     }
 
+    @Test fun synonymGroupsAreValid() {
+        val keys = terms.terms.map { it.key }.toSet()
+        val members = terms.groups.flatMap { it.keys }
+        assertTrue("Gruppen fehlen", terms.groups.isNotEmpty())
+        for (g in terms.groups) {
+            assertTrue("Gruppe mit weniger als 2 Mitgliedern: ${g.keys}", g.keys.size >= 2)
+            for (k in g.keys) assertTrue("Unbekannter Schlüssel in Gruppe: $k", k in keys)
+        }
+        assertEquals("Ein Begriff darf nur in einer Gruppe stehen", members.size, members.toSet().size)
+    }
+
     @Test fun requiredTermsFromSpecPresent() {
         val abbr = terms.terms.map { it.abbr.lowercase() }.toSet()
         for (a in listOf("nd", "hd", "sap", "sat", "rat", "lp", "hp", "eev", "vfd", "cop", "eer", "seer", "r32", "r410a", "r290", "r134a", "r1234ze")) {

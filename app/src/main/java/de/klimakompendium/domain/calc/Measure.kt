@@ -18,7 +18,10 @@ enum class Measure(
     val hint: String,
     val units: List<UnitOption> = listOf(UnitOption(symbol, 1.0)),
     val allowNegative: Boolean = false,
+    /** Bezeichnung an Messgeräten (testo 570s), z. B. "T1"; leer = keine eigene Anzeige. */
+    val device: String = "",
 ) {
+
     SUCTION_P("Saugdruck (ND)", "bar", MeasureGroup.REFRIGERANT_CIRCUIT,
         "Manometer am Messanschluss der Saugseite (Saugventil/Schraderventil). Anzeige in Überdruck oder absolut je nach Einstellung.",
         listOf(UnitOption("bar", 1.0), UnitOption("kPa", 0.01), UnitOption("MPa", 10.0), UnitOption("psi", 0.0689475729)), allowNegative = true),
@@ -26,11 +29,15 @@ enum class Measure(
         "Manometer am Messanschluss der Hochdruckseite (Druckventil, Druckleitung). Anzeige in Überdruck oder absolut je nach Einstellung.",
         listOf(UnitOption("bar", 1.0), UnitOption("kPa", 0.01), UnitOption("MPa", 10.0), UnitOption("psi", 0.0689475729))),
     SUCTION_T("Sauggastemperatur", "°C", MeasureGroup.REFRIGERANT_CIRCUIT,
-        "Kontaktfühler am Saugrohr (oben am Rohr, gut isoliert): für die Überhitzung am Verdampferaustritt bzw. kurz vor dem Verdichter.", allowNegative = true),
+        "Kontaktfühler am Saugrohr (oben am Rohr, gut isoliert): für die Überhitzung am Verdampferaustritt bzw. kurz vor dem Verdichter. Am testo 570s gehört die Überhitzung zum Fühler T1.", allowNegative = true, device = "T1"),
     DISCHARGE_T("Druckgastemperatur (Heißgas)", "°C", MeasureGroup.REFRIGERANT_CIRCUIT,
-        "Kontaktfühler am Druckrohr, wenige Zentimeter nach dem Verdichteraustritt, isoliert.", allowNegative = true),
+        "Kontaktfühler am Druckrohr, wenige Zentimeter nach dem Verdichteraustritt, isoliert. Am testo 570s mit T1 oder T2 (Klemmfühler an die Druckleitung setzen).", allowNegative = true, device = "T1 oder T2"),
     LIQUID_T("Flüssigkeitstemperatur", "°C", MeasureGroup.REFRIGERANT_CIRCUIT,
-        "Kontaktfühler am Flüssigkeitsrohr nach Verflüssiger/Sammler bzw. vor dem Expansionsventil, isoliert.", allowNegative = true),
+        "Kontaktfühler am Flüssigkeitsrohr nach Verflüssiger/Sammler bzw. vor dem Expansionsventil, isoliert. Am testo 570s gehört die Unterkühlung zum Fühler T2.", allowNegative = true, device = "T2"),
+    SUPERHEAT_K("Überhitzung (Sollwert oder bekannt)", "K", MeasureGroup.REFRIGERANT_CIRCUIT,
+        "Sollwert am Controller/Expansionsventil oder eine zuvor ermittelte Überhitzung (typisch 5–10 K, Herstellerangabe beachten)."),
+    SUBCOOLING_K("Unterkühlung (Sollwert oder bekannt)", "K", MeasureGroup.REFRIGERANT_CIRCUIT,
+        "Vorgabe des Herstellers oder eine zuvor ermittelte Unterkühlung (typisch 3–10 K)."),
     AIR_IN_T("Lufteintritt Wärmetauscher (Rückluft)", "°C", MeasureGroup.AIR,
         "Lufttemperatur unmittelbar vor dem Verdampfer/Wärmetauscher, im Luftstrom (nicht an der Wand).", allowNegative = true),
     AIR_OUT_T("Luftaustritt Wärmetauscher (Zuluft)", "°C", MeasureGroup.AIR,
@@ -78,4 +85,8 @@ enum class Measure(
     FREQUENCY("Frequenz", "Hz", MeasureGroup.ELECTRIC, "Netzfrequenz (50 Hz) bzw. Ausgangsfrequenz des Frequenzumrichters."),
     POLES("Polzahl des Motors", "–", MeasureGroup.ELECTRIC, "Typenschild (2, 4, 6, 8 …)."),
     SPEED("Motordrehzahl", "min⁻¹", MeasureGroup.ELECTRIC, "Drehzahlmesser (optisch) oder Typenschild/Controller."),
+    ;
+
+    /** Beschriftung für die Oberfläche: Name plus die Bezeichnung am Messgerät, falls sie nicht schon im Namen steht. */
+    val display: String get() = if (device.isNotBlank() && !label.contains(device)) "$label · testo: $device" else label
 }

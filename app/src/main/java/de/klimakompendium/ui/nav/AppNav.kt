@@ -113,6 +113,7 @@ fun AppNav(nav: NavHostController = rememberNavController()) {
                     onOpenRefrigerant = { nav.navigate(Routes.helper("pt", it)) },
                     onOpenFault = { nav.navigate(Routes.service("faults", it)) },
                     onOpenCalc = { nav.navigate(Routes.calc(it)) },
+                    onOpenSignal = { nav.navigate(Routes.service("signals", it)) },
                     onOpenSettings = { nav.navigate(Routes.SETTINGS) },
                 )
             }

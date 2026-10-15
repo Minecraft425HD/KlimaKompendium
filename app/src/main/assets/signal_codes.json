@@ -1,0 +1,1588 @@
+{
+ "schema": 1,
+ "version": 1,
+ "sets": [
+  {
+   "manufacturer": "Aermec",
+   "series": "NRG 0282-0804",
+   "controller": "Carel pCO5 + PEC + EVD (+ pCOe)",
+   "source": "Aermec NRG 0282-0804, Dok. 5723310_05 (04/2026), Kapitel 4 „Input and output“",
+   "signals": [
+    {
+     "board": "pCO",
+     "terminal": "U1",
+     "code": "SIW",
+     "type": "Analoger Eingang",
+     "title": "Wassereintrittsfühler Verdampfer",
+     "original": "evaporator water inlet probe",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "U2",
+     "code": "SUW",
+     "type": "Analoger Eingang",
+     "title": "Wasseraustrittsfühler Verdampfer",
+     "original": "evaporator water outlet probe",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "U3",
+     "code": "SAE",
+     "type": "Analoger Eingang",
+     "title": "Außenluftfühler",
+     "original": "External air sensor",
+     "note": "Kühlen / Free-Cooling/Glycolfree / Rückgewinnung"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U3",
+     "code": "Fan Series",
+     "type": "Analoger Eingang",
+     "title": "Alarmkontakte Ventilatoren (Reihenschaltung)",
+     "original": "Fan Alarm Contacts Series",
+     "note": "nur Wärmepumpe"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U4",
+     "code": "SGP1A",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 1, Kreis 1",
+     "original": "Compressor 1 Circuit 1 discharge gas probe",
+     "note": "nicht bei Wärmepumpe"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U5",
+     "code": "TAP1",
+     "type": "Analoger Eingang",
+     "title": "Hochdruckgeber Kreis 1",
+     "original": "High pressure, Circuit 1 transducer",
+     "note": "nicht bei Wärmepumpe"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U6",
+     "code": "SGP1B",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 2, Kreis 1",
+     "original": "Compressor 2 Circuit 1 discharge gas probe",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "U7",
+     "code": "SL",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitsfühler",
+     "original": "Liquid probe",
+     "note": "einkreisig Kühlen / Rückgewinnung"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U7",
+     "code": "SGP2A",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 1, Kreis 2",
+     "original": "Compressor 1 Circuit 2 discharge gas probe",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U8",
+     "code": "TAP2",
+     "type": "Analoger Eingang",
+     "title": "Hochdruckgeber Kreis 2",
+     "original": "High pressure, Circuit 2 transducer",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U8",
+     "code": "SL1B1",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitsfühler Lamelle (Coil), Kreis 1",
+     "original": "Circuit 1 Coil Liquid Probe",
+     "note": "Wärmepumpe einkreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U9",
+     "code": "SGP2B",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 2, Kreis 2",
+     "original": "Compressor 2 Circuit 2 discharge gas probe",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "U9",
+     "code": "SL1B2",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitsfühler Lamelle (Coil), Kreis 2",
+     "original": "Circuit 2 Coil Liquid Probe",
+     "note": "Wärmepumpe zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "U10",
+     "code": "MULTI IN",
+     "type": "Analoger Eingang",
+     "title": "Multifunktionseingang",
+     "original": "Multi-function input",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "U10",
+     "code": "Common outlet probe",
+     "type": "Analoger Eingang",
+     "title": "Fühler gemeinsamer Austritt (Master/Slave)",
+     "original": "Common outlet probe",
+     "note": "Common output with Master/Slave"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID1",
+     "code": "FL",
+     "type": "Digitaler Eingang",
+     "title": "Strömungswächter",
+     "original": "Flow switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID2",
+     "code": "AP1",
+     "type": "Digitaler Eingang",
+     "title": "Hochdruck-Pressostat Kreis 1 / Druckgasthermostat Kreis 1",
+     "original": "Circuit 1 high pressure pressure switch / Circ.1 discharge gas thermostat",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID3",
+     "code": "QMF1",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Ventilator",
+     "original": "Thermomagnetic fan switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID4",
+     "code": "RCS",
+     "type": "Digitaler Eingang",
+     "title": "Phasenwächter",
+     "original": "Phase monitor",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID5",
+     "code": "QM11",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Verdichter 1, Kreis 1",
+     "original": "Compressor 1 circuit 1 thermomagnetic switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID6",
+     "code": "QM21",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Verdichter 2, Kreis 1",
+     "original": "Compressor 2 circuit 1 thermomagnetic switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID7",
+     "code": "BP1",
+     "type": "Digitaler Eingang",
+     "title": "Niederdruck-Pressostat Kreis 1",
+     "original": "Circuit 1 low pressure pressure switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID8",
+     "code": "AP2",
+     "type": "Digitaler Eingang",
+     "title": "Hochdruck-Pressostat Kreis 2 / Druckgasthermostat Kreis 2",
+     "original": "Circuit 2 high pressure pressure switch / Circ.2 discharge gas thermostat",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID9",
+     "code": "LD1",
+     "type": "Digitaler Eingang",
+     "title": "Leckage-Detektor",
+     "original": "Leak detector",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID10",
+     "code": "2° SET",
+     "type": "Digitaler Eingang",
+     "title": "Zweiter Sollwert",
+     "original": "Second setpoint",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID11",
+     "code": "QM12",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Verdichter 1, Kreis 2",
+     "original": "Compressor 1 circuit 2 thermomagnetic switch",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID12",
+     "code": "QM22",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Verdichter 2, Kreis 2",
+     "original": "Compressor 2 circuit 2 thermomagnetic switch",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID13",
+     "code": "BP2",
+     "type": "Digitaler Eingang",
+     "title": "Niederdruck-Pressostat Kreis 2",
+     "original": "Circuit 2 low pressure pressure switch",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID14",
+     "code": "QMT1",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Pumpe 1",
+     "original": "Pump 1 thermomagnetic switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID15",
+     "code": "QMT2",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Pumpe 2",
+     "original": "Pump 2 thermomagnetic switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID16",
+     "code": "TV",
+     "type": "Digitaler Eingang",
+     "title": "Thermoschutz Ventilatoren (Reihe)",
+     "original": "Fans thermal switch series",
+     "note": "Bei NRG 0800-2400 bezieht sich TV1 auf Kreis 1"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID17",
+     "code": "0/1",
+     "type": "Digitaler Eingang",
+     "title": "Fern-Ein/Aus (geschlossen = Ein)",
+     "original": "Remote ON/OFF contact (closed = ON)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID18",
+     "code": "EMF",
+     "type": "Digitaler Eingang",
+     "title": "Freigabe Multifunktionseingang",
+     "original": "Multifunction input enabling",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO1",
+     "code": "MPE1",
+     "type": "Digitaler Ausgang",
+     "title": "Pumpe 1 Verdampfer",
+     "original": "Pump 1 evaporator",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO2",
+     "code": "CP1A",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 1, Kreis 1",
+     "original": "Compressor 1 Circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO3",
+     "code": "CP1B",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 2, Kreis 1",
+     "original": "Compressor 2 Circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO4",
+     "code": "CP1C",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 3, Kreis 1",
+     "original": "Compressor 3 Circuit 1",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO5",
+     "code": "VR1C1",
+     "type": "Digitaler Ausgang",
+     "title": "Ablassventil Rückgewinnung, Kreis 1",
+     "original": "Circ.1 Rec. bleed-off",
+     "note": "nur Totalrückgewinnung"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO6",
+     "code": "VB1C1",
+     "type": "Digitaler Ausgang",
+     "title": "Ablassventil Verflüssiger, Kreis 1",
+     "original": "Circ.1 Cond. bleed-off",
+     "note": "nur Totalrückgewinnung"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO7",
+     "code": "MV1",
+     "type": "Digitaler Ausgang",
+     "title": "Lüftergruppe",
+     "original": "Ventilation group",
+     "note": "Bei NRG G 0800-2400: Kreis 1"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO8",
+     "code": "AE",
+     "type": "Digitaler Ausgang",
+     "title": "Sammelalarm",
+     "original": "Alarm summary",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO9",
+     "code": "CP2A",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 1, Kreis 2",
+     "original": "Compressor 1 Circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO9",
+     "code": "RS1",
+     "type": "Digitaler Ausgang",
+     "title": "Heizwiderstand 1 Lamelle",
+     "original": "Resistance 1 Coil",
+     "note": "NRG 0282-0804 Wärmepumpe"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO10",
+     "code": "CP2B",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 2, Kreis 2",
+     "original": "Compressor 2 Circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO10",
+     "code": "RS2",
+     "type": "Digitaler Ausgang",
+     "title": "Heizwiderstand 2 Lamelle",
+     "original": "Resistance 2 Coil",
+     "note": "NRG 0282-0804 Wärmepumpe"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO10",
+     "code": "CP2C",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 3, Kreis 2",
+     "original": "Compressor 3 Circuit 2",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO11",
+     "code": "CPOR",
+     "type": "Digitaler Ausgang",
+     "title": "Externe Rückgewinnungspumpe",
+     "original": "Recovery external pump",
+     "note": "Rückgewinnung"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO12",
+     "code": "VRT1",
+     "type": "Digitaler Ausgang",
+     "title": "3-Wege-Ventil Rückgewinnung",
+     "original": "Recovery 3-way valve",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO13",
+     "code": "MVP",
+     "type": "Digitaler Ausgang",
+     "title": "Periodische Belüftung",
+     "original": "Periodic ventilation",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO15",
+     "code": "VSL1A",
+     "type": "Digitaler Ausgang",
+     "title": "Ölablassventil Kreis 1 Rückgewinnung",
+     "original": "Oil bleed-off valve from Circuit 1 Recovery",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO16",
+     "code": "RRT",
+     "type": "Digitaler Ausgang",
+     "title": "Heizung Rückgewinnungs-Wärmetauscher",
+     "original": "Rec. heat exchanger heater",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO16",
+     "code": "ALF",
+     "type": "Digitaler Ausgang",
+     "title": "Alarm Strömungswächter",
+     "original": "Flow switch alarm",
+     "note": "Wärmepumpe"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO17",
+     "code": "RE",
+     "type": "Digitaler Ausgang",
+     "title": "Heizung Wärmetauscher",
+     "original": "Heater exchanger",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO18",
+     "code": "MPE2",
+     "type": "Digitaler Ausgang",
+     "title": "Pumpe 2 Verdampfer",
+     "original": "Pump 2 evaporator",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y1",
+     "code": "FAN1",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelte Ventilatoren Einheit 1",
+     "original": "Modulating fans unit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y2",
+     "code": "FAN2",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelte Ventilatoren Einheit 2",
+     "original": "Modulating fans unit 2",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y3",
+     "code": "FAN3",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelte Ventilatoren Einheit 3",
+     "original": "Modulating fans unit 3",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y6",
+     "code": "RB",
+     "type": "Analoger Ausgang",
+     "title": "Wannenheizung",
+     "original": "Tray heater",
+     "note": ""
+    },
+    {
+     "board": "PEC",
+     "terminal": "P1",
+     "code": "TBP1",
+     "type": "Analoger Eingang",
+     "title": "Niederdruckgeber Kreis 1 (4–20 mA)",
+     "original": "Low pressure transducer (circuit 1)",
+     "note": "Sanhua 4÷20 mA"
+    },
+    {
+     "board": "PEC",
+     "terminal": "P2",
+     "code": "TAP1",
+     "type": "Analoger Eingang",
+     "title": "Hochdruckgeber Kreis 1 (4–20 mA)",
+     "original": "High pressure transducer (circuit 1)",
+     "note": "Sanhua 4÷20 mA"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T2",
+     "code": "SGA1",
+     "type": "Analoger Eingang",
+     "title": "Sauggasfühler Kreis 1",
+     "original": "Intake temperature probe (circuit 1)",
+     "note": "Shibaura NTC 10K, L=3 m"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T3",
+     "code": "SAE",
+     "type": "Analoger Eingang",
+     "title": "Außenluftfühler",
+     "original": "External air sensor",
+     "note": "Shibaura NTC 10K, L=3 m"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T4",
+     "code": "SL1",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitstemperaturfühler Kreis 1",
+     "original": "Liquid temperature probe (circuit 1)",
+     "note": "Shibaura NTC 10K, L=3 m"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T5",
+     "code": "SGP1A",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 1, Kreis 1",
+     "original": "Compressor 1 Circuit 1 discharge gas probe",
+     "note": "Shibaura NTC 10K, L=4 m"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T6",
+     "code": "SGP1B",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 2, Kreis 1",
+     "original": "Compressor 2 Circuit 1 discharge gas probe",
+     "note": "Shibaura NTC 10K, L=4 m"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T7",
+     "code": "SGP1C",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 3, Kreis 1 (NRG Large)",
+     "original": "Compressor 3 Circuit 1 discharge gas probe (NRG Large)",
+     "note": "Shibaura NTC 10K, L=4 m"
+    },
+    {
+     "board": "PEC",
+     "terminal": "P3",
+     "code": "TBP2",
+     "type": "Analoger Eingang",
+     "title": "Niederdruckgeber Kreis 2 (4–20 mA)",
+     "original": "Circuit 2 Low pressure transducer",
+     "note": "Sanhua 4÷20 mA, zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "P4",
+     "code": "TAP2",
+     "type": "Analoger Eingang",
+     "title": "Hochdruckgeber Kreis 2 (4–20 mA)",
+     "original": "High pressure, Circuit 2 transducer",
+     "note": "Sanhua 4÷20 mA, zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T9",
+     "code": "SGA2",
+     "type": "Analoger Eingang",
+     "title": "Sauggasfühler Kreis 2",
+     "original": "Circuit 2 Intake temperature probe",
+     "note": "Shibaura NTC 10K, L=3 m, zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T10",
+     "code": "SL1",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitstemperaturfühler Kreis 2",
+     "original": "Circuit 2 Liquid temperature probe",
+     "note": "Shibaura NTC 10K, L=3 m, zweikreisig – im Handbuch ebenfalls „SL1“ genannt"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T11",
+     "code": "SGP2A",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 1, Kreis 2",
+     "original": "Compressor 1 Circuit 2 discharge gas probe",
+     "note": "Shibaura NTC 10K, L=4 m, zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T12",
+     "code": "SGP2B",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 2, Kreis 2",
+     "original": "Compressor 2 Circuit 2 discharge gas probe",
+     "note": "Shibaura NTC 10K, L=4 m, zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "T13",
+     "code": "SGP2C",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler Verdichter 3, Kreis 2 (NRG Large)",
+     "original": "Compressor 3 Circuit 2 discharge gas probe (NRG Large)",
+     "note": "Shibaura NTC 10K, L=4 m, zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO1",
+     "code": "VIC1",
+     "type": "Digitaler Ausgang",
+     "title": "Kreisumkehrventil Kreis 1",
+     "original": "Circuit 1 reverse cycle valve",
+     "note": ""
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO2",
+     "code": "CP1A",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 1, Kreis 1",
+     "original": "Compressor 1 Circuit 1",
+     "note": ""
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO3",
+     "code": "CP1B",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 2, Kreis 1",
+     "original": "Compressor 2 Circuit 1",
+     "note": ""
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO4",
+     "code": "CP1C",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 3, Kreis 1",
+     "original": "Compressor 3 Circuit 1",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO5",
+     "code": "VIC2",
+     "type": "Digitaler Ausgang",
+     "title": "Kreisumkehrventil Kreis 2",
+     "original": "Circuit 2 reverse cycle valve",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO6",
+     "code": "CP2A",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 1, Kreis 2",
+     "original": "Compressor 1 Circuit 2",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO7",
+     "code": "CP2B",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 2, Kreis 2",
+     "original": "Compressor 2 Circuit 2",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "PEC",
+     "terminal": "NO8",
+     "code": "CP2C",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 3, Kreis 2",
+     "original": "Compressor 3 Circuit 2",
+     "note": "NRG 0800-2400"
+    },
+    {
+     "board": "EVD",
+     "terminal": "S1",
+     "code": "TBP1",
+     "type": "Analoger Eingang",
+     "title": "Niederdruckgeber Kreis 1",
+     "original": "Circuit 1 Low pressure transducer",
+     "note": ""
+    },
+    {
+     "board": "EVD",
+     "terminal": "S2",
+     "code": "SGA1",
+     "type": "Analoger Eingang",
+     "title": "Sauggasfühler Kreis 1",
+     "original": "Circ. 1 intake temperature probe",
+     "note": ""
+    },
+    {
+     "board": "EVD",
+     "terminal": "S3",
+     "code": "TBP2",
+     "type": "Analoger Eingang",
+     "title": "Niederdruckgeber Kreis 2",
+     "original": "Circuit 2 Low pressure transducer",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "EVD",
+     "terminal": "S4",
+     "code": "SGA2",
+     "type": "Analoger Eingang",
+     "title": "Sauggasfühler Kreis 2",
+     "original": "Circ. 2 intake temperature probe",
+     "note": "zweikreisig"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "B1",
+     "code": "SFC",
+     "type": "Analoger Eingang",
+     "title": "Free-Cooling-Eintrittsfühler",
+     "original": "Free cooling inlet probe",
+     "note": "Free-Cooling und Glycolfree"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "B2",
+     "code": "SFC2",
+     "type": "Analoger Eingang",
+     "title": "Free-Cooling-Austrittsfühler",
+     "original": "Free cooling outlet probe",
+     "note": "nur Glycolfree"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "B3",
+     "code": "SRU",
+     "type": "Analoger Eingang",
+     "title": "Fühler Zwischenverdampfer",
+     "original": "Intermediate evaporator probe",
+     "note": "nur Glycolfree"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "NO1",
+     "code": "V3V",
+     "type": "Digitaler Ausgang",
+     "title": "3-Wege-Ventil Free-Cooling",
+     "original": "Free cooling 3-way valve",
+     "note": "nur Free-Cooling"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "ID1",
+     "code": "RS2",
+     "type": "Digitaler Eingang",
+     "title": "Strömungswächter Glycolfree-Seite",
+     "original": "Flow switch Glycol Free side",
+     "note": "nur Glycolfree"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "ID2",
+     "code": "MTP",
+     "type": "Digitaler Eingang",
+     "title": "Thermoschutz Glycolfree-Pumpe",
+     "original": "Glycol Free pump thermal",
+     "note": "nur Glycolfree"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "NO1",
+     "code": "MPC",
+     "type": "Digitaler Ausgang",
+     "title": "Pumpe Glycolfree-Seite",
+     "original": "Glycol Free Side pump",
+     "note": "nur Glycolfree"
+    },
+    {
+     "board": "pCOe",
+     "terminal": "NO2",
+     "code": "RS2",
+     "type": "Digitaler Ausgang",
+     "title": "Heizung Glycolfree-Seite",
+     "original": "Glycol Free Side Heater",
+     "note": "nur Glycolfree – im Handbuch trägt RS2 auch den Strömungswächter (ID1)"
+    }
+   ]
+  },
+  {
+   "manufacturer": "Aermec",
+   "series": "NRP/NXP/CPS",
+   "controller": "Carel pCO5 (+ µPC)",
+   "source": "Aermec NRP/NXP/CPS, Dok. 4724311_03 (10/2025), Kapitel 5.7/5.8 „Inputs/outputs list“",
+   "signals": [
+    {
+     "board": "pCO",
+     "terminal": "NO1",
+     "code": "NO1",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 1, Kreis 1 (CC1)",
+     "original": "CP1 (compressor) circuit 1 (CC1)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO2",
+     "code": "NO2",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 2, Kreis 1 (CC1A)",
+     "original": "CP2 (compressor) circuit 1 (CC1A)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO3",
+     "code": "NO3",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 1, Kreis 2 (CC2)",
+     "original": "CP1 (compressor) circuit 2 (CC2)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO4",
+     "code": "NO4",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 2, Kreis 2 (CC2A)",
+     "original": "CP2 (compressor) circuit 2 (CC2A)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO5",
+     "code": "NO5",
+     "type": "Digitaler Ausgang",
+     "title": "VS1 Flüssigkeits-Magnetventil, Kreis 1",
+     "original": "VS1 (liquid interception solenoid valve) circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO6",
+     "code": "NO6",
+     "type": "Digitaler Ausgang",
+     "title": "VS2 Flüssigkeits-Magnetventil, Kreis 1",
+     "original": "VS2 (liquid interception solenoid valve) circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO7",
+     "code": "NO7",
+     "type": "Digitaler Ausgang",
+     "title": "Pumpe 1 Verdampfer",
+     "original": "Pump 1 evaporator",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO8",
+     "code": "NO8",
+     "type": "Digitaler Ausgang",
+     "title": "Sammelalarm (schwerer Alarm)",
+     "original": "Serious alarm",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO9",
+     "code": "NO9",
+     "type": "Digitaler Ausgang",
+     "title": "Pumpe 2 Verdampfer",
+     "original": "Pump 2 evaporator",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO10",
+     "code": "NO10",
+     "type": "Digitaler Ausgang",
+     "title": "Verflüssigerventilator 1",
+     "original": "Condenser fan 1",
+     "note": "NRP"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO10",
+     "code": "NO10",
+     "type": "Digitaler Ausgang",
+     "title": "Geothermiepumpe",
+     "original": "Geothermal pump",
+     "note": "NXP"
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO11",
+     "code": "NO11",
+     "type": "Digitaler Ausgang",
+     "title": "Verflüssigerventilator 2",
+     "original": "Condenser fan 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO12",
+     "code": "NO12",
+     "type": "Digitaler Ausgang",
+     "title": "VIC1 Kreisumkehrventil",
+     "original": "VIC1 (cycle reversing valve)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO13",
+     "code": "NO13",
+     "type": "Digitaler Ausgang",
+     "title": "VIR1 Umkehrventil Rückgewinnung",
+     "original": "VIR1 (recovery reversing valve)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO14",
+     "code": "NO14",
+     "type": "Digitaler Ausgang",
+     "title": "VIC2 Kreisumkehrventil",
+     "original": "VIC2 (cycle reversing valve)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO15",
+     "code": "NO15",
+     "type": "Digitaler Ausgang",
+     "title": "VIR2 Umkehrventil Rückgewinnung",
+     "original": "VIR2 (recovery reversing valve)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO16",
+     "code": "NO16",
+     "type": "Digitaler Ausgang",
+     "title": "Frostschutz-Heizwiderstand",
+     "original": "Anti-freeze resistance",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO17",
+     "code": "NO17",
+     "type": "Digitaler Ausgang",
+     "title": "VS1 Flüssigkeits-Magnetventil, Kreis 2",
+     "original": "VS1 (liquid interception solenoid valve) circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "NO18",
+     "code": "NO18",
+     "type": "Digitaler Ausgang",
+     "title": "VS2 Flüssigkeits-Magnetventil, Kreis 2",
+     "original": "VS2 (liquid interception solenoid valve) circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID1",
+     "code": "ID1",
+     "type": "Digitaler Eingang",
+     "title": "Hochdruck Kreis 1",
+     "original": "High pressure circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID2",
+     "code": "ID2",
+     "type": "Digitaler Eingang",
+     "title": "Niederdruck Kreis 1",
+     "original": "Low pressure circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID3",
+     "code": "ID3",
+     "type": "Digitaler Eingang",
+     "title": "Fern-Ein/Aus",
+     "original": "Remote On-Off",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID4",
+     "code": "ID4",
+     "type": "Digitaler Eingang",
+     "title": "Fern Heizen/Kühlen",
+     "original": "Remote heating/cooling",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID5",
+     "code": "ID5",
+     "type": "Digitaler Eingang",
+     "title": "Strömungswächter Verdampfer",
+     "original": "Evaporator flow switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID6",
+     "code": "ID6",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdichter 1, Kreis 1 (MT1)",
+     "original": "Circuit 1 circuit breaker CP1 (MT1)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID7",
+     "code": "ID7",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdichter 2, Kreis 1 (MT1A)",
+     "original": "Circuit 1 circuit breaker CP2 (MT1A)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID8",
+     "code": "ID8",
+     "type": "Digitaler Eingang",
+     "title": "Phasenwächter",
+     "original": "Phase monitor alarm",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID9",
+     "code": "ID9",
+     "type": "Digitaler Eingang",
+     "title": "Hochdruck Kreis 2",
+     "original": "High pressure circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID10",
+     "code": "ID10",
+     "type": "Digitaler Eingang",
+     "title": "Niederdruck Kreis 2",
+     "original": "Low pressure circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID11",
+     "code": "ID11",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdichter 1, Kreis 2 (MT2)",
+     "original": "Circuit 2 circuit breaker CP1 (MT2)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID12",
+     "code": "ID12",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdichter 2, Kreis 2 (MT2A)",
+     "original": "Circuit 2 circuit breaker CP2 (MT2A)",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID13",
+     "code": "ID13",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdampferpumpe 1",
+     "original": "Evaporative pump 1 circuit breaker",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID14",
+     "code": "ID14",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdampferpumpe 2",
+     "original": "Evaporative pump 2 circuit breaker",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID15",
+     "code": "ID15",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Ventilator 1",
+     "original": "Fan 1 circuit breaker",
+     "note": "NRP"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID15",
+     "code": "ID15",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Geothermiepumpe",
+     "original": "Circuit breaker of geothermal pump",
+     "note": "NXP"
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID16",
+     "code": "ID16",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Ventilator 2",
+     "original": "Fan 2 circuit breaker",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID17",
+     "code": "ID17",
+     "type": "Digitaler Eingang",
+     "title": "Strömungswächter Geothermie",
+     "original": "Geothermal flow switch",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "ID18",
+     "code": "ID18",
+     "type": "Digitaler Eingang",
+     "title": "Freigabe Multifunktionseingang",
+     "original": "Multifunction input enabling",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y2",
+     "code": "Y2",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelte Verdampferpumpe (0–10 V)",
+     "original": "Evaporator modulating pump",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y3",
+     "code": "Y3",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelter Ventilator 1 (0–10 V)",
+     "original": "Modulating 1 fan",
+     "note": "NRP"
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y3",
+     "code": "Y3",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelte Geothermiepumpe (0–10 V)",
+     "original": "Geothermal modulating pump",
+     "note": "NXP"
+    },
+    {
+     "board": "pCO",
+     "terminal": "Y4",
+     "code": "Y4",
+     "type": "Analoger Ausgang",
+     "title": "Drehzahlgeregelter Ventilator 2 (0–10 V)",
+     "original": "Modulating 2 fan",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B1",
+     "code": "B1",
+     "type": "Analoger Eingang",
+     "title": "Hochdruck Kreis 1",
+     "original": "High pressure circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B2",
+     "code": "B2",
+     "type": "Analoger Eingang",
+     "title": "Niederdruck Kreis 1",
+     "original": "Low pressure circuit 1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B3",
+     "code": "B3",
+     "type": "Analoger Eingang",
+     "title": "Wasseraustrittstemperatur Verdampfer",
+     "original": "Evaporator water outlet temperature",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B4",
+     "code": "B4",
+     "type": "Analoger Eingang",
+     "title": "Wassereintrittstemperatur Verdampfer",
+     "original": "Evaporator water inlet temperature",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B5",
+     "code": "B5",
+     "type": "Analoger Eingang",
+     "title": "Druckgastemperatur Kreis 1 (PT1000)",
+     "original": "Pressing line gas temperature (PT1000) Circuit1",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B6",
+     "code": "B6",
+     "type": "Analoger Eingang",
+     "title": "Hochdruck Kreis 2",
+     "original": "High pressure circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B7",
+     "code": "B7",
+     "type": "Analoger Eingang",
+     "title": "Niederdruck Kreis 2",
+     "original": "Low pressure circuit 2",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B8",
+     "code": "B8",
+     "type": "Analoger Eingang",
+     "title": "Multifunktionseingang",
+     "original": "Multi-function input",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B9",
+     "code": "B9",
+     "type": "Analoger Eingang",
+     "title": "Außenlufttemperatur",
+     "original": "External air temperature",
+     "note": ""
+    },
+    {
+     "board": "pCO",
+     "terminal": "B10",
+     "code": "B10",
+     "type": "Analoger Eingang",
+     "title": "Druckgastemperatur Kreis 2 (PT1000)",
+     "original": "Pressing line gas temperature (PT1000) Circuit2",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO1",
+     "code": "NO1",
+     "type": "Digitaler Ausgang",
+     "title": "Rückgewinnungspumpe 1",
+     "original": "Recovery pump 1",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO2",
+     "code": "NO2",
+     "type": "Digitaler Ausgang",
+     "title": "Rückgewinnungspumpe 2",
+     "original": "Recovery pump 2",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO3",
+     "code": "NO3",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 3, Kreis 1 (CC1B)",
+     "original": "CP3 circuit 1 (CC1B)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO4",
+     "code": "NO4",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter 3, Kreis 2 (CC2B)",
+     "original": "CP3 circuit 2 (CC2B)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO5",
+     "code": "NO5",
+     "type": "Digitaler Ausgang",
+     "title": "VS-R Magnetventil Rückgewinnung, Kreis 1",
+     "original": "VS-R (recovery solenoid valve) circuit 1",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO6",
+     "code": "NO6",
+     "type": "Digitaler Ausgang",
+     "title": "VS-R Magnetventil Rückgewinnung, Kreis 2",
+     "original": "VS-R (recovery solenoid valve) circuit 2",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO7",
+     "code": "NO7",
+     "type": "Digitaler Ausgang",
+     "title": "VS-B Magnetventil Register, Kreis 1",
+     "original": "VS-B (battery solenoid valve) circuit 1",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO8",
+     "code": "NO8",
+     "type": "Digitaler Ausgang",
+     "title": "VS-B Magnetventil Register, Kreis 2",
+     "original": "VS-B (battery solenoid valve) circuit 2",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO9",
+     "code": "NO9",
+     "type": "Digitaler Ausgang",
+     "title": "VS-E Magnetventil Verdampfer, Kreis 1",
+     "original": "VS-E (evaporator solenoid valve) circuit 1",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO10",
+     "code": "NO10",
+     "type": "Digitaler Ausgang",
+     "title": "VS-E Magnetventil Verdampfer, Kreis 2",
+     "original": "VS-E (evaporator solenoid valve) circuit 2",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO11",
+     "code": "NO11",
+     "type": "Digitaler Ausgang",
+     "title": "VBY Kreis 1",
+     "original": "VBY circuit1",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "NO12",
+     "code": "NO12",
+     "type": "Digitaler Ausgang",
+     "title": "VBY Kreis 2",
+     "original": "VBY circuit2",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID1",
+     "code": "ID1",
+     "type": "Digitaler Eingang",
+     "title": "Strömungswächter Rückgewinnung",
+     "original": "Recovery flow switch",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID2",
+     "code": "ID2",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutz Pumpe 1 Rückgewinnung",
+     "original": "Thermomagnetic switch on pump 1 - recovery",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID3",
+     "code": "ID3",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutz Pumpe 2 Rückgewinnung",
+     "original": "Thermomagnetic switch on pump 2 - recovery",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID4",
+     "code": "ID4",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdichter 3, Kreis 1 (MT1B)",
+     "original": "Circuit 1 circuit breaker CP3 (MT1B)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID5",
+     "code": "ID5",
+     "type": "Digitaler Eingang",
+     "title": "Leitungsschutz Verdichter 3, Kreis 2 (MT2B)",
+     "original": "Circuit 2 circuit breaker CP3 (MT2B)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID6",
+     "code": "ID6",
+     "type": "Digitaler Eingang",
+     "title": "Fern-Ein/Aus Brauchwarmwasser / Warmwasser",
+     "original": "On/Off remote D.H.W. /Hot water",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "ID7",
+     "code": "ID7",
+     "type": "Digitaler Eingang",
+     "title": "Freigabe nach Sollwert Brauchwarmwasser",
+     "original": "Qualify according to setpoint D.H.W.",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B1",
+     "code": "B1",
+     "type": "Analoger Eingang",
+     "title": "Rückgewinnung Wassereintrittstemperatur",
+     "original": "Recovery inlet water temperature",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B2",
+     "code": "B2",
+     "type": "Analoger Eingang",
+     "title": "Rückgewinnung 1 Wasseraustrittstemperatur",
+     "original": "Recovery 1 outlet water temperature",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B3",
+     "code": "B3",
+     "type": "Analoger Eingang",
+     "title": "Gemeinsame Wasseraustrittstemperatur Verdampfer (Master/Slave)",
+     "original": "Evaporator common outlet water temperature (Master/Slave)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B4",
+     "code": "B4",
+     "type": "Analoger Eingang",
+     "title": "Gemeinsame Wasseraustrittstemperatur Rückgewinnung (Master/Slave)",
+     "original": "Recovery common outlet water temperature (Master/Slave)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B5",
+     "code": "B5",
+     "type": "Analoger Eingang",
+     "title": "Temperatur Brauchwarmwasserspeicher (optional)",
+     "original": "DHW storage tank temperature (optional)",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B6",
+     "code": "B6",
+     "type": "Analoger Eingang",
+     "title": "Rückgewinnung 2 Wasseraustrittstemperatur",
+     "original": "Recovery 2 outlet water temperature",
+     "note": ""
+    },
+    {
+     "board": "µPC",
+     "terminal": "B7",
+     "code": "B7",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitstemperatur (Abtauende) Kreis 1",
+     "original": "Liquid temperature (defrost end) Circuit 1",
+     "note": "NRP"
+    },
+    {
+     "board": "µPC",
+     "terminal": "B7",
+     "code": "B7",
+     "type": "Analoger Eingang",
+     "title": "Geothermie-Eintrittstemperatur (Abtauende) Kreis 1",
+     "original": "Geothermal's input water temperature (end of defrosting) Circuit 1",
+     "note": "NXP"
+    },
+    {
+     "board": "µPC",
+     "terminal": "B10",
+     "code": "B10",
+     "type": "Analoger Eingang",
+     "title": "Flüssigkeitstemperatur (Abtauende) Kreis 2",
+     "original": "Liquid temperature (defrost end) Circuit 2",
+     "note": "NRP"
+    },
+    {
+     "board": "µPC",
+     "terminal": "B10",
+     "code": "B10",
+     "type": "Analoger Eingang",
+     "title": "Geothermie-Austrittstemperatur",
+     "original": "Geothermal's output water temperature",
+     "note": "NXP"
+    }
+   ]
+  }
+ ]
+}

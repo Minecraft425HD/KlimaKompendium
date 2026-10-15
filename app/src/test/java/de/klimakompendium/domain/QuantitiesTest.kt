@@ -52,6 +52,30 @@ class QuantitiesTest {
         assertEquals(5.0, value(sc, "Unterkühlung"), 0.1)
     }
 
+    @Test fun suctionGasTemperatureFromPressureAndSuperheat() {
+        val r = ref("R410A")
+        val p5 = Saturation.pressureAbsBar(r, 5.0, SaturationPhase.DEW)!!
+        val o = run("suction_t", Measure.SUCTION_P to p5, Measure.SUPERHEAT_K to 7.0, r = r)
+        assertEquals(12.0, value(o, "Sauggastemperatur"), 0.1)
+        // Gegenprobe: mit dem Ergebnis ergibt die Überhitzungs-Rechnung wieder 7 K
+        val back = run("superheat", Measure.SUCTION_P to p5, Measure.SUCTION_T to value(o, "Sauggastemperatur"), r = r)
+        assertEquals(7.0, value(back, "Überhitzung"), 0.1)
+        assertTrue(run("suction_t", Measure.SUCTION_P to 500.0, Measure.SUPERHEAT_K to 7.0, r = r) is CalcOutcome.Error)
+    }
+
+    @Test fun liquidTemperatureAndInversePressures() {
+        val r = ref("R407C")
+        val pb40 = Saturation.pressureAbsBar(r, 40.0, SaturationPhase.BUBBLE)!!
+        assertEquals(35.0, value(run("liquid_t", Measure.DISCHARGE_P to pb40, Measure.SUBCOOLING_K to 5.0, r = r), "Flüssigkeitstemperatur"), 0.1)
+        // Saugdruck aus Sauggastemperatur 12 °C und Überhitzung 7 K → t0 = 5 °C → Druck der Taulinie, im Bezug Überdruck
+        val p5 = Saturation.pressureAbsBar(r, 5.0, SaturationPhase.DEW)!!
+        val sp = run("suction_p", Measure.SUCTION_T to 12.0, Measure.SUPERHEAT_K to 7.0, r = r, p = PressureReference.GAUGE)
+        assertEquals(p5 - 1.01325, value(sp, "Saugdruck"), 0.02)
+        val hp = run("discharge_p", Measure.LIQUID_T to 35.0, Measure.SUBCOOLING_K to 5.0, r = r, p = PressureReference.ABSOLUTE)
+        assertEquals(pb40, value(hp, "Hochdruck"), 0.02)
+        assertTrue(run("suction_p", Measure.SUCTION_T to 300.0, Measure.SUPERHEAT_K to 7.0, r = r) is CalcOutcome.Error)
+    }
+
     @Test fun gaugeReferenceIsConverted() {
         val r = ref("R32")
         val pAbs = Saturation.pressureAbsBar(r, 0.0, SaturationPhase.DEW)!!
@@ -163,6 +187,7 @@ class QuantitiesTest {
         assertEquals("discharge", QuantitySearch.search("heissgas").first().id)
         assertEquals("superheat", QuantitySearch.search("Überhitzung").first().id)
         assertEquals("subcooling", QuantitySearch.search("unterkühlung").first().id)
+        assertEquals("suction_t", QuantitySearch.search("Sauggastemperatur").first().id)
         assertEquals("pi", QuantitySearch.search("Verdichtungsverhältnis").first().id)
         assertTrue(QuantitySearch.search("ND").isEmpty() || QuantitySearch.search("ND").size < 6)
         assertTrue(QuantitySearch.search("qqqqq").isEmpty())

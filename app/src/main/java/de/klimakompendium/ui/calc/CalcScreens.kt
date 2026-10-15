@@ -85,7 +85,7 @@ fun CalcTab(onOpen: (String) -> Unit) {
                             FilterChip(
                                 selected = m in selected,
                                 onClick = { selectedNames = if (m in selected) selectedNames - m.name else selectedNames + m.name },
-                                label = { Text(m.label) }, modifier = Modifier.heightIn(min = 48.dp),
+                                label = { Text(m.display) }, modifier = Modifier.heightIn(min = 48.dp),
                             )
                         }
                     }
@@ -130,10 +130,11 @@ private fun QuantityCard(q: Quantity, missing: List<Measure>, onOpen: (String) -
         Text(q.category.label.uppercase(), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.secondary)
         Text(q.name, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Text(q.summary, style = MaterialTheme.typography.bodyMedium)
-        Text("Benötigt: " + q.needs.joinToString(" · ") { it.label }, Modifier.padding(top = 4.dp),
+        if (q.device.isNotBlank()) Text("Am testo 570s: ${q.device}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.tertiary)
+        Text("Benötigt: " + q.needs.joinToString(" · ") { it.display }, Modifier.padding(top = 4.dp),
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (missing.isNotEmpty()) {
-            Text("Es fehlt: " + missing.joinToString(" · ") { it.label }, style = MaterialTheme.typography.bodyMedium,
+            Text("Es fehlt: " + missing.joinToString(" · ") { it.display }, style = MaterialTheme.typography.bodyMedium,
                 color = WarnColor, fontWeight = FontWeight.Bold)
         }
     }
@@ -142,7 +143,7 @@ private fun QuantityCard(q: Quantity, missing: List<Measure>, onOpen: (String) -
 @Composable
 private fun MeasureCard(m: Measure) {
     KCard {
-        Text("${m.label}  (${m.symbol})", style = MaterialTheme.typography.titleMedium)
+        Text("${m.display}  (${m.symbol})", style = MaterialTheme.typography.titleMedium)
         Text(m.hint, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         val users = Quantities.usedBy(m)
         if (users.isNotEmpty()) {
@@ -171,12 +172,13 @@ fun CalcScreen(id: String, onBack: () -> Unit) {
                 Text(q.summary, style = MaterialTheme.typography.bodyLarge)
                 Text("Was sagt der Wert?", Modifier.padding(top = 10.dp), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 Text(q.interpretation, style = MaterialTheme.typography.bodyLarge)
+                if (q.device.isNotBlank()) Text("Am Messgerät testo 570s: ${q.device}", Modifier.padding(top = 10.dp), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.tertiary)
                 Text("Formel", Modifier.padding(top = 10.dp), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
                 Text(q.formula, style = MonoStyle)
             }
             KCard {
                 Text("Benötigte Messwerte", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-                q.needs.forEach { m -> Text("• ${m.label} (${m.symbol}): ${m.hint}", Modifier.padding(top = 4.dp), style = MaterialTheme.typography.bodyMedium) }
+                q.needs.forEach { m -> Text("• ${m.display} (${m.symbol}): ${m.hint}", Modifier.padding(top = 4.dp), style = MaterialTheme.typography.bodyMedium) }
                 if (q.optional.isNotEmpty()) {
                     Text("Optional, ergänzt das Ergebnis", Modifier.padding(top = 8.dp), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.secondary)
                     q.optional.forEach { m -> Text("• ${m.label} (${m.symbol})", Modifier.padding(top = 2.dp), style = MaterialTheme.typography.bodyMedium) }
@@ -203,7 +205,7 @@ fun CalcScreen(id: String, onBack: () -> Unit) {
                 val unit = m.units[idx.coerceIn(0, m.units.lastIndex)]
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.Top) {
                     Column(Modifier.weight(1f)) {
-                        DecimalField(m.label + if (optional) " (optional)" else "", raw[m.name] ?: "",
+                        DecimalField(m.display + if (optional) " (optional)" else "", raw[m.name] ?: "",
                             { v -> raw = HashMap(raw).also { it[m.name] = v } }, suffix = unit.symbol)
                         Text(m.hint, Modifier.padding(start = 4.dp, top = 2.dp), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
@@ -222,7 +224,7 @@ fun CalcScreen(id: String, onBack: () -> Unit) {
             val missing = q.needs.filter { parsed[it] == null }
             SectionHeader("Ergebnis")
             if (missing.isNotEmpty()) {
-                Text("Noch benötigt: " + missing.joinToString(", ") { it.label }, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyLarge)
+                Text("Noch benötigt: " + missing.joinToString(", ") { it.display }, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyLarge)
             } else {
                 val values = parsed.filterValues { it != null }.mapValues { it.value!! }
                 val negativeProblem = values.entries.firstOrNull { (m, v) -> v < 0 && !m.allowNegative }

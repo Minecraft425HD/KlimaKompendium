@@ -34,8 +34,11 @@ class AppContainer(
         RefrigerantRepository(SeedParser.parseRefrigerants(readAsset("refrigerants.json")))
     }
     val faultCodes: FaultCodeRepository by lazy { FaultCodeRepository(database.referenceDao(), preferences) }
+    /** Signal-/Fühlerkürzel (SIW, TAP1 …) – statisch aus assets, im Speicher. */
+    val signals: List<de.klimakompendium.domain.model.SignalCode> by lazy { SeedParser.parseSignals(readAsset("signal_codes.json")) }
     val service: ServiceRepository by lazy { ServiceRepository(SeedParser.parseService(readAsset("service.json"))) }
-    val terms: TermRepository by lazy { TermRepository(database.termDao(), preferences) }
+    private val termsFile by lazy { SeedParser.parseTerms(readAsset("terms.json")) }
+    val terms: TermRepository by lazy { TermRepository(database.termDao(), preferences, termsFile.groups.map { it.keys }) }
     val plants: PlantRepository by lazy {
         PlantRepository(database.plantDao(), cipher, FilePhotoStore(appContext))
     }
@@ -43,7 +46,7 @@ class AppContainer(
     /** Spielt Begriffe und Störungscodes beim ersten Start bzw. nach App-Updates ein. */
     fun seedAsync() {
         appScope.launch(Dispatchers.IO) {
-            terms.seedIfNeeded(SeedParser.parseTerms(readAsset("terms.json")))
+            terms.seedIfNeeded(termsFile)
             faultCodes.seedIfNeeded(SeedParser.parseFaultCodes(readAsset("fault_codes.json")))
         }
     }

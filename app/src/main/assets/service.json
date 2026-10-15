@@ -264,6 +264,42 @@
    ],
    "notes": "Ursachen immer am Kältekreis prüfen (Überhitzung, Fühler, Ventil); die Codes AL105–AL124 stehen unter Service → Störungen.",
    "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026)"
+  },
+  {
+   "id": "aermec-signal-codes",
+   "title": "Aermec/Carel: Fühler- und Signalkürzel entschlüsseln (SIW, SUW, SAE, SL1 …)",
+   "category": "Fühler & Signale",
+   "appliesTo": "Aermec NRG, NRP/NXP/CPS (Carel pCO5, PEC, EVD, pCOe)",
+   "steps": [
+    "Fühler (Eingänge): SIW = Wassereintrittsfühler Verdampfer · SUW = Wasseraustrittsfühler Verdampfer · SAE = Außenluftfühler · SL / SL1 = Flüssigkeitsfühler (SL1B1/SL1B2 = Lamellenfühler Kreis 1/2) · SGA = Sauggasfühler · SGP = Druckgasfühler (SGP1A = Verdichter 1, Kreis 1; SGP1B = Verdichter 2, Kreis 1; SGP2A = Verdichter 1, Kreis 2).",
+    "Druckgeber (4–20 mA): TBP = Niederdruckgeber · TAP = Hochdruckgeber; die Ziffer ist der Kältekreis (TAP1 = Hochdruck Kreis 1, TBP2 = Niederdruck Kreis 2).",
+    "Schalter/Wächter (digitale Eingänge): AP1/AP2 = Hochdruck-Pressostat Kreis 1/2 · BP1/BP2 = Niederdruck-Pressostat · FL = Strömungswächter · RCS = Phasenwächter · QM… = Motorschutzschalter (QM11 = Verdichter 1 Kreis 1) · QMT1/QMT2 = Pumpe 1/2 · QMF1 = Ventilator.",
+    "Ausgänge: CP1A/CP1B/CP1C = Verdichter 1/2/3 in Kreis 1, CP2A … in Kreis 2 · MPE1/MPE2 = Verdampferpumpe 1/2 · VIC1/VIC2 = Kreisumkehrventil · RS1/RS2 = Heizwiderstand · FAN1… = drehzahlgeregelter Ventilator · AE = Sammelalarm.",
+    "Klemmen am Regler: U1…U10 = analoge Eingänge, ID1…ID18 = digitale Eingänge, NO1…NO18 = Relaisausgänge, Y1…Y6 = analoge Ausgänge (0–10 V). Beim NRP/NXP/CPS-Handbuch heißen die Fühlereingänge B1…B10. Auf der PEC-Platine: P = Druck, T = Temperatur; beim EVD-Treiber S1…S4.",
+    "„SWI“ kommt in den Handbüchern nicht vor – gemeint ist sehr wahrscheinlich SIW (Wassereintritt). Im Zweifel die Beschriftung am Fühlerkabel bzw. im Schaltplan lesen.",
+    "Herkunft der Kürzel: Sie stammen offenbar aus dem Italienischen (Sonda = Fühler, Aria Esterna = Außenluft, Alta/Bassa Pressione = Hoch-/Niederdruck). Das ist eine Lesehilfe – die Handbücher erklären die Kürzel nur auf Englisch."
+   ],
+   "notes": "Alle Zuordnungen mit Klemme und Platine findest du unter Service → Signale. Bei anderen Gerätereihen oder Softwareständen können Kürzel und Klemmen abweichen.",
+   "source": "Aermec NRG 0282-0804 Bedienungsanleitung, Dok. 5723310_05 (04/2026), Kapitel 4; Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025), Kapitel 5.7/5.8"
+  },
+  {
+   "id": "testo-570s",
+   "title": "testo 570s: Anzeigen verstehen und nachrechnen",
+   "category": "Messgerät",
+   "appliesTo": "Digitaler Monteurhilfe-Messgerät testo 570s (Anzeige „Messen“)",
+   "steps": [
+    "ND bar / HD bar: Niederdruck bzw. Hochdruck. Die Skala beginnt bei −1 bar: Das Gerät zeigt Überdruck („Prel“ oben) – in der App den Druckbezug „Überdruck“ wählen (Standard).",
+    "T verdampf: Verdampfungstemperatur t0 – aus ND über die Tabelle des am Gerät eingestellten Kältemittels (bei Gemischen Taupunkt).",
+    "T kondensat: Verflüssigungstemperatur tc – aus HD über dieselbe Tabelle (bei Gemischen Siedepunkt).",
+    "T1: Temperaturfühler 1. Die Überhitzung wird aus T1 berechnet: Überhitzung = T1 − T verdampf. T1 gehört daher an die Saugleitung.",
+    "T2: Temperaturfühler 2. Die Unterkühlung wird aus T2 berechnet: Unterkühlung = T kondensat − T2. T2 gehört daher an die Flüssigkeitsleitung.",
+    "Überhitzung (K) und Unterkühlung (K): die vom Gerät errechneten Ergebnisse.",
+    "Beispiel aus deinem Foto (R410A): ND 7,69 bar · T verdampf 2,7 °C · T1 9,2 °C → Überhitzung 6,5 K. HD 19,06 bar · T kondensat 32,4 °C · T2 21,8 °C → Unterkühlung 10,6 K. Die App rechnet mit R410A und gleicher Druckbasis dieselben Werte.",
+    "Wichtig: Am Gerät das richtige Kältemittel einstellen. Stimmt es nicht, sind T verdampf, T kondensat und damit Überhitzung/Unterkühlung falsch – das Gerät merkt das nicht. Zum Gegenprüfen in der App ND bzw. HD eingeben und t0/tc ablesen.",
+    "Die App kann zusätzlich, was das Gerät nicht anzeigt: z. B. Heißgas-Überhitzung (Druckgastemperatur mit T1 oder T2 an der Druckleitung messen), Verdichtungsverhältnis, Verdampfer-/Verflüssiger-Differenz."
+   ],
+   "notes": "Bezeichnungen und Zusammenhänge stammen aus der Anzeige deines Geräts (Foto), nicht aus dem Herstellerhandbuch. Menüs und Belegung können je Softwarestand abweichen.",
+   "source": "Foto der Anzeige eines testo 570s (vom Nutzer bereitgestellt); Plausibilitätsprüfung mit CoolProp-Daten"
   }
  ],
  "controllerTemplates": [

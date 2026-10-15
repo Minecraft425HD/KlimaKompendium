@@ -55,6 +55,23 @@ class TermSearchTest {
         assertTrue(top("condensor", 5).contains("cond"))
     }
 
+    @Test fun variantsAreSearchableAndShownTogether() {
+        val nd = terms.first { it.key == "nd" }.copy(variants = listOf("LP", "BP", "p0", "Ps"))
+        val lp = terms.first { it.key == "lp" }.copy(variants = listOf("ND", "BP", "p0", "Ps"))
+        val idx = TermIndex(listOf(nd, lp))
+        val hits = idx.search("LP")
+        assertEquals("lp", hits.first().term.key)           // exakter Treffer zuerst
+        assertTrue(hits.any { it.term.key == "nd" })        // ND wird über seine Variante LP mitgefunden
+    }
+
+    @Test fun aermecSignalTermsFoundAlsoWithTypo() {
+        assertEquals("siw", top("SIW").first())
+        assertEquals("suw", top("SUW").first())
+        assertEquals("sae", top("SAE").first())
+        assertEquals("sl1", top("SL1").first())
+        assertTrue(top("SWI", 5).contains("siw")) // Buchstabendreher
+    }
+
     @Test fun italianAbbreviationsFound() {
         assertEquals("bp", top("BP").first())
         assertEquals("ap", top("AP").first())

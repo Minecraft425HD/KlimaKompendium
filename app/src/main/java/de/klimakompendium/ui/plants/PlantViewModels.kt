@@ -14,6 +14,7 @@ import de.klimakompendium.domain.model.TermCategory
 import de.klimakompendium.domain.search.PlantFilter
 import de.klimakompendium.domain.search.PlantSearch
 import de.klimakompendium.domain.search.TermIndex
+import de.klimakompendium.ui.util.SearchState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -40,9 +41,12 @@ data class PlantsState(
 )
 
 class PlantsViewModel(c: AppContainer) : ViewModel() {
+    /** Suchtext synchron im Snapshot-Zustand (siehe [SearchState]); die übrigen Filter dürfen asynchron laufen. */
+    val search = SearchState()
     private val filter = MutableStateFlow(PlantFilter())
 
-    val state: StateFlow<PlantsState> = combine(filter, c.plants.plants) { f, all ->
+    val state: StateFlow<PlantsState> = combine(search.flow, filter, c.plants.plants) { q, base, all ->
+        val f = base.copy(query = q)
         fun distinct(sel: (Plant) -> String) = all.map(sel).filter { it.isNotBlank() }.distinctBy { it.lowercase() }.sortedBy { it.lowercase() }
         PlantsState(
             filter = f, plants = PlantSearch.filter(all, f), total = all.size,
@@ -51,12 +55,12 @@ class PlantsViewModel(c: AppContainer) : ViewModel() {
         )
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), PlantsState())
 
-    fun setQuery(q: String) { filter.value = filter.value.copy(query = q) }
+    fun setQuery(q: String) { search.text = q }
     fun setRefrigerant(v: String?) { filter.value = filter.value.copy(refrigerant = v) }
     fun setManufacturer(v: String?) { filter.value = filter.value.copy(manufacturer = v) }
     fun setCustomer(v: String?) { filter.value = filter.value.copy(customer = v) }
     fun setController(v: String?) { filter.value = filter.value.copy(controller = v) }
-    fun clearFilters() { filter.value = PlantFilter() }
+    fun clearFilters() { filter.value = PlantFilter(); search.text = "" }
 }
 
 /** Vorschläge, die beim Öffnen einer Anlage automatisch eingeblendet werden. */

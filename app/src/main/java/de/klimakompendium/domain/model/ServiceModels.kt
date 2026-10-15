@@ -59,3 +59,16 @@ data class ServiceData(
     val guides: List<Guide>,
     val templates: List<ControllerTemplate>,
 )
+
+/** Ein Signal-/Fühlerkürzel eines Geräts (z. B. SIW, TAP1) mit Klemme, Platine und Beschreibung. */
+data class SignalCode(
+    val manufacturer: String,
+    val series: String,
+    val board: String,
+    val terminal: String,
+    val code: String,
+    val type: String,
+    val title: String,
+    val original: String,
+    val note: String,
+)

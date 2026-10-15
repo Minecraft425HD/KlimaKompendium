@@ -9,6 +9,7 @@ import de.klimakompendium.domain.model.Term
 import de.klimakompendium.domain.model.TermCategory
 import de.klimakompendium.domain.model.TermLanguage
 import de.klimakompendium.domain.search.TermIndex
+import de.klimakompendium.ui.util.SearchState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,19 +30,21 @@ data class TermsState(
 )
 
 class TermsViewModel(private val c: AppContainer) : ViewModel() {
-    private data class Filter(val q: String, val lang: TermLanguage?, val cat: TermCategory?, val fav: Boolean)
+    private data class Filter(val lang: TermLanguage?, val cat: TermCategory?, val fav: Boolean)
 
-    private val filter = MutableStateFlow(Filter("", null, null, false))
+    /** Suchtext synchron im Snapshot-Zustand (siehe [SearchState]). */
+    val search = SearchState()
+    private val filter = MutableStateFlow(Filter(null, null, false))
 
-    val state: StateFlow<TermsState> = combine(filter, c.terms.terms) { f, all ->
-        var list: List<Term> = if (f.q.isBlank()) all else TermIndex(all).search(f.q, 200).map { it.term }
+    val state: StateFlow<TermsState> = combine(search.flow, filter, c.terms.terms) { q, f, all ->
+        var list: List<Term> = if (q.isBlank()) all else TermIndex(all).search(q, 200).map { it.term }
         if (f.lang != null) list = list.filter { it.language == f.lang }
         if (f.cat != null) list = list.filter { it.category == f.cat }
         if (f.fav) list = list.filter { it.isFavorite }
-        TermsState(f.q, f.lang, f.cat, f.fav, list, all.size)
+        TermsState(q, f.lang, f.cat, f.fav, list, all.size)
     }.flowOn(Dispatchers.Default).stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), TermsState())
 
-    fun setQuery(q: String) = filter.update { it.copy(q = q) }
+    fun setQuery(q: String) { search.text = q }
     fun setLanguage(l: TermLanguage?) = filter.update { it.copy(lang = l) }
     fun setCategory(cat: TermCategory?) = filter.update { it.copy(cat = cat) }
     fun toggleFavoritesOnly() = filter.update { it.copy(fav = !it.fav) }
