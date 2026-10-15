@@ -323,3 +323,86 @@ class SignalsFlowTest {
         waitForText("Signale & Fühlerkürzel")
     }
 }
+
+/** Der neue Rechner „Sauggastemperatur aus Saugdruck und Überhitzung“ muss nach Eingabe ein Ergebnis zeigen. */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class SuctionTempCalcFlowTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 30_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    private fun scrollTo(text: String) {
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText(text, substring = true))
+    }
+
+    @Test fun suctionTempIsShownAfterEnteringPressureAndSuperheat() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Druck/Temp").performClick()
+        waitForText("Berechnen")
+        rule.onNodeWithText("Berechnen").performClick()
+        waitForText("Was kann ich berechnen?")
+        scrollTo("Sauggastemperatur aus Saugdruck und Überhitzung")
+        rule.onNodeWithText("Sauggastemperatur aus Saugdruck und Überhitzung").performClick()
+        waitForText("Benötigte Messwerte")
+        // R32 (Standard): 0 °C ≙ 8,131 bar abs = 7,12 bar ü; Überhitzung 5 K → Sauggastemperatur 5 °C
+        rule.onNode(hasText("Saugdruck (ND)") and hasSetTextAction()).performTextInput("7,12")
+        rule.onNode(hasText("Überhitzung (Sollwert oder bekannt)") and hasSetTextAction()).performTextInput("5")
+        waitForText("Sauggastemperatur")
+        waitForText("5,0 °C")
+    }
+
+    @Test fun onlySuperheatEnteredExplainsWhatIsMissing() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Druck/Temp").performClick()
+        waitForText("Berechnen")
+        rule.onNodeWithText("Berechnen").performClick()
+        waitForText("Was kann ich berechnen?")
+        scrollTo("Sauggastemperatur aus Saugdruck und Überhitzung")
+        rule.onNodeWithText("Sauggastemperatur aus Saugdruck und Überhitzung").performClick()
+        waitForText("Benötigte Messwerte")
+        rule.onNode(hasText("Überhitzung (Sollwert oder bekannt)") and hasSetTextAction()).performTextInput("5")
+        waitForText("Noch benötigt: Saugdruck")
+    }
+}
+
+/** Der Tab „Überhitzung“ (Saugdruck + Sauggastemperatur → Überhitzung) muss nach Eingabe rechnen. */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [34], application = TestApp::class)
+class SuperheatTabFlowTest {
+    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForText(text: String, timeoutMs: Long = 30_000) =
+        rule.waitUntil(timeoutMs) { rule.onAllNodesWithText(text, substring = true).fetchSemanticsNodes().isNotEmpty() }
+
+    @Test fun superheatTabShowsResult() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Druck/Temp").performClick()
+        waitForText("Berechnen")
+        rule.onNodeWithText("Überhitzung").performScrollTo().performClick()   // Tab-Titel (liegt rechts außerhalb)
+        waitForText("Überhitzung (Saugseite)")
+        rule.onNode(hasText("Saugdruck (ND)") and hasSetTextAction()).performTextInput("7,12")
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("Sauggastemperatur (Rohr", substring = true) and hasSetTextAction())
+        rule.onNode(hasText("Sauggastemperatur (Rohr", substring = true) and hasSetTextAction()).performTextInput("6")
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("t0 (Taupunkt)", substring = true))
+        waitForText("t0 (Taupunkt)")
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("Richtwert", substring = true))
+        waitForText("Richtwert")
+    }
+
+    /** Überhitzung bekannt (Soll) + Saugdruck → erwartete Sauggastemperatur, ohne gemessene Sauggastemperatur. */
+    @Test fun knownSuperheatGivesExpectedSuctionTemperature() {
+        waitForText("KlimaKompendium")
+        rule.onNodeWithText("Druck/Temp").performClick()
+        waitForText("Berechnen")
+        rule.onNodeWithText("Überhitzung").performScrollTo().performClick()
+        waitForText("Überhitzung (Saugseite)")
+        rule.onNode(hasText("Saugdruck (ND)") and hasSetTextAction()).performTextInput("7,12")   // R32: t0 ≈ 0 °C
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("Überhitzung bekannt/Soll", substring = true) and hasSetTextAction())
+        rule.onNode(hasText("Überhitzung bekannt/Soll", substring = true) and hasSetTextAction()).performTextInput("5")
+        rule.onNode(hasScrollToNodeAction()).performScrollToNode(hasText("erwartete Sauggastemperatur", substring = true))
+        waitForText("erwartete Sauggastemperatur")
+        waitForText("5,0")
+    }
+}

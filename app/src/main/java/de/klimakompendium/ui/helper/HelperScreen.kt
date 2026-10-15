@@ -320,6 +320,8 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
     var sgt by rememberSaveable { mutableStateOf("") }
     var hd by rememberSaveable { mutableStateOf("") }
     var flt by rememberSaveable { mutableStateOf("") }
+    var shSet by rememberSaveable { mutableStateOf("") }
+    var scSet by rememberSaveable { mutableStateOf("") }
     val unit = if (reference == PressureReference.GAUGE) "bar ü" else "bar abs."
 
     LazyColumn(contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -334,6 +336,19 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
                     Column(Modifier.padding(top = 8.dp)) { DecimalField("Sauggastemperatur (Rohr am Verdampferaustritt/Verdichter)", sgt, { sgt = it }, suffix = "°C") }
                     val p = UnitConverter.parseDecimal(nd)
                     val t = UnitConverter.parseDecimal(sgt)
+                    Column(Modifier.padding(top = 8.dp)) {
+                        DecimalField("Überhitzung bekannt/Soll → Sauggastemperatur errechnen", shSet, { shSet = it }, suffix = "K")
+                    }
+                    val shKnown = UnitConverter.parseDecimal(shSet)
+                    if (p != null && shKnown != null) {
+                        val t0 = Saturation.temperatureFromInput(r, p, reference, SaturationPhase.DEW)
+                        if (t0 == null) OutOfRange(r, "Saugdruck", "p‑T‑Tabelle ${r.name}")
+                        else {
+                            Spacer8()
+                            ResultLine(UnitConverter.format(t0, 1), "°C t0 (Taupunkt)")
+                            ResultLine(UnitConverter.format(t0 + shKnown, 1), "°C erwartete Sauggastemperatur", highlight = true)
+                        }
+                    }
                     if (p != null && t != null) {
                         val res = HvacCalculator.superheat(r, p, reference, t)
                         if (res == null) OutOfRange(r, "Saugdruck", "p‑T‑Tabelle ${r.name}")
@@ -351,6 +366,19 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
                     Column(Modifier.padding(top = 8.dp)) { DecimalField("Flüssigkeitstemperatur (Rohr nach Verflüssiger)", flt, { flt = it }, suffix = "°C") }
                     val p = UnitConverter.parseDecimal(hd)
                     val t = UnitConverter.parseDecimal(flt)
+                    Column(Modifier.padding(top = 8.dp)) {
+                        DecimalField("Unterkühlung bekannt/Soll → Flüssigkeitstemperatur errechnen", scSet, { scSet = it }, suffix = "K")
+                    }
+                    val scKnown = UnitConverter.parseDecimal(scSet)
+                    if (p != null && scKnown != null) {
+                        val tc = Saturation.temperatureFromInput(r, p, reference, SaturationPhase.BUBBLE)
+                        if (tc == null) OutOfRange(r, "Hochdruck", "p‑T‑Tabelle ${r.name}")
+                        else {
+                            Spacer8()
+                            ResultLine(UnitConverter.format(tc, 1), "°C tc (Siedepunkt)")
+                            ResultLine(UnitConverter.format(tc - scKnown, 1), "°C erwartete Flüssigkeitstemperatur", highlight = true)
+                        }
+                    }
                     if (p != null && t != null) {
                         val res = HvacCalculator.subcooling(r, p, reference, t)
                         if (res == null) OutOfRange(r, "Hochdruck", "p‑T‑Tabelle ${r.name}")
