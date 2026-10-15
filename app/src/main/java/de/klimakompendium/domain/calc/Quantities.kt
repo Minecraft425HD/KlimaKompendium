@@ -61,6 +61,8 @@ class Quantity(
     val optional: List<Measure> = emptyList(),
     val needsRefrigerant: Boolean = false,
     val keywords: List<String> = emptyList(),
+    /** Anzeigebezeichnung am Messgerät (testo 570s), falls die Größe dort vorkommt. */
+    val device: String = "",
     val compute: (CalcContext) -> CalcOutcome,
 ) {
     val usesPressure: Boolean get() = (needs + optional).any { it == Measure.SUCTION_P || it == Measure.DISCHARGE_P }
@@ -96,12 +98,13 @@ object Quantities {
         "Sättigungstemperatur des Kältemittels im Verdampfer, aus dem Saugdruck über die p‑T‑Tabelle.",
         "Basis für Überhitzung und Verdampfer-Differenz. Bei Gemischen mit Glide zählt der Taupunkt (Dampfseite).",
         "t0 = Tsat,Dampf(p_ND,abs)", listOf(Measure.SUCTION_P), needsRefrigerant = true,
-        keywords = listOf("Verdampfungstemperatur", "Sättigungstemperatur", "Saugdruck", "ND", "SST"),
+        keywords = listOf("Verdampfungstemperatur", "Sättigungstemperatur", "Saugdruck", "ND", "SST", "T verdampf", "testo"),
+        device = "„T verdampf“ (aus ND)",
     ) { c ->
         val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
         val d = dew(r, c, Measure.SUCTION_P); val b = bubble(r, c, Measure.SUCTION_P)
         if (d == null || b == null) return@Quantity rangeError(r, "Der Saugdruck")
-        val lines = mutableListOf(line("Verdampfungstemperatur t0 (Taupunkt)", d, "°C", emphasis = true))
+        val lines = mutableListOf(line("Verdampfungstemperatur t0 (Taupunkt)", d, "°C", emphasis = true, note = "testo: „T verdampf“"))
         if (r.isZeotropic) lines += line("Siedetemperatur bei gleichem Druck", b, "°C", note = "Gemisch mit Temperaturgleit")
         CalcOutcome.Ok(lines)
     }
@@ -111,12 +114,13 @@ object Quantities {
         "Sättigungstemperatur des Kältemittels im Verflüssiger, aus dem Hochdruck über die p‑T‑Tabelle.",
         "Basis für Unterkühlung und Verflüssiger-Differenz. Bei Gemischen mit Glide zählt der Siedepunkt (Flüssigseite).",
         "tc = Tsat,Flüssig(p_HD,abs)", listOf(Measure.DISCHARGE_P), needsRefrigerant = true,
-        keywords = listOf("Verflüssigungstemperatur", "Kondensationstemperatur", "Hochdruck", "HD", "SDT"),
+        keywords = listOf("Verflüssigungstemperatur", "Kondensationstemperatur", "Hochdruck", "HD", "SDT", "T kondensat", "testo"),
+        device = "„T kondensat“ (aus HD)",
     ) { c ->
         val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
         val d = dew(r, c, Measure.DISCHARGE_P); val b = bubble(r, c, Measure.DISCHARGE_P)
         if (d == null || b == null) return@Quantity rangeError(r, "Der Hochdruck")
-        val lines = mutableListOf(line("Verflüssigungstemperatur tc (Siedepunkt)", b, "°C", emphasis = true))
+        val lines = mutableListOf(line("Verflüssigungstemperatur tc (Siedepunkt)", b, "°C", emphasis = true, note = "testo: „T kondensat“"))
         if (r.isZeotropic) lines += line("Taupunkt bei gleichem Druck", d, "°C", note = "Gemisch mit Temperaturgleit")
         CalcOutcome.Ok(lines)
     }
@@ -126,16 +130,17 @@ object Quantities {
         "Temperaturabstand des Sauggases zur Verdampfungstemperatur: wie weit das Kältemittel nach dem Verdampfen noch erwärmt wurde.",
         "Zu klein: Nassdampf, Gefahr von Flüssigkeitsschlag. Zu groß: Verdampfer unterversorgt (Kältemittelmangel, Ventil zu weit zu, Druckverlust). Misst du am Verdampferaustritt, erhältst du die Verdampfer-Überhitzung; kurz vor dem Verdichter die Gesamtüberhitzung (Leitungserwärmung eingerechnet).",
         "Überhitzung = T_Sauggas − t0", listOf(Measure.SUCTION_P, Measure.SUCTION_T), needsRefrigerant = true,
-        keywords = listOf("Überhitzung", "Superheat", "SH", "Sauggas", "Surriscaldamento"),
+        keywords = listOf("Überhitzung", "Superheat", "SH", "Sauggas", "Surriscaldamento", "testo", "T1"),
+        device = "„Überhitzung“ (aus ND und T1)",
     ) { c ->
         val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
         val res = HvacCalculator.superheat(r, c.get(Measure.SUCTION_P), c.reference, c.get(Measure.SUCTION_T))
             ?: return@Quantity rangeError(r, "Der Saugdruck")
         CalcOutcome.Ok(
             listOf(
-                line("Verdampfungstemperatur t0 (Taupunkt)", res.evaporatingTempC, "°C"),
+                line("Verdampfungstemperatur t0 (Taupunkt)", res.evaporatingTempC, "°C", note = "testo: „T verdampf“"),
                 line("Überhitzung", res.superheatK, "K", emphasis = true, status = res.status,
-                    note = "${res.status.label} (Richtwert 5–10 K)"),
+                    note = "${res.status.label} (Richtwert 5–10 K) · testo: „Überhitzung“"),
             ),
             "Richtwert für Anlagen mit Expansionsventil; die Vorgabe des Geräteherstellers hat Vorrang.",
         )
@@ -146,16 +151,17 @@ object Quantities {
         "Temperaturabstand der Flüssigkeit zur Verflüssigungstemperatur: wie weit das Kältemittel nach dem Verflüssigen weiter abgekühlt wurde.",
         "Zu klein: Blasenbildung vor dem Expansionsventil, Kältemittelmangel oder schlechter Verflüssiger. Sehr groß: Überfüllung (Flüssigkeit staut sich im Verflüssiger).",
         "Unterkühlung = tc − T_Flüssigkeit", listOf(Measure.DISCHARGE_P, Measure.LIQUID_T), needsRefrigerant = true,
-        keywords = listOf("Unterkühlung", "Subcooling", "SC", "Flüssigkeit", "Sottoraffreddamento"),
+        keywords = listOf("Unterkühlung", "Subcooling", "SC", "Flüssigkeit", "Sottoraffreddamento", "testo", "T2"),
+        device = "„Unterkühlung“ (aus HD und T2)",
     ) { c ->
         val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
         val res = HvacCalculator.subcooling(r, c.get(Measure.DISCHARGE_P), c.reference, c.get(Measure.LIQUID_T))
             ?: return@Quantity rangeError(r, "Der Hochdruck")
         CalcOutcome.Ok(
             listOf(
-                line("Verflüssigungstemperatur tc (Siedepunkt)", res.condensingTempC, "°C"),
+                line("Verflüssigungstemperatur tc (Siedepunkt)", res.condensingTempC, "°C", note = "testo: „T kondensat“"),
                 line("Unterkühlung", res.subcoolingK, "K", emphasis = true, status = res.status,
-                    note = "${res.status.label} (Richtwert 3–10 K)"),
+                    note = "${res.status.label} (Richtwert 3–10 K) · testo: „Unterkühlung“"),
             ),
             "Richtwert; die Vorgabe des Geräteherstellers hat Vorrang.",
         )

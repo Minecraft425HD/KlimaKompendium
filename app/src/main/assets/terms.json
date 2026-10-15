@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": 5,
+ "version": 6,
  "terms": [
   {
    "key": "nd",
@@ -2761,6 +2761,66 @@
    "meaning": "Fühler am Eintritt des Free-Cooling-Registers (pCOe, B1); SFC2 = Austritt, SRU = Zwischenverdampfer.",
    "context": "Aermec/Carel-Signalkürzel laut Handbuch. Alle Fühler und Klemmen: Service → Signale.",
    "typicalRange": ""
+  },
+  {
+   "key": "tverdampf",
+   "abbr": "T verdampf",
+   "lang": "DE",
+   "full": "Verdampfungstemperatur (testo-Anzeige)",
+   "de": "Verdampfungstemperatur (testo-Anzeige)",
+   "en": "Evaporating temperature (testo display)",
+   "it": "Temperatura di evaporazione (display testo)",
+   "kind": "TEMPERATURE",
+   "category": "TEMPERATURE",
+   "unit": "°C",
+   "meaning": "Anzeige am testo 570s: Verdampfungstemperatur t0, aus dem Saugdruck (ND) über die Tabelle des eingestellten Kältemittels.",
+   "context": "Anzeigebezeichnung am Messgerät testo 570s (Foto-Anzeige). Leitfaden: Service → Leitfäden → testo 570s.",
+   "typicalRange": ""
+  },
+  {
+   "key": "tkondensat",
+   "abbr": "T kondensat",
+   "lang": "DE",
+   "full": "Verflüssigungstemperatur (testo-Anzeige)",
+   "de": "Verflüssigungstemperatur (testo-Anzeige)",
+   "en": "Condensing temperature (testo display)",
+   "it": "Temperatura di condensazione (display testo)",
+   "kind": "TEMPERATURE",
+   "category": "TEMPERATURE",
+   "unit": "°C",
+   "meaning": "Anzeige am testo 570s: Verflüssigungstemperatur tc, aus dem Hochdruck (HD) über die Tabelle des eingestellten Kältemittels.",
+   "context": "Anzeigebezeichnung am Messgerät testo 570s (Foto-Anzeige). Leitfaden: Service → Leitfäden → testo 570s.",
+   "typicalRange": ""
+  },
+  {
+   "key": "t1_testo",
+   "abbr": "T1",
+   "lang": "DE",
+   "full": "Temperaturfühler 1 (testo 570s)",
+   "de": "Temperaturfühler 1 (testo 570s)",
+   "en": "Temperature probe 1 (testo 570s)",
+   "it": "Sonda di temperatura 1 (testo 570s)",
+   "kind": "TEMPERATURE",
+   "category": "SENSOR",
+   "unit": "°C",
+   "meaning": "Temperatureingang 1 am testo 570s. Gehört zur Überhitzung: Überhitzung = T1 − T verdampf, T1 liegt also am Saugrohr.",
+   "context": "Anzeigebezeichnung am Messgerät testo 570s (Foto-Anzeige). Leitfaden: Service → Leitfäden → testo 570s. Aus deinem Foto: 9,2 − 2,7 = 6,5 K.",
+   "typicalRange": ""
+  },
+  {
+   "key": "t2_testo",
+   "abbr": "T2",
+   "lang": "DE",
+   "full": "Temperaturfühler 2 (testo 570s)",
+   "de": "Temperaturfühler 2 (testo 570s)",
+   "en": "Temperature probe 2 (testo 570s)",
+   "it": "Sonda di temperatura 2 (testo 570s)",
+   "kind": "TEMPERATURE",
+   "category": "SENSOR",
+   "unit": "°C",
+   "meaning": "Temperatureingang 2 am testo 570s. Gehört zur Unterkühlung: Unterkühlung = T kondensat − T2, T2 liegt also am Flüssigkeitsrohr.",
+   "context": "Anzeigebezeichnung am Messgerät testo 570s (Foto-Anzeige). Leitfaden: Service → Leitfäden → testo 570s. Aus deinem Foto: 32,4 − 21,8 = 10,6 K.",
+   "typicalRange": ""
   }
  ],
  "groups": [
@@ -2785,13 +2845,15 @@
   {
    "keys": [
     "t0",
-    "sst"
+    "sst",
+    "tverdampf"
    ]
   },
   {
    "keys": [
     "tc",
-    "sdt"
+    "sdt",
+    "tkondensat"
    ]
   },
   {

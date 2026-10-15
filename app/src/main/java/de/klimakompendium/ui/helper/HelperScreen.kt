@@ -333,7 +333,7 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
                 SectionHeader("Überhitzung (Saugseite)")
                 KCard {
                     DecimalField("Saugdruck (ND)", nd, { nd = it }, suffix = unit)
-                    Column(Modifier.padding(top = 8.dp)) { DecimalField("Sauggastemperatur (Rohr am Verdampferaustritt/Verdichter)", sgt, { sgt = it }, suffix = "°C") }
+                    Column(Modifier.padding(top = 8.dp)) { DecimalField("Sauggastemperatur (Rohr am Verdampferaustritt/Verdichter) · testo: T1", sgt, { sgt = it }, suffix = "°C") }
                     val p = UnitConverter.parseDecimal(nd)
                     val t = UnitConverter.parseDecimal(sgt)
                     Column(Modifier.padding(top = 8.dp)) {
@@ -354,7 +354,7 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
                         if (res == null) OutOfRange(r, "Saugdruck", "p‑T‑Tabelle ${r.name}")
                         else {
                             Spacer8()
-                            ResultLine(UnitConverter.format(res.evaporatingTempC, 1), "°C t0 (Taupunkt)")
+                            ResultLine(UnitConverter.format(res.evaporatingTempC, 1), "°C t0 (Taupunkt) · testo: T verdampf")
                             StatusLine("Überhitzung", res.superheatK, res.status, HvacCalculator.SUPERHEAT_TYPICAL_K)
                         }
                     }
@@ -363,7 +363,7 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
                 SectionHeader("Unterkühlung (Hochdruckseite)")
                 KCard {
                     DecimalField("Hochdruck (HD)", hd, { hd = it }, suffix = unit)
-                    Column(Modifier.padding(top = 8.dp)) { DecimalField("Flüssigkeitstemperatur (Rohr nach Verflüssiger)", flt, { flt = it }, suffix = "°C") }
+                    Column(Modifier.padding(top = 8.dp)) { DecimalField("Flüssigkeitstemperatur (Rohr nach Verflüssiger) · testo: T2", flt, { flt = it }, suffix = "°C") }
                     val p = UnitConverter.parseDecimal(hd)
                     val t = UnitConverter.parseDecimal(flt)
                     Column(Modifier.padding(top = 8.dp)) {
@@ -384,7 +384,7 @@ private fun SuperheatTab(vm: HelperViewModel, refrigerantId: String, reference: 
                         if (res == null) OutOfRange(r, "Hochdruck", "p‑T‑Tabelle ${r.name}")
                         else {
                             Spacer8()
-                            ResultLine(UnitConverter.format(res.condensingTempC, 1), "°C tc (Siedepunkt)")
+                            ResultLine(UnitConverter.format(res.condensingTempC, 1), "°C tc (Siedepunkt) · testo: T kondensat")
                             StatusLine("Unterkühlung", res.subcoolingK, res.status, HvacCalculator.SUBCOOLING_TYPICAL_K)
                         }
                     }

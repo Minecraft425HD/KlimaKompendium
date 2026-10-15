@@ -11,6 +11,7 @@ ist das Feld bewusst leer.
 | Signal-/Fühlerkürzel mit Klemmen (SIW, SUW, SAE, SL1, SGP, TAP/TBP, AP/BP, QM, CP …) | Aermec NRG 0282-0804, Dok. 5723310_05, Kapitel 4.1–4.12 (pCO, PEC, EVD, pCOe); Aermec NRP/NXP/CPS, Dok. 4724311_03, Kapitel 5.7/5.8 (nur Klemmen, keine Kürzel) |
 | Carel Tastenfunktionen (6 und 15 Tasten), pLAN-Adressierung (PGD0, pCO1/pCO3, pCO2/EVD-200), Standardwerte neu installieren, Standardpasswörter 1234 | Carel, *Standard Chiller Modular HP 1/4 Generic – User manual 1.4*, Code +030221296 (09/2008) |
 | pCOWeb: Werks-IP 172.16.0.1, Konten admin/root/httpadmin/carel/guest, Protokolle, Bootswitch | Carel, *pCOWeb – Scheda di interfaccia Ethernet per pCO\**, +050003238 rel. 1.0 (08.03.2005) |
+| testo 570s: Anzeigebezeichnungen (ND, HD, T verdampf, T kondensat, T1, T2, Überhitzung, Unterkühlung) und ihr Zusammenhang | Foto der Geräteanzeige (vom Nutzer); Zusammenhänge rechnerisch bestätigt (T1 − T verdampf = Überhitzung, T kondensat − T2 = Unterkühlung; R410A-Tabelle). Kein Herstellerhandbuch geprüft. |
 | p‑T‑Sättigungsdaten der Kältemittel | CoolProp (`tools/generate_pt_table.py`) |
 | Euroklimat S.p.A. (Produktprofil) | Öffentliche Herstellerlisten (u. a. DirectIndustry, Green Cooling Initiative). Zu den Applikationen/Alarmen der Euroklimat-Anlagen wurde **kein** verlässliches öffentliches Handbuch gefunden. |
 
