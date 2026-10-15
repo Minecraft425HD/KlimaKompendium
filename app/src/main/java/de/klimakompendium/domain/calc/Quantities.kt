@@ -161,6 +161,65 @@ object Quantities {
         )
     }
 
+    /** Absolutdruck in bar → Anzeigewert im gewählten Bezug (Überdruck/absolut). */
+    private fun shown(c: CalcContext, absBar: Double) = UnitConverter.fromAbsoluteBar(absBar, PressureUnit.BAR, c.reference)
+    private fun refLabel(c: CalcContext) = if (c.reference == PressureReference.GAUGE) "bar ü" else "bar abs."
+
+    private val suctionTemp = Quantity(
+        "suction_t", "Sauggastemperatur aus Saugdruck und Überhitzung", QuantityCategory.REFRIGERANT_CIRCUIT,
+        "Erwartete Sauggastemperatur: Verdampfungstemperatur t0 (aus dem Saugdruck) plus die bekannte oder geforderte Überhitzung.",
+        "Zum Vergleich mit der gemessenen Sauggastemperatur: Weicht sie deutlich ab, ist die tatsächliche Überhitzung nicht der Sollwert (Expansionsventil, Fühler, Kältemittelmenge). Ohne bekannte Überhitzung lässt sich die Sauggastemperatur nicht errechnen – sie ergibt sich aus dem Betrieb und wird gemessen.",
+        "T_Sauggas = t0 + Überhitzung", listOf(Measure.SUCTION_P, Measure.SUPERHEAT_K), needsRefrigerant = true,
+        keywords = listOf("Sauggastemperatur", "Sauggas", "Saugtemperatur", "erwartet", "Soll", "berechnen"),
+    ) { c ->
+        val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
+        val t0 = dew(r, c, Measure.SUCTION_P) ?: return@Quantity rangeError(r, "Der Saugdruck")
+        CalcOutcome.Ok(listOf(line("Verdampfungstemperatur t0 (Taupunkt)", t0, "°C"),
+            line("Überhitzung", c.get(Measure.SUPERHEAT_K), "K"),
+            line("Sauggastemperatur", t0 + c.get(Measure.SUPERHEAT_K), "°C", emphasis = true)),
+            "Bei Gemischen zählt der Taupunkt. Gilt für die Messstelle, auf die sich die Überhitzung bezieht (Verdampferaustritt oder Verdichtereintritt).")
+    }
+
+    private val liquidTemp = Quantity(
+        "liquid_t", "Flüssigkeitstemperatur aus Hochdruck und Unterkühlung", QuantityCategory.REFRIGERANT_CIRCUIT,
+        "Erwartete Flüssigkeitstemperatur: Verflüssigungstemperatur tc (aus dem Hochdruck) minus die bekannte oder geforderte Unterkühlung.",
+        "Zum Vergleich mit der am Flüssigkeitsrohr gemessenen Temperatur. Ohne bekannte Unterkühlung nicht errechenbar – sie ergibt sich aus dem Betrieb.",
+        "T_Flüssigkeit = tc − Unterkühlung", listOf(Measure.DISCHARGE_P, Measure.SUBCOOLING_K), needsRefrigerant = true,
+        keywords = listOf("Flüssigkeitstemperatur", "Flüssigkeit", "Soll", "erwartet", "berechnen"),
+    ) { c ->
+        val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
+        val tc = bubble(r, c, Measure.DISCHARGE_P) ?: return@Quantity rangeError(r, "Der Hochdruck")
+        CalcOutcome.Ok(listOf(line("Verflüssigungstemperatur tc (Siedepunkt)", tc, "°C"),
+            line("Unterkühlung", c.get(Measure.SUBCOOLING_K), "K"),
+            line("Flüssigkeitstemperatur", tc - c.get(Measure.SUBCOOLING_K), "°C", emphasis = true)))
+    }
+
+    private val suctionPressure = Quantity(
+        "suction_p", "Saugdruck aus Sauggastemperatur und Überhitzung", QuantityCategory.REFRIGERANT_CIRCUIT,
+        "Erwarteter Saugdruck: aus Sauggastemperatur minus Überhitzung ergibt sich t0, daraus über die p‑T‑Tabelle der Druck.",
+        "Nützlich, wenn kein Manometer angeschlossen ist, aber Sauggastemperatur und Überhitzung (z. B. vom Controller) vorliegen.",
+        "t0 = T_Sauggas − Überhitzung; p_ND = psat,Dampf(t0)", listOf(Measure.SUCTION_T, Measure.SUPERHEAT_K), needsRefrigerant = true,
+        keywords = listOf("Saugdruck", "ND", "Niederdruck", "aus Temperatur", "berechnen"),
+    ) { c ->
+        val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
+        val t0 = c.get(Measure.SUCTION_T) - c.get(Measure.SUPERHEAT_K)
+        val p = Saturation.pressureAbsBar(r, t0, DEW) ?: return@Quantity rangeError(r, "Die Verdampfungstemperatur (${f(t0)} °C)")
+        CalcOutcome.Ok(listOf(line("Verdampfungstemperatur t0", t0, "°C"), line("Saugdruck", shown(c, p), refLabel(c), d = 2, emphasis = true)))
+    }
+
+    private val dischargePressure = Quantity(
+        "discharge_p", "Hochdruck aus Flüssigkeitstemperatur und Unterkühlung", QuantityCategory.REFRIGERANT_CIRCUIT,
+        "Erwarteter Hochdruck: Flüssigkeitstemperatur plus Unterkühlung ergibt tc, daraus über die p‑T‑Tabelle der Druck.",
+        "Nützlich, wenn kein Manometer angeschlossen ist, aber Flüssigkeitstemperatur und Unterkühlung vorliegen.",
+        "tc = T_Flüssigkeit + Unterkühlung; p_HD = psat,Flüssig(tc)", listOf(Measure.LIQUID_T, Measure.SUBCOOLING_K), needsRefrigerant = true,
+        keywords = listOf("Hochdruck", "HD", "aus Temperatur", "berechnen"),
+    ) { c ->
+        val r = refrigerantOrError(c) ?: return@Quantity err(NO_REFRIGERANT)
+        val tc = c.get(Measure.LIQUID_T) + c.get(Measure.SUBCOOLING_K)
+        val p = Saturation.pressureAbsBar(r, tc, BUBBLE) ?: return@Quantity rangeError(r, "Die Verflüssigungstemperatur (${f(tc)} °C)")
+        CalcOutcome.Ok(listOf(line("Verflüssigungstemperatur tc", tc, "°C"), line("Hochdruck", shown(c, p), refLabel(c), d = 2, emphasis = true)))
+    }
+
     private val discharge = Quantity(
         "discharge", "Heißgas-Überhitzung (Druckgas)", QuantityCategory.REFRIGERANT_CIRCUIT,
         "Temperaturabstand des Druckgases (Heißgas) zur Taupunkttemperatur beim Hochdruck.",
@@ -565,7 +624,7 @@ object Quantities {
     }
 
     val all: List<Quantity> = listOf(
-        evapTemp, condTemp, superheat, subcooling, discharge, compressionRatio, pressureDiff, evapDeltaAir, condDeltaAir, glide,
+        evapTemp, condTemp, superheat, subcooling, suctionTemp, liquidTemp, suctionPressure, dischargePressure, discharge, compressionRatio, pressureDiff, evapDeltaAir, condDeltaAir, glide,
         approachEvap, approachCond,
         waterSpread, waterPower, waterFlow,
         airSpread, airPower, airFlowFromPower, flowRound, flowRect, psychro, heatRecovery, outdoorShare,
