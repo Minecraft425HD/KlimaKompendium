@@ -114,7 +114,7 @@ class ServiceFlowTest {
     @Test fun faultCodeSearchFindsAermecAlarm() {
         waitForText("KlimaKompendium")
         rule.onNodeWithText("Service").performClick()
-        waitForText("Uhrenbatterie")                // erster Eintrag; Seed lädt asynchron
+        waitForText("Verdichter: Motorschutz")      // erster Eintrag (Serie ANL/ANLI, alphabetisch zuerst); Seed lädt asynchron
         rule.onNode(hasSetTextAction()).performTextInput("AL33")
         waitForText("Hochdruck Kreis 1")
         waitForText("NRG 0282-0804")

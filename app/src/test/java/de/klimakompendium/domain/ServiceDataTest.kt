@@ -44,6 +44,16 @@ class ServiceDataTest {
         assertTrue(FaultCodeSearch.search(all, "flow-switch").any { it.manufacturer == "Carel" })
     }
 
+    @Test fun moducontrolAnlAnliAlarmsPresent() {
+        val m = all.filter { it.series.startsWith("ANL / ANLI") }
+        assertEquals(197, m.size)
+        assertTrue(m.first { it.code == "4" }.title.contains("Strömungswächter"))
+        assertEquals("automatisch", m.first { it.code == "104" }.remedy)
+        assertEquals("manuell", m.first { it.code == "4" }.remedy)
+        assertTrue(m.any { it.code == "307" } && m.any { it.code == "156" } && m.none { it.code == "56" })
+        assertTrue(FaultCodeSearch.search(all, "Strömungswächter").any { it.series.startsWith("ANL / ANLI") })
+    }
+
     @Test fun everyGuideHasSourceAndSteps() {
         assertTrue(service.guides.size >= 10)
         for (g in service.guides) {

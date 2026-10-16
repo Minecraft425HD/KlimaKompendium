@@ -21,6 +21,12 @@
      "controller": "Carel pCO5 + PGD1",
      "note": "Multifunktionsgeräte mit 2- oder 4-Leiter-System. NRP: Anzeige für Ventilatoren und Abtauung; NXP: Anzeige für Geothermiepumpe (laut Handbuchkapiteln).",
      "source": "Aermec NRP/NXP/CPS Bedienungsanleitung, Dok. 4724311_03 (10/2025)"
+    },
+    {
+     "name": "ANL / ANLI / ANK / NRK / WRL",
+     "controller": "Aermec Moducontrol (eigene Regelung, kein Carel pCO)",
+     "note": "Luft/Wasser-Kaltwassersätze und Wärmepumpen (ANLI mit Inverter-Verdichter). Alarm = Code n, Voralarm = n + 100; Voralarme setzen sich selbst zurück, Alarme nur manuell (Gerät mit Stand-by-Taste aus- und einschalten, Kundendienst vorher informieren).",
+     "source": "Aermec MODUCONTROL Bedienungsanleitung, Dok. 6343841_06 (01/2025), Kap. 17"
     }
    ],
    "tips": [
@@ -317,6 +323,22 @@
    ],
    "notes": "Hardware-Belegung nach den Carel-Handbüchern (siehe Quellen in der Signale-Liste). Die Funktion der einzelnen Klemmen (was angeschlossen ist) bestimmt die Applikation des Anlagenherstellers; im Zweifel Schaltplan der Anlage lesen.",
    "source": "Carel, pCO sistema General manual +030220336; pCO5 +0300009EN; pCO5+ +0300020EN; c.pCO sistema +0300057EN"
+  },
+  {
+   "id": "moducontrol-alarms",
+   "title": "Aermec ANL/ANLI (Moducontrol): Alarm und Voralarm verstehen und zurücksetzen",
+   "category": "Alarme",
+   "appliesTo": "Aermec ANL, ANLI, ANK, NRK, WRL mit Moducontrol-Platine",
+   "steps": [
+    "Zwei Meldungsarten: Voralarm (rote LED blinkt) und Alarm (rote LED leuchtet dauerhaft). Mit der Glocken-Taste die Liste der aktiven Meldungen durchblättern; die Nummer steht in der Störungsliste (Alarm n, Voralarm n + 100).",
+    "Ein Voralarm wird nach 60 s zum Alarm, wenn die Ursache nicht verschwindet. Außerdem wird jeder weitere Voralarm sofort zum Alarm, wenn in einer Stunde mehr als fünf Voralarme auftraten.",
+    "Voralarme setzen sich automatisch zurück. Alarme sind manuell: Vor dem Rücksetzen den Kundendienst informieren, dann das Gerät mit der Stand-by-Taste aus- und wieder einschalten.",
+    "Ab Software 3.9.0 (wenn freigegeben) kann ein Alarm über den Fern-EIN/AUS-Kontakt zurückgesetzt werden: von EIN nach AUS und innerhalb von 5 s zurück auf EIN, höchstens 3 Resets pro Stunde. Zuerst die Alarme mit der Taste „R“ am Gerät zurücksetzen.",
+    "Bei Spannungsausfall werden die Alarme gelöscht. Der Alarmspeicher (Taste E) zeigt Alarme und Voralarme.",
+    "Digitale Eingänge der Sicherheitskette laut Handbuch: ID1 Verdichter-Motorschutz (M7.1–M7.2), ID2 Strömungswächter (M7.3–M7.4), ID3 Pumpen-Motorschutz (M7.5–M7.6), ID4 Hochdruck (M7.7–M7.8), ID5 Niederdruck (M7S.1–M7S.2), ID6 Ventilator-Motorschutz (M7S.3–M7S.4) – alle als Öffner."
+   ],
+   "notes": "Beachte: ANL/ANLI haben die Aermec-Regelung Moducontrol, nicht die Carel pCO-Regelung der NRG/NRP-Serien. Die Fühler der Inverter-Platine heißen B1…B7 (uPC).",
+   "source": "Aermec MODUCONTROL Bedienungsanleitung, Dok. 6343841_06 (01/2025), Kap. 17"
   }
  ],
  "controllerTemplates": [

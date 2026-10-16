@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": 2,
+ "version": 3,
  "sets": [
   {
    "manufacturer": "Aermec",
@@ -1997,6 +1997,1196 @@
      "title": "Treiber 2: Einrichtung unvollständig",
      "original": "Setup incomplete, driver 2",
      "reset": "manuell"
+    }
+   ]
+  },
+  {
+   "manufacturer": "Aermec",
+   "series": "ANL / ANLI / ANK / NRK / WRL (Moducontrol)",
+   "controller": "Aermec Moducontrol (eigene Regelung, nicht Carel pCO)",
+   "source": "Aermec, MODUCONTROL Bedienungsanleitung, Dok. 6343841_06 (01/2025), Kap. 17 „Alarms summary table“ – Alarm = Code n (manuell rücksetzen), Voralarm = n + 100 (automatisch, wird nach 60 s oder 5 Auslösungen/h zum Alarm)",
+   "codes": [
+    {
+     "code": "1",
+     "title": "Verdichter: Motorschutz ausgelöst (Kontakt ID1, Klemmen M7.1–M7.2, Öffner)",
+     "original": "Compressor magnet circuit breaker",
+     "reset": "manuell"
+    },
+    {
+     "code": "101",
+     "title": "Verdichter: Motorschutz ausgelöst (Kontakt ID1, Klemmen M7.1–M7.2, Öffner) (Voralarm)",
+     "original": "Compressor magnet circuit breaker (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "2",
+     "title": "Ventilator: Motorschutz ausgelöst (Kontakt ID6, Klemmen M7S.3–M7S.4, Öffner; nur bei Ersatzplatine mit SW bis 3.6)",
+     "original": "Thermomagnetic fan switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "102",
+     "title": "Ventilator: Motorschutz ausgelöst (Kontakt ID6, Klemmen M7S.3–M7S.4, Öffner; nur bei Ersatzplatine mit SW bis 3.6) (Voralarm)",
+     "original": "Thermomagnetic fan switch (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "3",
+     "title": "Hochdruckschalter / Verdichterschütz fällt nach 3 s nicht an (Kontakt ID4, Klemmen M7.7–M7.8, Öffner)",
+     "original": "High pressure switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "103",
+     "title": "Hochdruckschalter / Verdichterschütz fällt nach 3 s nicht an (Kontakt ID4, Klemmen M7.7–M7.8, Öffner) (Voralarm)",
+     "original": "High pressure switch (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "4",
+     "title": "Strömungswächter / Wasser-Differenzdruckschalter offen, nicht in den ersten 40 s nach Pumpenstart (Kontakt ID2, Klemmen M7.3–M7.4, Öffner; Sperre nach max. Anzahl Auslösungen, Werkseinstellung 5)",
+     "original": "Flow switch / water differential pressure switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "104",
+     "title": "Strömungswächter / Wasser-Differenzdruckschalter offen, nicht in den ersten 40 s nach Pumpenstart (Kontakt ID2, Klemmen M7.3–M7.4, Öffner; Sperre nach max. Anzahl Auslösungen, Werkseinstellung 5) (Voralarm)",
+     "original": "Flow switch / water differential pressure switch (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "5",
+     "title": "Niederdruckschalter offen, Verdichter-Saugseite (Kontakt ID5, Klemmen M7S.1–M7S.2)",
+     "original": "Low pressure switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "105",
+     "title": "Niederdruckschalter offen, Verdichter-Saugseite (Kontakt ID5, Klemmen M7S.1–M7S.2) (Voralarm)",
+     "original": "Low pressure switch (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "6",
+     "title": "Wassereintrittsfühler fehlt / nicht angeschlossen",
+     "original": "No water inlet probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "106",
+     "title": "Wassereintrittsfühler fehlt / nicht angeschlossen (Voralarm)",
+     "original": "No water inlet probe (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "7",
+     "title": "Wasseraustrittsfühler fehlt / nicht angeschlossen",
+     "original": "No water outlet probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "107",
+     "title": "Wasseraustrittsfühler fehlt / nicht angeschlossen (Voralarm)",
+     "original": "No water outlet probe (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "8",
+     "title": "Frostschutz: Wasseraustrittstemperatur unter Schwelle (Installateurparameter 6, Standard 3 °C; Rückkehr bei 4 °C; im Heizbetrieb 3 min nach Verdichterstart ausgesetzt)",
+     "original": "Water freezing",
+     "reset": "manuell"
+    },
+    {
+     "code": "108",
+     "title": "Frostschutz: Wasseraustrittstemperatur unter Schwelle (Installateurparameter 6, Standard 3 °C; Rückkehr bei 4 °C; im Heizbetrieb 3 min nach Verdichterstart ausgesetzt) (Voralarm)",
+     "original": "Water freezing (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "9",
+     "title": "Heißgasfühler (SGP) fehlt / nicht angeschlossen",
+     "original": "No pressing line probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "109",
+     "title": "Heißgasfühler (SGP) fehlt / nicht angeschlossen (Voralarm)",
+     "original": "No pressing line probe (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "10",
+     "title": "Heißgastemperatur zu hoch (SGP-Fühler über Werkparameter 6, Standard 135 °C; Rückkehr bei 125 °C)",
+     "original": "High discharge gas temperature",
+     "reset": "manuell"
+    },
+    {
+     "code": "110",
+     "title": "Heißgastemperatur zu hoch (SGP-Fühler über Werkparameter 6, Standard 135 °C; Rückkehr bei 125 °C) (Voralarm)",
+     "original": "High discharge gas temperature (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "11",
+     "title": "Hochdruckgeber Verdichter fehlt (Wärmepumpe bzw. DCP eingestellt)",
+     "original": "Flow pressure transducer no compressor",
+     "reset": "manuell"
+    },
+    {
+     "code": "111",
+     "title": "Hochdruckgeber Verdichter fehlt (Wärmepumpe bzw. DCP eingestellt) (Voralarm)",
+     "original": "Flow pressure transducer no compressor (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "12",
+     "title": "Hochdruck am Geber über Werkparameter 8 (Standard 40 bar; Rückkehr bei 38 bar)",
+     "original": "High pressure",
+     "reset": "manuell"
+    },
+    {
+     "code": "112",
+     "title": "Hochdruck am Geber über Werkparameter 8 (Standard 40 bar; Rückkehr bei 38 bar) (Voralarm)",
+     "original": "High pressure (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "13",
+     "title": "Abtaufühler fehlt (Wärmepumpe)",
+     "original": "No defrosting probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "113",
+     "title": "Abtaufühler fehlt (Wärmepumpe) (Voralarm)",
+     "original": "No defrosting probe (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "14",
+     "title": "Sauggeber (Niederdruck) Verdichter fehlt (Wärmepumpe)",
+     "original": "Intake pressure transducer no compressor",
+     "reset": "manuell"
+    },
+    {
+     "code": "114",
+     "title": "Sauggeber (Niederdruck) Verdichter fehlt (Wärmepumpe) (Voralarm)",
+     "original": "Intake pressure transducer no compressor (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "15",
+     "title": "Niederdruck am Geber unter Schwelle (Werkparameter 9: Kühlen 4 bar; A: Heizen 2 bar; im Heizbetrieb 3 min nach Verdichterstart ausgesetzt, bei Kreisumkehr dauernd)",
+     "original": "Low pressure",
+     "reset": "manuell"
+    },
+    {
+     "code": "115",
+     "title": "Niederdruck am Geber unter Schwelle (Werkparameter 9: Kühlen 4 bar; A: Heizen 2 bar; im Heizbetrieb 3 min nach Verdichterstart ausgesetzt, bei Kreisumkehr dauernd) (Voralarm)",
+     "original": "Low pressure (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "16",
+     "title": "Geringe Leistung: Kontrolle des Verdichterverhaltens nach dem Einschalten (Leistungskontrolle, per DIP-Schalter abschaltbar)",
+     "original": "Low performance",
+     "reset": "manuell"
+    },
+    {
+     "code": "17",
+     "title": "Pumpe: Motorschutz ausgelöst (Kontakt ID3, Klemmen M7.5–M7.6, Öffner; nur bei Ersatzplatine mit SW bis 3.6)",
+     "original": "Pump magnet circuit breaker",
+     "reset": "manuell"
+    },
+    {
+     "code": "117",
+     "title": "Pumpe: Motorschutz ausgelöst (Kontakt ID3, Klemmen M7.5–M7.6, Öffner; nur bei Ersatzplatine mit SW bis 3.6) (Voralarm)",
+     "original": "Pump magnet circuit breaker (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "18",
+     "title": "Hochdruck-Teilentlastung (Partialisierung); Sperre nach max. Anzahl Eingriffe (Werkparameter 5, Standard 5)",
+     "original": "High pressure partialisation",
+     "reset": "manuell"
+    },
+    {
+     "code": "118",
+     "title": "Hochdruck-Teilentlastung (Partialisierung); Sperre nach max. Anzahl Eingriffe (Werkparameter 5, Standard 5) (Voralarm)",
+     "original": "High pressure partialisation (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "19",
+     "title": "Niederdruck-Teilentlastung; Sperre nach max. Anzahl Eingriffe (Werkparameter 5, Standard 5)",
+     "original": "Low pressure partialisation",
+     "reset": "manuell"
+    },
+    {
+     "code": "119",
+     "title": "Niederdruck-Teilentlastung; Sperre nach max. Anzahl Eingriffe (Werkparameter 5, Standard 5) (Voralarm)",
+     "original": "Low pressure partialisation (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "20",
+     "title": "Heißgastemperatur-Teilentlastung; Sperre nach max. Anzahl Eingriffe (Werkparameter 5, Standard 5)",
+     "original": "Pressing line temperature partialisation",
+     "reset": "manuell"
+    },
+    {
+     "code": "120",
+     "title": "Heißgastemperatur-Teilentlastung; Sperre nach max. Anzahl Eingriffe (Werkparameter 5, Standard 5) (Voralarm)",
+     "original": "Pressing line temperature partialisation (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "21",
+     "title": "Inverter: Fehler bei der Gegen-EMK-Erkennung (Longertek 4/20)",
+     "original": "Bemf error",
+     "reset": "manuell"
+    },
+    {
+     "code": "121",
+     "title": "Inverter: Fehler bei der Gegen-EMK-Erkennung (Longertek 4/20) (Voralarm)",
+     "original": "Bemf error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "22",
+     "title": "Inverter: interner Kommunikationsfehler (Longertek 5)",
+     "original": "Internal communication error",
+     "reset": "manuell"
+    },
+    {
+     "code": "122",
+     "title": "Inverter: interner Kommunikationsfehler (Longertek 5) (Voralarm)",
+     "original": "Internal communication error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "23",
+     "title": "Inverter: Überstrom Verdichter (Longertek 6)",
+     "original": "Overcurrent",
+     "reset": "manuell"
+    },
+    {
+     "code": "123",
+     "title": "Inverter: Überstrom Verdichter (Longertek 6) (Voralarm)",
+     "original": "Overcurrent (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "24",
+     "title": "Inverter: Verdichter nimmt zu wenig Strom auf, Leerlauf möglich (Longertek 7)",
+     "original": "No load",
+     "reset": "manuell"
+    },
+    {
+     "code": "124",
+     "title": "Inverter: Verdichter nimmt zu wenig Strom auf, Leerlauf möglich (Longertek 7) (Voralarm)",
+     "original": "No load (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "25",
+     "title": "Inverter: Zwischenkreisspannung falsch (Longertek 8)",
+     "original": "Incorrect voltage",
+     "reset": "manuell"
+    },
+    {
+     "code": "125",
+     "title": "Inverter: Zwischenkreisspannung falsch (Longertek 8) (Voralarm)",
+     "original": "Incorrect voltage (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "26",
+     "title": "Inverter: Fehler beim Anlauf des PMSM-Motors (Longertek 9)",
+     "original": "Error on start-up",
+     "reset": "manuell"
+    },
+    {
+     "code": "126",
+     "title": "Inverter: Fehler beim Anlauf des PMSM-Motors (Longertek 9) (Voralarm)",
+     "original": "Error on start-up (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "27",
+     "title": "Inverter: IPM-/IGBT-Schutzfehler (Longertek 12)",
+     "original": "IPM protection error",
+     "reset": "manuell"
+    },
+    {
+     "code": "127",
+     "title": "Inverter: IPM-/IGBT-Schutzfehler (Longertek 12) (Voralarm)",
+     "original": "IPM protection error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "28",
+     "title": "Inverter: EEPROM-Fehler (Longertek 13)",
+     "original": "EEPROM error",
+     "reset": "manuell"
+    },
+    {
+     "code": "128",
+     "title": "Inverter: EEPROM-Fehler (Longertek 13) (Voralarm)",
+     "original": "EEPROM error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "29",
+     "title": "Inverter: Verdichter blockiert (Longertek 16)",
+     "original": "Compressor stall",
+     "reset": "manuell"
+    },
+    {
+     "code": "129",
+     "title": "Inverter: Verdichter blockiert (Longertek 16) (Voralarm)",
+     "original": "Compressor stall (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "30",
+     "title": "Inverter: keine Kommunikation (ohne Spannung, Kabel getrennt oder A/B vertauscht)",
+     "original": "No communication",
+     "reset": "manuell"
+    },
+    {
+     "code": "130",
+     "title": "Inverter: keine Kommunikation (ohne Spannung, Kabel getrennt oder A/B vertauscht) (Voralarm)",
+     "original": "No communication (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "31",
+     "title": "Inverter: PFC-Modul-Fehler (Longertek 23)",
+     "original": "PFC Module",
+     "reset": "manuell"
+    },
+    {
+     "code": "131",
+     "title": "Inverter: PFC-Modul-Fehler (Longertek 23) (Voralarm)",
+     "original": "PFC Module (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "32",
+     "title": "Inverter: Kühlkörper überhitzt (APY 1)",
+     "original": "Cooling fin overheating",
+     "reset": "manuell"
+    },
+    {
+     "code": "132",
+     "title": "Inverter: Kühlkörper überhitzt (APY 1) (Voralarm)",
+     "original": "Cooling fin overheating (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "33",
+     "title": "Inverter: Hardwarefehler, Überstrom bei Beschleunigung (APY 2)",
+     "original": "Over current in acceleration mode / Hardware error",
+     "reset": "manuell"
+    },
+    {
+     "code": "133",
+     "title": "Inverter: Hardwarefehler, Überstrom bei Beschleunigung (APY 2) (Voralarm)",
+     "original": "Over current in acceleration mode / Hardware error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "34",
+     "title": "Inverter: Hardwarefehler, Überstrom bei konstanter Drehzahl (APY 3)",
+     "original": "Over-current at constant speed / Hardware error",
+     "reset": "manuell"
+    },
+    {
+     "code": "134",
+     "title": "Inverter: Hardwarefehler, Überstrom bei konstanter Drehzahl (APY 3) (Voralarm)",
+     "original": "Over-current at constant speed / Hardware error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "35",
+     "title": "Inverter: Hardwarefehler, Überstrom beim Verzögern (APY 4)",
+     "original": "Over current in deceleration mode / Hardware error",
+     "reset": "manuell"
+    },
+    {
+     "code": "135",
+     "title": "Inverter: Hardwarefehler, Überstrom beim Verzögern (APY 4) (Voralarm)",
+     "original": "Over current in deceleration mode / Hardware error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "36",
+     "title": "Inverter: Unterspannung im Gleichspannungszwischenkreis (APY 5)",
+     "original": "Under-voltage on the DC Bus",
+     "reset": "manuell"
+    },
+    {
+     "code": "136",
+     "title": "Inverter: Unterspannung im Gleichspannungszwischenkreis (APY 5) (Voralarm)",
+     "original": "Under-voltage on the DC Bus (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "37",
+     "title": "Inverter: Überspannung im Gleichspannungszwischenkreis (APY 6)",
+     "original": "DC Bus over-voltage",
+     "reset": "manuell"
+    },
+    {
+     "code": "137",
+     "title": "Inverter: Überspannung im Gleichspannungszwischenkreis (APY 6) (Voralarm)",
+     "original": "DC Bus over-voltage (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "40",
+     "title": "Inverter: Softwarefehler, PFC-Wandler/PFC-Modul (APY 9)",
+     "original": "PFC Converter Fault / Software error",
+     "reset": "manuell"
+    },
+    {
+     "code": "140",
+     "title": "Inverter: Softwarefehler, PFC-Wandler/PFC-Modul (APY 9) (Voralarm)",
+     "original": "PFC Converter Fault / Software error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "41",
+     "title": "Inverter: Softwarefehler, Überstrom bei Beschleunigung (APY 10)",
+     "original": "Over current in acceleration mode / Software error",
+     "reset": "manuell"
+    },
+    {
+     "code": "141",
+     "title": "Inverter: Softwarefehler, Überstrom bei Beschleunigung (APY 10) (Voralarm)",
+     "original": "Over current in acceleration mode / Software error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "42",
+     "title": "Inverter: Überlast (APY 11)",
+     "original": "Overload",
+     "reset": "manuell"
+    },
+    {
+     "code": "142",
+     "title": "Inverter: Überlast (APY 11) (Voralarm)",
+     "original": "Overload (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "43",
+     "title": "Inverter: Softwarefehler, Überstrom bei konstanter Drehzahl (APY 12)",
+     "original": "Over-current at constant speed / Software error",
+     "reset": "manuell"
+    },
+    {
+     "code": "143",
+     "title": "Inverter: Softwarefehler, Überstrom bei konstanter Drehzahl (APY 12) (Voralarm)",
+     "original": "Over-current at constant speed / Software error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "44",
+     "title": "Inverter: Softwarefehler, Überstrom beim Verzögern (APY 13)",
+     "original": "Over current in deceleration mode / Software error",
+     "reset": "manuell"
+    },
+    {
+     "code": "144",
+     "title": "Inverter: Softwarefehler, Überstrom beim Verzögern (APY 13) (Voralarm)",
+     "original": "Over current in deceleration mode / Software error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "45",
+     "title": "Inverter: Überstrom bei Beschleunigung (APY 14)",
+     "original": "Over current in acceleration mode",
+     "reset": "manuell"
+    },
+    {
+     "code": "145",
+     "title": "Inverter: Überstrom bei Beschleunigung (APY 14) (Voralarm)",
+     "original": "Over current in acceleration mode (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "46",
+     "title": "Inverter: keine Kommunikation (APY 15)",
+     "original": "No communication",
+     "reset": "manuell"
+    },
+    {
+     "code": "146",
+     "title": "Inverter: keine Kommunikation (APY 15) (Voralarm)",
+     "original": "No communication (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "47",
+     "title": "Inverter: Fehler Kühlkörper-Temperaturfühler (APY 16)",
+     "original": "Cooling fin temperature sensor error",
+     "reset": "manuell"
+    },
+    {
+     "code": "147",
+     "title": "Inverter: Fehler Kühlkörper-Temperaturfühler (APY 16) (Voralarm)",
+     "original": "Cooling fin temperature sensor error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "51",
+     "title": "Inverter: Anomaler Zustand, Frequenz wegen Überstrom/Übertemperatur reduziert (APY 20)",
+     "original": "Anomalous condition",
+     "reset": "manuell"
+    },
+    {
+     "code": "151",
+     "title": "Inverter: Anomaler Zustand, Frequenz wegen Überstrom/Übertemperatur reduziert (APY 20) (Voralarm)",
+     "original": "Anomalous condition (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "54",
+     "title": "Kreisumkehrventil vermutlich defekt",
+     "original": "Cycle reverse valve faulty",
+     "reset": "manuell"
+    },
+    {
+     "code": "55",
+     "title": "Wassereintrittstemperatur zu hoch (Installateurparameter H; vermutlich Kessel in der Anlage); bei der dritten Auslösung Sperre",
+     "original": "Water inlet high temperature",
+     "reset": "manuell"
+    },
+    {
+     "code": "155",
+     "title": "Wassereintrittstemperatur zu hoch (Installateurparameter H; vermutlich Kessel in der Anlage); bei der dritten Auslösung Sperre (Voralarm)",
+     "original": "Water inlet high temperature (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "156",
+     "title": "Abtauung durch Kreisumkehr wegen hoher Heißgastemperatur (ohne Einhaltung der Zeiten zwischen Kreisumkehrungen); stoppt den Verdichter nicht (Voralarm)",
+     "original": "Cycle reverse due to high temperature of the pressing line gas (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "57",
+     "title": "Fehler Fühler der Brauchwasser-Platine (Fernfühler oder Kommunikation; nur aktiv bei Parameter 0 = 2 bzw. 8 = 4 im Menü mit Passwort 30)",
+     "original": "Reading error of the DHW control board remote probe",
+     "reset": "manuell"
+    },
+    {
+     "code": "157",
+     "title": "Fehler Fühler der Brauchwasser-Platine (Fernfühler oder Kommunikation; nur aktiv bei Parameter 0 = 2 bzw. 8 = 4 im Menü mit Passwort 30) (Voralarm)",
+     "original": "Reading error of the DHW control board remote probe (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "58",
+     "title": "Außenluftfühler defekt (bei DCP oder Wärmepumpe)",
+     "original": "Outdoor air temperature probe reading error",
+     "reset": "manuell"
+    },
+    {
+     "code": "158",
+     "title": "Außenluftfühler defekt (bei DCP oder Wärmepumpe) (Voralarm)",
+     "original": "Outdoor air temperature probe reading error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "59",
+     "title": "Wassereintrittsfühler Kondensator defekt (nur WRL)",
+     "original": "Inlet water probe no condenser (ONLY WRL)",
+     "reset": "manuell"
+    },
+    {
+     "code": "159",
+     "title": "Wassereintrittsfühler Kondensator defekt (nur WRL) (Voralarm)",
+     "original": "Inlet water probe no condenser (ONLY WRL) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "60",
+     "title": "Wasseraustrittsfühler Kondensator defekt (nur WRL)",
+     "original": "Output water probe no condenser (ONLY WRL)",
+     "reset": "manuell"
+    },
+    {
+     "code": "160",
+     "title": "Wasseraustrittsfühler Kondensator defekt (nur WRL) (Voralarm)",
+     "original": "Output water probe no condenser (ONLY WRL) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "61",
+     "title": "Carel-Inverter: Überstrom",
+     "original": "Overcurrent (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "161",
+     "title": "Carel-Inverter: Überstrom (Voralarm)",
+     "original": "Overcurrent (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "62",
+     "title": "Carel-Inverter: Verdichtermotor überlastet",
+     "original": "Compressor motor overload (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "162",
+     "title": "Carel-Inverter: Verdichtermotor überlastet (Voralarm)",
+     "original": "Compressor motor overload (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "63",
+     "title": "Carel-Inverter: Überspannung",
+     "original": "Overvoltage (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "163",
+     "title": "Carel-Inverter: Überspannung (Voralarm)",
+     "original": "Overvoltage (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "64",
+     "title": "Carel-Inverter: Unterspannung",
+     "original": "Undervoltage (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "164",
+     "title": "Carel-Inverter: Unterspannung (Voralarm)",
+     "original": "Undervoltage (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "65",
+     "title": "Carel-Inverter: Antrieb überhitzt",
+     "original": "Drive overheating (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "165",
+     "title": "Carel-Inverter: Antrieb überhitzt (Voralarm)",
+     "original": "Drive overheating (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "66",
+     "title": "Carel-Inverter: Antrieb zu kalt",
+     "original": "Drive underheating (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "166",
+     "title": "Carel-Inverter: Antrieb zu kalt (Voralarm)",
+     "original": "Drive underheating (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "67",
+     "title": "Carel-Inverter: Hardware-Überstrom",
+     "original": "Hardware over-current (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "167",
+     "title": "Carel-Inverter: Hardware-Überstrom (Voralarm)",
+     "original": "Hardware over-current (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "68",
+     "title": "Carel-Inverter: Verdichter überhitzt",
+     "original": "Compressor overheating (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "168",
+     "title": "Carel-Inverter: Verdichter überhitzt (Voralarm)",
+     "original": "Compressor overheating (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "69",
+     "title": "Carel-Inverter: reserviert",
+     "original": "Reserved (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "169",
+     "title": "Carel-Inverter: reserviert (Voralarm)",
+     "original": "Reserved (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "70",
+     "title": "Carel-Inverter: CPU-Fehler",
+     "original": "CPU error (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "170",
+     "title": "Carel-Inverter: CPU-Fehler (Voralarm)",
+     "original": "CPU error (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "71",
+     "title": "Carel-Inverter: Standardparameter geladen",
+     "original": "Default parameters (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "171",
+     "title": "Carel-Inverter: Standardparameter geladen (Voralarm)",
+     "original": "Default parameters (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "72",
+     "title": "Carel-Inverter: Welligkeit im Gleichspannungszwischenkreis",
+     "original": "DC bus ripple (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "172",
+     "title": "Carel-Inverter: Welligkeit im Gleichspannungszwischenkreis (Voralarm)",
+     "original": "DC bus ripple (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "73",
+     "title": "Carel-Inverter: keine Kommunikation zwischen Inverter und uPC",
+     "original": "No communication between inverter and uPC (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "173",
+     "title": "Carel-Inverter: keine Kommunikation zwischen Inverter und uPC (Voralarm)",
+     "original": "No communication between inverter and uPC (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "74",
+     "title": "Carel-Inverter: Temperaturfühler des Antriebs defekt",
+     "original": "Drive temperature sensor fault (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "174",
+     "title": "Carel-Inverter: Temperaturfühler des Antriebs defekt (Voralarm)",
+     "original": "Drive temperature sensor fault (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "75",
+     "title": "Carel-Inverter: Selbstkonfiguration fehlgeschlagen",
+     "original": "Self-configuration failed (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "175",
+     "title": "Carel-Inverter: Selbstkonfiguration fehlgeschlagen (Voralarm)",
+     "original": "Self-configuration failed (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "76",
+     "title": "Carel-Inverter: Antrieb gesperrt",
+     "original": "Inverter drive disabled (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "176",
+     "title": "Carel-Inverter: Antrieb gesperrt (Voralarm)",
+     "original": "Inverter drive disabled (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "77",
+     "title": "Carel-Inverter: Motorphasenfehler",
+     "original": "Motor phases error (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "177",
+     "title": "Carel-Inverter: Motorphasenfehler (Voralarm)",
+     "original": "Motor phases error (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "78",
+     "title": "Carel-Inverter: Kühllüfter defekt",
+     "original": "Cooling fan inverter faulty (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "178",
+     "title": "Carel-Inverter: Kühllüfter defekt (Voralarm)",
+     "original": "Cooling fan inverter faulty (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "79",
+     "title": "Carel-Inverter: Drehzahlfehler",
+     "original": "Speed fault (Carel Inverter)",
+     "reset": "manuell"
+    },
+    {
+     "code": "179",
+     "title": "Carel-Inverter: Drehzahlfehler (Voralarm)",
+     "original": "Speed fault (Carel Inverter) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "80",
+     "title": "PFC-Fehler: bei aktivem PFC ist die Zwischenkreisspannung sehr niedrig",
+     "original": "PFC fault",
+     "reset": "manuell"
+    },
+    {
+     "code": "180",
+     "title": "PFC-Fehler: bei aktivem PFC ist die Zwischenkreisspannung sehr niedrig (Voralarm)",
+     "original": "PFC fault (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "81",
+     "title": "PFC-Überlastauslösung (in neuer Firmware nicht mehr vorhanden)",
+     "original": "PFC overload trip",
+     "reset": "manuell"
+    },
+    {
+     "code": "181",
+     "title": "PFC-Überlastauslösung (in neuer Firmware nicht mehr vorhanden) (Voralarm)",
+     "original": "PFC overload trip (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "82",
+     "title": "Eingangsspannung zu niedrig (unter 170 V bei laufendem Motor)",
+     "original": "Input voltage error",
+     "reset": "manuell"
+    },
+    {
+     "code": "182",
+     "title": "Eingangsspannung zu niedrig (unter 170 V bei laufendem Motor) (Voralarm)",
+     "original": "Input voltage error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "83",
+     "title": "Allgemeiner Inverterfehler (Carel-Inverter, Modbus-Adresse 213)",
+     "original": "Generic inverter error",
+     "reset": "manuell"
+    },
+    {
+     "code": "183",
+     "title": "Allgemeiner Inverterfehler (Carel-Inverter, Modbus-Adresse 213) (Voralarm)",
+     "original": "Generic inverter error (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "84",
+     "title": "Fühler B1 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B1 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "184",
+     "title": "Fühler B1 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B1 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "85",
+     "title": "Fühler B2 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B2 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "185",
+     "title": "Fühler B2 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B2 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "86",
+     "title": "Fühler B3 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B3 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "186",
+     "title": "Fühler B3 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B3 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "87",
+     "title": "Fühler B4 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B4 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "187",
+     "title": "Fühler B4 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B4 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "88",
+     "title": "Fühler B5 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B5 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "188",
+     "title": "Fühler B5 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B5 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "89",
+     "title": "Fühler B6 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B6 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "189",
+     "title": "Fühler B6 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B6 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "90",
+     "title": "Fühler B7 defekt (uPC) – Verkabelung prüfen",
+     "original": "Probe B7 fault (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "190",
+     "title": "Fühler B7 defekt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Probe B7 fault (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "91",
+     "title": "Hochdruckalarm (uPC) – Verkabelung prüfen",
+     "original": "High pressure alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "191",
+     "title": "Hochdruckalarm (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "High pressure alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "92",
+     "title": "Niederdruckalarm (uPC) – Verkabelung prüfen",
+     "original": "Low pressure alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "192",
+     "title": "Niederdruckalarm (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Low pressure alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "93",
+     "title": "Heißgastemperatur Druckleitung zu hoch (uPC) – Verkabelung prüfen",
+     "original": "Gas high temperature alarm pressing line (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "193",
+     "title": "Heißgastemperatur Druckleitung zu hoch (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Gas high temperature alarm pressing line (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "94",
+     "title": "Druckdifferenz kleiner als vorgegeben (uPC) – Verkabelung prüfen",
+     "original": "Pressure differential lower than that specified (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "194",
+     "title": "Druckdifferenz kleiner als vorgegeben (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Pressure differential lower than that specified (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "95",
+     "title": "Verdichterstart fehlgeschlagen (uPC) – Verkabelung prüfen",
+     "original": "Compressor start-up failed (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "195",
+     "title": "Verdichterstart fehlgeschlagen (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Compressor start-up failed (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "96",
+     "title": "Betriebsgrenzen zeitlich überschritten (uPC) – Verkabelung prüfen",
+     "original": "Time exceeding operational limits alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "196",
+     "title": "Betriebsgrenzen zeitlich überschritten (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Time exceeding operational limits alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "97",
+     "title": "Überhitzung zu niedrig (uPC) – Verkabelung prüfen",
+     "original": "Super Heat low alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "197",
+     "title": "Überhitzung zu niedrig (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Super Heat low alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "98",
+     "title": "MOP-Alarm (uPC) – Verkabelung prüfen",
+     "original": "MOP alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "198",
+     "title": "MOP-Alarm (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "MOP alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "99",
+     "title": "Ansaugtemperatur zu niedrig (uPC) – Verkabelung prüfen",
+     "original": "Low intake temperature alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "199",
+     "title": "Ansaugtemperatur zu niedrig (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Low intake temperature alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "200",
+     "title": "EVD-EVO-Alarm: Evotunes-Alarm (uPC) – Verkabelung prüfen",
+     "original": "EVD EVO alarm: Evotunes alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "300",
+     "title": "EVD-EVO-Alarm: Evotunes-Alarm (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "EVD EVO alarm: Evotunes alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "201",
+     "title": "EVD-EVO-Regelungsalarm (uPC) – Verkabelung prüfen",
+     "original": "EVD EVO regulation alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "301",
+     "title": "EVD-EVO-Regelungsalarm (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "EVD EVO regulation alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "202",
+     "title": "EVD-EVO-Systemalarm Fühlerfehler (uPC) – Verkabelung prüfen",
+     "original": "EVD EVO system alarms probe errors alarm (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "302",
+     "title": "EVD-EVO-Systemalarm Fühlerfehler (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "EVD EVO system alarms probe errors alarm (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "203",
+     "title": "Reserviert (uPC) – Verkabelung prüfen",
+     "original": "Reserved (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "303",
+     "title": "Reserviert (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Reserved (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "204",
+     "title": "Keine Kommunikation zwischen Inverter und uPC (uPC-Fehler) – Verkabelung prüfen",
+     "original": "No communication between inverter and uPC",
+     "reset": "manuell"
+    },
+    {
+     "code": "304",
+     "title": "Keine Kommunikation zwischen Inverter und uPC (uPC-Fehler) – Verkabelung prüfen (Voralarm)",
+     "original": "No communication between inverter and uPC (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "205",
+     "title": "Inverter passt nicht zum gewählten Verdichter (uPC) – Verkabelung prüfen",
+     "original": "Inverter not compatible with the compressor selected (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "305",
+     "title": "Inverter passt nicht zum gewählten Verdichter (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Inverter not compatible with the compressor selected (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "206",
+     "title": "Delta P beim Start größer als erlaubt (uPC) – Verkabelung prüfen",
+     "original": "Delta P greater than the permit at start up (uPC)",
+     "reset": "manuell"
+    },
+    {
+     "code": "306",
+     "title": "Delta P beim Start größer als erlaubt (uPC) – Verkabelung prüfen (Voralarm)",
+     "original": "Delta P greater than the permit at start up (uPC) (pre-alarm)",
+     "reset": "automatisch"
+    },
+    {
+     "code": "207",
+     "title": "Niederdruck-Grenzwert unterschritten (Gerät entladen)",
+     "original": "Low pressure limit – discharged unit",
+     "reset": "manuell"
+    },
+    {
+     "code": "307",
+     "title": "Niederdruck-Grenzwert unterschritten (Gerät entladen) (Voralarm)",
+     "original": "Low pressure limit – discharged unit (pre-alarm)",
+     "reset": "automatisch"
     }
    ]
   }
