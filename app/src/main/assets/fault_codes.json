@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": 1,
+ "version": 2,
  "sets": [
   {
    "manufacturer": "Aermec",
@@ -1623,6 +1623,380 @@
      "title": "Frostschutz Geothermie",
      "original": "Alarm antifreeze geo",
      "reset": ""
+    }
+   ]
+  },
+  {
+   "manufacturer": "Carel",
+   "series": "Standard Chiller/HP (pCO, Schraubenverdichter Generico/Bitzer, EVD-Treiber)",
+   "controller": "Carel pCO + pGD",
+   "source": "Carel, Standard Chiller/HP modulare per compressore a vite Generico/Bitzer con driver CAREL, User manual Rel. 1.4, Cod. +030221296 (09/2008), Kap. 23.6, 23.7, 24.3 – generische Applikation, OEM-Software (Aermec/Euroklimat) kann abweichen",
+   "codes": [
+    {
+     "code": "AL011",
+     "title": "Schwerer Alarm (digitaler Eingang)",
+     "original": "Serious alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL012",
+     "title": "Phasenüberwachung",
+     "original": "Phase monitor alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL018",
+     "title": "Verdampferpumpe: Thermoschutz ausgelöst",
+     "original": "Evaporator pump thermal cutout",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL019",
+     "title": "Kondensatorpumpe: Thermoschutz ausgelöst",
+     "original": "Condenser pump thermal cutout",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL013",
+     "title": "Verdampfer-Strömungswächter (Verzögerung einstellbar)",
+     "original": "Evaporator flow-switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL014",
+     "title": "Kondensator-Strömungswächter (Verzögerung einstellbar)",
+     "original": "Condenser flow-switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL031",
+     "title": "Frostschutzalarm",
+     "original": "Antifreeze alarm",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL001",
+     "title": "Einheit 1 offline (pLAN)",
+     "original": "Unit 1 offline",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL002",
+     "title": "Einheit 2 offline (pLAN)",
+     "original": "Unit 2 offline",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL003",
+     "title": "Einheit 3 offline (pLAN)",
+     "original": "Unit 3 offline",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL004",
+     "title": "Einheit 4 offline (pLAN)",
+     "original": "Unit 4 offline",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL020",
+     "title": "Verdichter: Thermoschutz ausgelöst",
+     "original": "Compressor thermal cutout",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL015",
+     "title": "Öldifferenzdruckschalter / Ölniveau (Verzögerung einstellbar)",
+     "original": "Oil differential pressure switch / oil level",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL032",
+     "title": "Druckdifferenz zu niedrig (Verzögerung einstellbar)",
+     "original": "Low pressure differential",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL017",
+     "title": "Niederdruck (Druckschalter)",
+     "original": "Low pressure pressure-switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL016",
+     "title": "Hochdruck (Druckschalter)",
+     "original": "High pressure pressure-switch",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL034",
+     "title": "Niederdruck (Druckaufnehmer)",
+     "original": "Low transducer pressure",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL033",
+     "title": "Hochdruck (Druckaufnehmer)",
+     "original": "High transducer pressure",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL021",
+     "title": "Ventilator/Kondensator 1: Thermoschutz ausgelöst",
+     "original": "Fan / condenser 1 thermal cutout",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL022",
+     "title": "Ventilator/Kondensator 2: Thermoschutz ausgelöst",
+     "original": "Fan / condenser 2 thermal cutout",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL035",
+     "title": "Heißgas-/Austrittstemperatur zu hoch",
+     "original": "High outlet (delivery) temperature",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL036",
+     "title": "Spannung zu hoch",
+     "original": "High voltage",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL037",
+     "title": "Strom zu hoch",
+     "original": "High current",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL051",
+     "title": "Wartung Verdampferpumpe fällig",
+     "original": "Evaporator pump maintenance",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL052",
+     "title": "Wartung Kondensatorpumpe fällig",
+     "original": "Condenser pump maintenance",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL053",
+     "title": "Wartung Verdichter fällig",
+     "original": "Compressor maintenance",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL060",
+     "title": "Fühler B1 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B1 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL061",
+     "title": "Fühler B2 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B2 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL062",
+     "title": "Fühler B3 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B3 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL063",
+     "title": "Fühler B4 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B4 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL064",
+     "title": "Fühler B5 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B5 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL065",
+     "title": "Fühler B6 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B6 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL066",
+     "title": "Fühler B7 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B7 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL067",
+     "title": "Fühler B8 defekt oder nicht angeschlossen (Verzögerung 10 s)",
+     "original": "B8 probe failed or not connected",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL041",
+     "title": "Uhrenkarte defekt oder nicht angeschlossen",
+     "original": "32KB clock card failed or disconnected",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL090",
+     "title": "Verdichter außerhalb des Einsatzbereichs",
+     "original": "Operation limit exceeded",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL091",
+     "title": "Kältemittel nicht verwaltet",
+     "original": "Gas not managed",
+     "reset": "automatisch"
+    },
+    {
+     "code": "AL101",
+     "title": "Treiber 1: Fühlerfehler",
+     "original": "Driver 1 probe fault",
+     "reset": ""
+    },
+    {
+     "code": "AL102",
+     "title": "Treiber 1: EEPROM-Fehler",
+     "original": "Driver 1 EEPROM error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL103",
+     "title": "Treiber 1: Schrittmotorfehler (Ventil)",
+     "original": "Driver 1 stepped motor error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL104",
+     "title": "Treiber 1: Batteriefehler",
+     "original": "Driver 1 battery error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL105",
+     "title": "Treiber 1: Hochdruck (MOP)",
+     "original": "High pressure (MOP) driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL106",
+     "title": "Treiber 1: Niederdruck (LOP)",
+     "original": "Low pressure (LOP) driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL107",
+     "title": "Treiber 1: Überhitzung zu niedrig",
+     "original": "Low superheat driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL108",
+     "title": "Treiber 1: Ventil bei gesperrtem Treiber nicht geschlossen",
+     "original": "Valve not shut while driver 1 being disabled",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL109",
+     "title": "Treiber 1: Überhitzung zu hoch",
+     "original": "High superheat driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL114",
+     "title": "Treiber 1: Standby wegen EEPROM-/Batterie-/Ventilfehler",
+     "original": "Standby due to EEPROM / battery recharge / open valve error, driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL115",
+     "title": "Treiber 1: LAN getrennt",
+     "original": "LAN disconnected, driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL116",
+     "title": "Treiber 1: Einrichtung unvollständig",
+     "original": "Setup incomplete, driver 1",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL201",
+     "title": "Treiber 2: Fühlerfehler",
+     "original": "Driver 2 probe fault",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL202",
+     "title": "Treiber 2: EEPROM-Fehler",
+     "original": "Driver 2 EEPROM error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL203",
+     "title": "Treiber 2: Schrittmotorfehler (Ventil)",
+     "original": "Driver 2 stepped motor error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL204",
+     "title": "Treiber 2: Batteriefehler",
+     "original": "Driver 2 battery error",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL205",
+     "title": "Treiber 2: Hochdruck (MOP)",
+     "original": "High pressure (MOP) driver 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL206",
+     "title": "Treiber 2: Niederdruck (LOP)",
+     "original": "Low pressure (LOP) driver 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL207",
+     "title": "Treiber 2: Überhitzung zu niedrig",
+     "original": "Low superheat driver 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL208",
+     "title": "Treiber 2: Ventil bei gesperrtem Treiber nicht geschlossen",
+     "original": "Valve not shut while driver 2 being disabled",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL209",
+     "title": "Treiber 2: Ansaugtemperatur zu hoch",
+     "original": "Driver 2 high intake temperature",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL214",
+     "title": "Treiber 2: Standby wegen EEPROM-/Batterie-/Ventilfehler",
+     "original": "Standby due to EEPROM / battery recharge / open valve error, driver 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL215",
+     "title": "Treiber 2: LAN getrennt",
+     "original": "LAN disconnected, driver 2",
+     "reset": "manuell"
+    },
+    {
+     "code": "AL216",
+     "title": "Treiber 2: Einrichtung unvollständig",
+     "original": "Setup incomplete, driver 2",
+     "reset": "manuell"
     }
    ]
   }

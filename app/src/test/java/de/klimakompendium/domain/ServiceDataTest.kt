@@ -35,6 +35,15 @@ class ServiceDataTest {
         assertTrue(series.containsAll(listOf("NRG 0282-0804", "NRP/NXP/CPS")))
     }
 
+    @Test fun carelStandardChillerCodesPresent() {
+        val carel = all.filter { it.manufacturer == "Carel" }
+        assertEquals(61, carel.size)
+        assertEquals("Frostschutzalarm", carel.first { it.code == "AL031" }.title)
+        assertEquals("manuell", carel.first { it.code == "AL011" }.remedy)
+        assertEquals("automatisch", carel.first { it.code == "AL060" }.remedy)
+        assertTrue(FaultCodeSearch.search(all, "flow-switch").any { it.manufacturer == "Carel" })
+    }
+
     @Test fun everyGuideHasSourceAndSteps() {
         assertTrue(service.guides.size >= 10)
         for (g in service.guides) {
@@ -75,7 +84,8 @@ class ServiceDataTest {
     }
 
     @Test fun manufacturerNameListsAllItsCodes() {
-        assertEquals(all.size, FaultCodeSearch.search(all, "Aermec", limit = 1000).size)
+        val aermec = all.count { it.manufacturer == "Aermec" }
+        assertEquals(aermec, FaultCodeSearch.search(all, "Aermec", limit = 1000).size)
     }
 
     @Test fun quickSearchIncludesFaults() {
