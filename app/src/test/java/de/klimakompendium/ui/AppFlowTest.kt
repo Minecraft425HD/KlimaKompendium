@@ -307,8 +307,8 @@ class SignalsFlowTest {
     @Test fun swiFindsSiwWithMeaning() {
         waitForText("KlimaKompendium")
         rule.onNodeWithText("Service").performClick()
-        waitForText("Signale")
-        rule.onNodeWithText("Signale").performClick()
+        waitForText("Signale & Klemmen")
+        rule.onNodeWithText("Signale & Klemmen").performClick()
         waitForText("Kürzel (SIW")
         rule.onNode(hasSetTextAction()).performTextInput("SWI")
         waitForText("Wassereintrittsfühler Verdampfer")

@@ -9,6 +9,10 @@ ist das Feld bewusst leer.
 | Alarmcodes Aermec **NRG 0282-0804** (AL01–AL157 und PEC-Alarmgruppen), Installer-Passwort 0000, BMS-/Modbus-Parameter, PGD1-Tasten, Menüs | Aermec, *NRG 0282-0804 – User manual, Card pCO5 – Panel PGD1*, Dok. 5723310_05 (04/2026), Kapitel 1, 9, 11 |
 | Alarmcodes Aermec **NRP/NXP/CPS**, PGD1-Tasten, Assistance-Menü, Alarm-Reset-Arten | Aermec, *Multipurpose – User manual, Card pCO5 – Panel PGD1* (NRP/NXP/CPS), Dok. 4724311_03 (10/2025), Kapitel 1, 13 |
 | Alarmcodes Carel **Standard Chiller/HP** (generische Applikation, pCO-Alarme und EVD-Treiber-Alarme) | Carel, *Standard Chiller/HP modulare per compressore a vite Generico/Bitzer con driver CAREL*, User manual Rel. 1.4, Cod. +030221296 (09/2008), Kap. 23.6, 23.7, 24.3 |
+| Hardware-Klemmen der Carel-Regler (U, B, ID, Y, NO/NC, Busse; Größen Small–Extralarge): pCO1, pCO3, pCOXS, pCOC | Carel, *pCO sistema – General manual*, +030220336 rel. 1.6 (04/2013), Kap. 2.1.1, 2.3.1, 2.5.1, 2.7.1 |
+| Hardware-Klemmen Carel pCO5 | Carel, *pCO5 User manual*, +0300009EN rel. 1.2 (04/2014), Kap. 2.2 |
+| Hardware-Klemmen Carel pCO5+ | Carel, *pCO5+ User manual*, +0300020EN rel. 1.4 (01/2015), Kap. 4.12 |
+| Hardware-Klemmen Carel c.pCO, c.pCO mini, c.pCOe | Carel, *c.pCO sistema*, +0300057EN rel. 1.8 (12/2025), Kap. 4.8–4.10 |
 | Signal-/Fühlerkürzel mit Klemmen (SIW, SUW, SAE, SL1, SGP, TAP/TBP, AP/BP, QM, CP …) | Aermec NRG 0282-0804, Dok. 5723310_05, Kapitel 4.1–4.12 (pCO, PEC, EVD, pCOe); Aermec NRP/NXP/CPS, Dok. 4724311_03, Kapitel 5.7/5.8 (nur Klemmen, keine Kürzel) |
 | Carel Tastenfunktionen (6 und 15 Tasten), pLAN-Adressierung (PGD0, pCO1/pCO3, pCO2/EVD-200), Standardwerte neu installieren, Standardpasswörter 1234 | Carel, *Standard Chiller Modular HP 1/4 Generic – User manual 1.4*, Code +030221296 (09/2008) |
 | pCOWeb: Werks-IP 172.16.0.1, Konten admin/root/httpadmin/carel/guest, Protokolle, Bootswitch | Carel, *pCOWeb – Scheda di interfaccia Ethernet per pCO\**, +050003238 rel. 1.0 (08.03.2005) |

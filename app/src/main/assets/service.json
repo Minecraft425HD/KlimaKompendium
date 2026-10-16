@@ -300,6 +300,23 @@
    ],
    "notes": "Bezeichnungen und Zusammenhänge stammen aus der Anzeige deines Geräts (Foto), nicht aus dem Herstellerhandbuch. Menüs und Belegung können je Softwarestand abweichen.",
    "source": "Foto der Anzeige eines testo 570s (vom Nutzer bereitgestellt); Plausibilitätsprüfung mit CoolProp-Daten"
+  },
+  {
+   "id": "carel-terminals",
+   "title": "Carel-Regler: Klemmenbezeichnungen U, B, ID, Y, NO – was bedeutet was?",
+   "category": "Fühler & Signale",
+   "appliesTo": "Carel pCO1, pCO3, pCO5, pCO5+, pCOXS, pCOC, c.pCO, c.pCO mini/c.pCOe",
+   "steps": [
+    "U1…U10 = Universal-Ein-/Ausgänge (nur pCO5+ und c.pCO-Familie): je nach Applikation Fühler (NTC, PT1000), Spannung (0–1 V, 0–10 V), Strom (0–20/4–20 mA), Digitaleingang oder Ausgang. Was an welcher Klemme hängt, legt die Software des Geräteherstellers fest – siehe Signale-Liste (z. B. Aermec: U1 = SIW).",
+    "B1…B10 = Analogeingänge der älteren Familien (pCO1, pCO3, pCO5, pCOXS, pCOC). Teils universal (NTC, 0–1 V, 0–10 V, 4–20 mA), teils passiv (NTC, PT1000, potentialfreier Kontakt). BC… = zugehöriger Bezugspunkt, GND = gemeinsamer Anschluss.",
+    "ID1…ID18 = Digitaleingänge (potentialfreier Kontakt über Fremdspannung, meist 24 V AC/DC). IDC… = gemeinsamer Anschluss einer Gruppe (bei DC-Speisung der Minuspol). IDnH = derselbe Eingang für 230 V AC (z. B. ID13H) – die beiden Eingänge 13 und 14 (bzw. 15 und 16) teilen sich den Gemeinsamen und müssen dieselbe Spannung haben.",
+    "Y1…Y6 = Analogausgänge 0–10 V (potentialgetrennt, benötigen die Versorgung VG/VG0). Y3/Y4 bei pCO1 bzw. Y3 bei pCOXS sind PWM-Ausgänge für Phasenanschnitt-Drehzahlregler.",
+    "NO1…NO29 = Relais, Schließer (Normally Open); NC = Öffner; C… = gemeinsamer Anschluss einer Relaisgruppe. Relais einer Gruppe (z. B. C1 für 1–3) müssen dieselbe Spannung führen.",
+    "Größen: Small < Medium < Large < Extralarge – Small hat nur 8 Digitaleingänge, 5 Analogeingänge und 8 Relais; ID13–14 und B6–B8 erst ab Medium; ID15–18, B9–B10, Y5–Y6 und Relais 14–18 nur Large; Relais 14–29 gibt es nur bei Extralarge (andere Klemmen J19–J22). In der Liste steht die Einschränkung als Hinweis bei der Klemme.",
+    "Steckverbinder J1…J30: Die Nummer (z. B. J5-5) nennt Stecker und Pin. Die Belegung ist je Reglertyp verschieden – deshalb in der Liste zuerst Gerät/Serie wählen."
+   ],
+   "notes": "Hardware-Belegung nach den Carel-Handbüchern (siehe Quellen in der Signale-Liste). Die Funktion der einzelnen Klemmen (was angeschlossen ist) bestimmt die Applikation des Anlagenherstellers; im Zweifel Schaltplan der Anlage lesen.",
+   "source": "Carel, pCO sistema General manual +030220336; pCO5 +0300009EN; pCO5+ +0300020EN; c.pCO sistema +0300057EN"
   }
  ],
  "controllerTemplates": [
