@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "version": 2,
+ "version": 3,
  "sets": [
   {
    "manufacturer": "Aermec",
@@ -8655,6 +8655,724 @@
      "type": "Bezugspotential",
      "title": "Bezugspotential (GND) / gemeinsamer Anschluss",
      "original": "",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "manufacturer": "Aermec",
+   "series": "ANL / ANLI / ANK / NRK / WRL (Moducontrol)",
+   "controller": "Aermec Moducontrol",
+   "source": "Schaltpläne Aermec ANLI 101 (Dok. 4756590/4756595/4756597) und ANLI 021–045 (4757890), Moducontrol-Platine; Fühlerzuordnung und Anzeigenamen aus Aermec Moducontrol-BMS-Handbuch 6205750_03; 11-poliges Klemmbrett aus Aermec ANL Installationshandbuch",
+   "signals": [
+    {
+     "board": "Moducontrol",
+     "terminal": "M9-1 / M9-2",
+     "code": "SIW",
+     "type": "Analoger Eingang",
+     "title": "Wassereintrittsfühler (NTC1, Anzeige tiA)",
+     "original": "Water inlet probe (NTC1, TIA)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M9-3 / M9-4",
+     "code": "SUW",
+     "type": "Analoger Eingang",
+     "title": "Wasseraustrittsfühler (NTC2, Anzeige tuA)",
+     "original": "Water outlet probe (NTC2, TUA)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M9-5 / M9-6",
+     "code": "SS",
+     "type": "Analoger Eingang",
+     "title": "Abtaufühler (NTC3, Anzeige tSb) – nur Wärmepumpen (Version H); bei WRL = SIWH (Kondensator-Wassereintritt)",
+     "original": "Defrosting probe (NTC3, TSB)",
+     "note": "Nur Version H (Wärmepumpe)"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M9S-1 / M9S-2",
+     "code": "SGP",
+     "type": "Analoger Eingang",
+     "title": "Druckgasfühler / Heißgasfühler (NTC4, Anzeige tGP)",
+     "original": "Discharge pipe sensor (NTC4, TGP)",
+     "note": "Laut Schaltplan nur mit DCP und Version H"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M9S-3 / M9S-4",
+     "code": "SAE",
+     "type": "Analoger Eingang",
+     "title": "Außenluftfühler (NTC5, Anzeige tAE)",
+     "original": "Ambient air probe (NTC5, TAE)",
+     "note": "Laut Schaltplan nur mit DCP und Version H"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M8-1 / M8-2 / M8-3",
+     "code": "TAP",
+     "type": "Analoger Eingang",
+     "title": "Hochdruckgeber, 3-Draht (Anzeige HP/AP in bar); Adern schwarz / grün / weiß",
+     "original": "High pressure transducer (3 wire)",
+     "note": "Anschlussfarben laut Schaltplan: M8-1 schwarz, M8-2 grün, M8-3 weiß"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M8S-3 / M8S-4",
+     "code": "TBP",
+     "type": "Analoger Eingang",
+     "title": "Niederdruckgeber (Anzeige bP in bar); M8S-3 = Signal, M8S-4 = Versorgung (V out); bei WRL = SUWH",
+     "original": "Low pressure transducer",
+     "note": "Nur Version H"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M6-3 / M6-4",
+     "code": "DCP",
+     "type": "Analoger Ausgang",
+     "title": "0–10-V-Ausgang zum DCP-Drehzahlregler der Ventilatoren (M6-3 = 10 V, M6-4 = 0 V)",
+     "original": "0–10 V output to DCP fan speed controller",
+     "note": "Nur mit DCP"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M7-1 / M7-2",
+     "code": "ID1 / MTC",
+     "type": "Digitaler Eingang",
+     "title": "Motorschutzschalter Verdichter (Öffner) – öffnet = Alarm 1 / Voralarm 101",
+     "original": "Compressor magneto-thermal switch (MTC)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M7-3 / M7-4",
+     "code": "ID2 / FL",
+     "type": "Digitaler Eingang",
+     "title": "Strömungswächter bzw. Wasser-Differenzdruckschalter (Öffner) – Alarm 4 / 104",
+     "original": "Flow switch / differential pressure switch (FL/PD)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M7-5 / M7-6",
+     "code": "ID3 / TRA",
+     "type": "Digitaler Eingang",
+     "title": "Raumthermostat (Klemmbrett 8 und 9); bei Ersatzplatine mit SW bis 3.6: Pumpen-Motorschutz MTP (Alarm 17)",
+     "original": "Room thermostat (TRA)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M7-7 / M7-8",
+     "code": "ID4 / AP",
+     "type": "Digitaler Eingang",
+     "title": "Hochdruck: Rückmeldung des Verdichterschützkreises mit Hochdruckschalter (Öffner) – Alarm 3 / 103",
+     "original": "High pressure switch circuit (AP)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M7S-1 / M7S-2",
+     "code": "ID5 / BP",
+     "type": "Digitaler Eingang",
+     "title": "Niederdruckschalter Verdichter-Saugseite – Alarm 5 / 105",
+     "original": "Low pressure switch (BP)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M7S-3 / M7S-4",
+     "code": "ID6 / TWS",
+     "type": "Digitaler Eingang",
+     "title": "Brauchwasser-Thermostat (Klemmbrett 10 und 11), Zustand ZU = Brauchwasserbereitung; bei Ersatzplatine mit SW bis 3.6: Ventilator-Motorschutz MTV (Alarm 2)",
+     "original": "Domestic hot water thermostat (TWS)",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "Klemmbrett 4 und 5",
+     "code": "IA",
+     "type": "Digitaler Eingang",
+     "title": "Fern-EIN/AUS-Kontakt (Hilfsschalter)",
+     "original": "Remote ON/OFF (auxiliary switch IA)",
+     "note": "Am 11-poligen Klemmbrett im Schaltschrank"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "Klemmbrett 3 und 5",
+     "code": "C/F",
+     "type": "Digitaler Eingang",
+     "title": "Fern-Umschaltung Sommer/Winter (Kühlen/Heizen)",
+     "original": "Remote cooling/heating switch (C/F)",
+     "note": "Am 11-poligen Klemmbrett im Schaltschrank"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "Klemmbrett 6 und 7",
+     "code": "AE",
+     "type": "Digitaler Ausgang",
+     "title": "Fernalarm / Sammelstörmeldung (potentialfrei; M1S-8 / M1-8 auf der Platine)",
+     "original": "Remote alarm (AE)",
+     "note": "Am 11-poligen Klemmbrett im Schaltschrank"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M1S-2 (N: M1-2)",
+     "code": "CPO / MPO",
+     "type": "Digitaler Ausgang",
+     "title": "Umwälzpumpe Wasser (Pumpenschütz CPO bzw. Pumpe MPO direkt)",
+     "original": "Pump contactor / pump",
+     "note": "Laut Schaltplan ANLI 101 und 021–045"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M1S-4 (N: M1-4)",
+     "code": "CCP / R1",
+     "type": "Digitaler Ausgang",
+     "title": "Verdichter (Schütz CCP bzw. Relais R1)",
+     "original": "Compressor contactor / relay",
+     "note": "Laut Schaltplan ANLI 101 und 021–045"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M1S-6 (N: M1-6)",
+     "code": "VIC",
+     "type": "Digitaler Ausgang",
+     "title": "Kreisumkehrventil (Wärmepumpe)",
+     "original": "Reverse cycle valve",
+     "note": "Laut Schaltplan ANLI 101 und 021–045"
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M2-1 / M2-2",
+     "code": "N / L",
+     "type": "Spannung",
+     "title": "Spannungsversorgung der Moducontrol-Platine (N = M2-1, L = M2-2)",
+     "original": "Board power supply",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M4S-3 / M4S-2",
+     "code": "D+ / D-",
+     "type": "Bus",
+     "title": "RS485-Schnittstelle (Modbus RTU) für BMS/Erweiterung: D+ = M4S-3, D- = M4S-2",
+     "original": "RS485 D+ / D-",
+     "note": ""
+    },
+    {
+     "board": "Moducontrol",
+     "terminal": "M3",
+     "code": "M3",
+     "type": "Bus",
+     "title": "Buchse für Bedienfeld (Telefonkabel) / Fernbedienung PR3",
+     "original": "Display / remote panel connector",
+     "note": ""
+    }
+   ]
+  },
+  {
+   "manufacturer": "Aermec",
+   "series": "ANL / ANR / ANK / CL (Schaltplan-Legende)",
+   "controller": "Aermec Schaltplan-Kürzel",
+   "source": "Aermec Schaltpläne, Legende für Serie ANL–ANR–ANK–CL (Stand 10.07.2012), z. B. Dok. 4756590 – deutsche Übersetzung sinngemäß, Originaltext englisch/italienisch",
+   "signals": [
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "AE",
+     "type": "Schaltplan-Kürzel",
+     "title": "Fernalarm",
+     "original": "Remote alarm",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "AP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Hochdruckwächter",
+     "original": "High pressure control",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "BP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Niederdruckwächter",
+     "original": "Low pressure control",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "C/F",
+     "type": "Schaltplan-Kürzel",
+     "title": "Umschalter Kühlen/Heizen",
+     "original": "Cooling/heating switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "CC-CCP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Verdichterschütz",
+     "original": "Compressor contactor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "CP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Verdichter",
+     "original": "Compressor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "CPO",
+     "type": "Schaltplan-Kürzel",
+     "title": "Pumpenschütz",
+     "original": "Pump contactor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "CRE",
+     "type": "Schaltplan-Kürzel",
+     "title": "Schütz Heizstab",
+     "original": "Electric heater contactor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "CV",
+     "type": "Schaltplan-Kürzel",
+     "title": "Ventilatorschütz",
+     "original": "Fan contactor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "DCP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Winterregelung (Schwachlast/Niedrigtemperatur-Drehzahlregler)",
+     "original": "Low ambient temperature device",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "F",
+     "type": "Schaltplan-Kürzel",
+     "title": "Sicherungen",
+     "original": "Fuses",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "FL",
+     "type": "Schaltplan-Kürzel",
+     "title": "Strömungswächter",
+     "original": "Flow switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "IA",
+     "type": "Schaltplan-Kürzel",
+     "title": "Hilfsschalter (Fern-EIN/AUS)",
+     "original": "Auxiliary switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "IF",
+     "type": "Schaltplan-Kürzel",
+     "title": "Endschalter",
+     "original": "Limit switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "IG",
+     "type": "Schaltplan-Kürzel",
+     "title": "Hauptschalter",
+     "original": "Main switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "IL",
+     "type": "Schaltplan-Kürzel",
+     "title": "Netzhauptschalter",
+     "original": "Line main switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "M",
+     "type": "Schaltplan-Kürzel",
+     "title": "Klemmleiste",
+     "original": "Control board / terminal block",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Verdichter-Schutzmodul",
+     "original": "Compressor protection module",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MPO",
+     "type": "Schaltplan-Kürzel",
+     "title": "Pumpenmotor",
+     "original": "Motor-pump",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MTA",
+     "type": "Schaltplan-Kürzel",
+     "title": "Überstromauslöser Steuerstromkreis",
+     "original": "Magneto-thermal switch (auxiliary)",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MTC",
+     "type": "Schaltplan-Kürzel",
+     "title": "Motorschutzschalter Verdichter",
+     "original": "Compressor magneto-thermal switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MTP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Motorschutzschalter Pumpe",
+     "original": "Pump safety switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MTV",
+     "type": "Schaltplan-Kürzel",
+     "title": "Motorschutzschalter Ventilator",
+     "original": "Fan magneto-thermal switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "MV",
+     "type": "Schaltplan-Kürzel",
+     "title": "Ventilatormotor",
+     "original": "Fan motor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "PD",
+     "type": "Schaltplan-Kürzel",
+     "title": "Druckdifferenzschalter",
+     "original": "Differential pressure switch",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "PMI",
+     "type": "Schaltplan-Kürzel",
+     "title": "Mindest-Wasserdruckschalter",
+     "original": "H2O pressure switch (minimum)",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "PR",
+     "type": "Schaltplan-Kürzel",
+     "title": "Bedientafel (Fernbedienung)",
+     "original": "Remote control panel",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "R",
+     "type": "Schaltplan-Kürzel",
+     "title": "Hilfsrelais",
+     "original": "Auxiliary relay",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RA",
+     "type": "Schaltplan-Kürzel",
+     "title": "Frostschutz-Heizwiderstand",
+     "original": "Antifreeze heater resistance",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RAP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Hochdruckrelais",
+     "original": "High pressure relay",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RB",
+     "type": "Schaltplan-Kürzel",
+     "title": "Basiswiderstand (Wannenheizung)",
+     "original": "Base heater resistance",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RC",
+     "type": "Schaltplan-Kürzel",
+     "title": "Kurbelwannenheizung Verdichter",
+     "original": "Compressor oil heater resistance",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RCR",
+     "type": "Schaltplan-Kürzel",
+     "title": "Relais zur Ansteuerung Heizstab/Kessel",
+     "original": "Heater relay controller",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RCS",
+     "type": "Schaltplan-Kürzel",
+     "title": "Phasenfolgerelais",
+     "original": "Phase-sequence relay",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "RE",
+     "type": "Schaltplan-Kürzel",
+     "title": "Wärmetauscher-Heizwiderstand",
+     "original": "Exchanger heater resistance",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "REI",
+     "type": "Schaltplan-Kürzel",
+     "title": "Zusatz-Heizwiderstand Wärmetauscher",
+     "original": "Integrative exchanger heater resistance",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SAE",
+     "type": "Schaltplan-Kürzel",
+     "title": "Außenluftfühler",
+     "original": "Ambient air probe",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SC",
+     "type": "Schaltplan-Kürzel",
+     "title": "Steuerplatine",
+     "original": "Control electric card",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SIW",
+     "type": "Schaltplan-Kürzel",
+     "title": "Wassereintrittsfühler",
+     "original": "Water inlet probe",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SS",
+     "type": "Schaltplan-Kürzel",
+     "title": "Abtaufühler",
+     "original": "Defrosting probe",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SL",
+     "type": "Schaltplan-Kürzel",
+     "title": "Flüssigkeitsfühler",
+     "original": "Liquid probe",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SUW",
+     "type": "Schaltplan-Kürzel",
+     "title": "Wasseraustrittsfühler",
+     "original": "Water outlet probe",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "SGP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Druckgasfühler",
+     "original": "Discharge pipe sensor",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TRA",
+     "type": "Schaltplan-Kürzel",
+     "title": "Raumthermostat",
+     "original": "Room thermostat",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TAP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Hochdruckgeber",
+     "original": "High pressure transducer",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TBP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Niederdruckgeber",
+     "original": "Low pressure transducer",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TCP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Interner Verdichterschutz",
+     "original": "Compressor internal protection",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TIW",
+     "type": "Schaltplan-Kürzel",
+     "title": "Wassereintritts-Druckgeber",
+     "original": "Water inlet transducer",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TMP",
+     "type": "Schaltplan-Kürzel",
+     "title": "Thermischer Pumpenschutz",
+     "original": "Pump thermal protection",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TR",
+     "type": "Schaltplan-Kürzel",
+     "title": "Transformator",
+     "original": "Feeding voltage transformer",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TSRE",
+     "type": "Schaltplan-Kürzel",
+     "title": "Sicherheitsthermostat Heizwiderstand",
+     "original": "Safety thermostat RE",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "TWS",
+     "type": "Schaltplan-Kürzel",
+     "title": "Brauchwasser-Thermostat",
+     "original": "Water sanitary thermostat",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "VGC",
+     "type": "Schaltplan-Kürzel",
+     "title": "Heißgasventil",
+     "original": "Warm gas valve",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "VIC",
+     "type": "Schaltplan-Kürzel",
+     "title": "Kreisumkehrventil",
+     "original": "Reverse cycle valve",
+     "note": ""
+    },
+    {
+     "board": "Schaltplan",
+     "terminal": "Legende",
+     "code": "VSL",
+     "type": "Schaltplan-Kürzel",
+     "title": "Magnetventil Flüssigkeitsleitung",
+     "original": "Liquid gate solenoid valve",
      "note": ""
     }
    ]

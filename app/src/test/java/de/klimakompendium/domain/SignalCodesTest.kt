@@ -101,4 +101,20 @@ class SignalCodesTest {
         assertTrue(find("U1").any { it.manufacturer == "Carel" && it.series == "c.pCO mini / c.pCOe" })
         assertTrue(find("Digitaleingang 5").any { it.manufacturer == "Carel" })
     }
+
+    @Test fun anlAnliModucontrolTerminalsFromWiringDiagrams() {
+        fun anl(code: String) = all.filter { it.series.startsWith("ANL / ANLI") && it.code == code }
+        // Klemmen von Hand gegen Platinenbild und Schaltplan ANLI 101 geprüft
+        assertEquals("M9-1 / M9-2", anl("SIW").single().terminal)
+        assertEquals("M9-3 / M9-4", anl("SUW").single().terminal)
+        assertEquals("M9-5 / M9-6", anl("SS").single().terminal)
+        assertEquals("M9S-1 / M9S-2", anl("SGP").single().terminal)
+        assertEquals("M9S-3 / M9S-4", anl("SAE").single().terminal)
+        assertTrue(anl("TAP").single().title.contains("Hochdruckgeber"))
+        assertEquals("M7-1 / M7-2", anl("ID1 / MTC").single().terminal)
+        assertEquals("M7S-1 / M7S-2", anl("ID5 / BP").single().terminal)
+        assertTrue(anl("VIC").single().title.contains("Kreisumkehrventil"))
+        assertTrue(find("MTC").any { it.series.contains("Legende") && it.title.contains("Motorschutz") })
+        assertTrue(find("ID4").any { it.series.startsWith("ANL / ANLI") })
+    }
 }

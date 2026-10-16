@@ -10,6 +10,7 @@ ist das Feld bewusst leer.
 | Alarmcodes Aermec **NRP/NXP/CPS**, PGD1-Tasten, Assistance-Menü, Alarm-Reset-Arten | Aermec, *Multipurpose – User manual, Card pCO5 – Panel PGD1* (NRP/NXP/CPS), Dok. 4724311_03 (10/2025), Kapitel 1, 13 |
 | Alarmcodes Carel **Standard Chiller/HP** (generische Applikation, pCO-Alarme und EVD-Treiber-Alarme) | Carel, *Standard Chiller/HP modulare per compressore a vite Generico/Bitzer con driver CAREL*, User manual Rel. 1.4, Cod. +030221296 (09/2008), Kap. 23.6, 23.7, 24.3 |
 | Alarmcodes Aermec **ANL/ANLI/ANK/NRK/WRL** (Moducontrol: Alarm n, Voralarm n+100; Reset, Eingänge ID1–ID6) | Aermec, *MODUCONTROL – Bedienungsanleitung*, Dok. 6343841_06 (01/2025), Kap. 17 |
+| Fühler-/Klemmenbelegung Aermec **ANL/ANLI** (Moducontrol: SIW, SUW, SS, SGP, SAE, TAP, TBP, ID1–ID6, Ausgänge) und Schaltplan-Legende | Aermec, Schaltpläne ANLI 101 (Dok. 4756590, 4756595, 4756597) und ANLI 021–045 (4757890), Aermec Moducontrol-BMS 6205750_03, ANL Installationshandbuch 6755512_05 (11-poliges Klemmbrett) |
 | Hardware-Klemmen der Carel-Regler (U, B, ID, Y, NO/NC, Busse; Größen Small–Extralarge): pCO1, pCO3, pCOXS, pCOC | Carel, *pCO sistema – General manual*, +030220336 rel. 1.6 (04/2013), Kap. 2.1.1, 2.3.1, 2.5.1, 2.7.1 |
 | Hardware-Klemmen Carel pCO5 | Carel, *pCO5 User manual*, +0300009EN rel. 1.2 (04/2014), Kap. 2.2 |
 | Hardware-Klemmen Carel pCO5+ | Carel, *pCO5+ User manual*, +0300020EN rel. 1.4 (01/2015), Kap. 4.12 |
