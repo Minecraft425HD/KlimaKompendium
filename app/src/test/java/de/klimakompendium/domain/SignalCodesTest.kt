@@ -63,4 +63,58 @@ class SignalCodesTest {
         val terms = SeedParser.parseTerms(File("src/main/assets/terms.json").readText()).terms.map { it.abbr }
         assertTrue(terms.containsAll(listOf("SIW", "SUW", "SAE", "SL1", "SGP", "TAP", "TBP")))
     }
+
+    private fun carel(series: String, code: String) = all.filter { it.manufacturer == "Carel" && it.series == series && it.code == code }
+
+    @Test fun carelControllerTerminalsFromManuals() {
+        val series = all.filter { it.manufacturer == "Carel" }.map { it.series }.toSet()
+        assertEquals(
+            setOf("pCO1", "pCO3", "pCO5", "pCO5+", "pCOXS", "pCOC", "c.pCO Small–Extralarge", "c.pCO mini / c.pCOe"),
+            series,
+        )
+        // von Hand gegen die Handbuch-Tabellen geprüft
+        assertEquals("J5-5", carel("pCO5", "ID5").single().terminal)
+        assertEquals("J2-3", carel("pCO5+", "U3").single().terminal)
+        assertEquals("J6-3", carel("pCO5+", "U8").single().terminal)
+        assertEquals("J20-5", carel("pCO5+", "U10").single().terminal)
+        assertEquals("J2-12", carel("c.pCO mini / c.pCOe", "U10").single().terminal)
+        assertEquals("J4-5", carel("pCO1", "Y3").single().terminal)
+        assertTrue(carel("pCO1", "Y3").single().title.contains("PWM"))
+        assertEquals("J4-6", carel("pCOXS", "ID6").single().terminal)
+        assertEquals("J21", carel("pCOC", "ID11 (230 V)").single().terminal)
+        assertEquals("J8-1", carel("pCO3", "ID13H").single().terminal)
+    }
+
+    @Test fun carelSizeHintsAndExtralargeRelays() {
+        assertEquals("Nur Large", carel("pCO3", "ID18").single().note)
+        assertEquals("Ab Medium", carel("pCO5", "ID13").single().note)
+        assertEquals("", carel("pCO5", "ID8").single().note)
+        // Relais 14 gibt es doppelt: Large (J21-2) und Extralarge (J21-2 = C14-Gruppe 14–16)
+        assertTrue(carel("pCO5", "NO14").any { it.note == "Nur Large" })
+        assertTrue(carel("pCO5", "NO14").any { it.note == "Nur Extralarge" })
+        assertEquals("Nur Extralarge", carel("pCO5", "NO29").single().note)
+    }
+
+    @Test fun terminalSearchFindsIdAndUAcrossControllers() {
+        val id5 = find("ID5").filter { it.manufacturer == "Carel" }
+        assertTrue(id5.map { it.series }.toSet().size >= 6)
+        assertTrue(find("U1").any { it.manufacturer == "Carel" && it.series == "c.pCO mini / c.pCOe" })
+        assertTrue(find("Digitaleingang 5").any { it.manufacturer == "Carel" })
+    }
+
+    @Test fun anlAnliModucontrolTerminalsFromWiringDiagrams() {
+        fun anl(code: String) = all.filter { it.series.startsWith("ANL / ANLI") && it.code == code }
+        // Klemmen von Hand gegen Platinenbild und Schaltplan ANLI 101 geprüft
+        assertEquals("M9-1 / M9-2", anl("SIW").single().terminal)
+        assertEquals("M9-3 / M9-4", anl("SUW").single().terminal)
+        assertEquals("M9-5 / M9-6", anl("SS").single().terminal)
+        assertEquals("M9S-1 / M9S-2", anl("SGP").single().terminal)
+        assertEquals("M9S-3 / M9S-4", anl("SAE").single().terminal)
+        assertTrue(anl("TAP").single().title.contains("Hochdruckgeber"))
+        assertEquals("M7-1 / M7-2", anl("ID1 / MTC").single().terminal)
+        assertEquals("M7S-1 / M7S-2", anl("ID5 / BP").single().terminal)
+        assertTrue(anl("VIC").single().title.contains("Kreisumkehrventil"))
+        assertTrue(find("MTC").any { it.series.contains("Legende") && it.title.contains("Motorschutz") })
+        assertTrue(find("ID4").any { it.series.startsWith("ANL / ANLI") })
+    }
 }

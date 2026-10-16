@@ -58,7 +58,7 @@ import de.klimakompendium.ui.theme.MonoStyle
 import de.klimakompendium.ui.theme.TouchTarget
 import de.klimakompendium.ui.util.appViewModel
 
-private val TABS = listOf("faults" to "Störungen", "signals" to "Signale", "guides" to "Leitfäden", "makers" to "Hersteller")
+private val TABS = listOf("faults" to "Störungen", "signals" to "Signale & Klemmen", "guides" to "Leitfäden", "makers" to "Hersteller")
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -198,7 +198,7 @@ private fun SignalsTab(vm: ServiceViewModel) {
         contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 32.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        item { SearchField(vm.signalSearch.text, vm::setSignalQuery, "Kürzel (SIW, SAE, TAP1), Klemme (U1, B3) oder Text") }
+        item { SearchField(vm.signalSearch.text, vm::setSignalQuery, "Kürzel (SIW, SAE), Klemme (U1, ID5, NO3) oder Text") }
         item {
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 FilterDropdown("Gerät / Serie", s.seriesOptions, s.series, { it }, vm::setSignalSeries)
@@ -210,8 +210,9 @@ private fun SignalsTab(vm: ServiceViewModel) {
         items(s.signals, key = { "${it.series}|${it.board}|${it.terminal}|${it.code}|${it.title}" }) { SignalRow(it) }
         item {
             Text(
-                "Quelle: Aermec-Handbücher NRG 0282-0804 (Dok. 5723310_05, Kap. 4) und NRP/NXP/CPS (Dok. 4724311_03, Kap. 5.7/5.8). " +
-                    "Das NRP/NXP/CPS-Handbuch nennt nur Klemmen, keine Kürzel. Bei anderen Gerätereihen oder Softwareständen kann die Belegung abweichen.",
+                "Quellen: Aermec-Handbücher NRG 0282-0804 (Dok. 5723310_05, Kap. 4) und NRP/NXP/CPS (Dok. 4724311_03, Kap. 5.7/5.8) für die Gerätekürzel; " +
+                    "Carel-Handbücher (pCO sistema +030220336, pCO5 +0300009EN, pCO5+ +0300020EN, c.pCO +0300057EN) für die Hardware-Klemmen der Reglertypen. " +
+                    "Was an einer Klemme hängt, bestimmt die Applikation des Geräteherstellers; bei anderen Gerätereihen oder Softwareständen kann die Belegung abweichen.",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
